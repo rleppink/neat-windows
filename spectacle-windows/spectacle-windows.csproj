@@ -45,7 +45,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Hotkey.cs" />
-    <Compile Include="WindowSizePosition.cs" />
+    <Compile Include="HotkeyHandler.cs" />
+    <Compile Include="WindowResizer.cs" />
+    <Compile Include="ScreenSizePosition.cs" />
     <Compile Include="WindowConstants.cs" />
     <Compile Include="TestForm.cs">
       <SubType>Form</SubType>

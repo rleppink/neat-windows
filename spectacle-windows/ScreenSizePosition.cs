@@ -7,18 +7,18 @@ using System.Windows.Forms;
 
 namespace spectacle_windows
 {
-    class WindowSizePosition
+    class ScreenSizePosition
     {
 
         private Rectangle activeScreenSize;
 
 
-        public WindowSizePosition(IntPtr activeWindow)
+        public ScreenSizePosition(IntPtr activeWindow)
         {
             this.activeScreenSize = Screen.FromHandle(activeWindow).Bounds;
         }
 
-        public Rectangle FullScreenRect()
+        public Rectangle FullScreen()
         {
             return this.activeScreenSize;
         }
@@ -36,8 +36,28 @@ namespace spectacle_windows
         public Rectangle HalfScreenWidthRight()
         {
             return new Rectangle (
+                this.MidX(),
+                this.TopY(),
+                this.HalfScreenWidth(),
+                this.FullScreenHeight()
+                );
+        }
+
+        public Rectangle HalfScreenHeightTop()
+        {
+            return new Rectangle(
                 this.LeftX(),
                 this.TopY(),
+                this.FullScreenWidth(),
+                this.HalfScreenHeight()
+                );
+        }
+
+        public Rectangle HalfScreenHeightBottom()
+        {
+            return new Rectangle(
+                this.LeftX(),
+                this.MidY(),
                 this.FullScreenWidth(),
                 this.HalfScreenHeight()
                 );
@@ -96,25 +116,11 @@ namespace spectacle_windows
 
 
         #region Positions
-        private int LeftX()
-        {
-            return this.activeScreenSize.X;
-        }
-        
-        private int MidX()
-        {
-            return this.activeScreenSize.X + this.HalfScreenWidth();
-        }
+        private int LeftX() { return this.activeScreenSize.X; }
+        private int MidX() { return this.activeScreenSize.X + this.HalfScreenWidth(); }
 
-        private int TopY()
-        {
-            return this.activeScreenSize.Y;
-        }
-
-        private int MidY()
-        {
-            return this.activeScreenSize.Y + this.HalfScreenHeight();
-        }
+        private int TopY() { return this.activeScreenSize.Y; }
+        private int MidY() { return this.activeScreenSize.Y + this.HalfScreenHeight(); }
         #endregion
 
     }
