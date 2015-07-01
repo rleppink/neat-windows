@@ -19,6 +19,9 @@ namespace spectacle_windows
         [DllImport("user32.dll")]
         private static extern IntPtr GetActiveWindow();
 
+        [DllImport("user32.dll", SetLastError = true)]
+        private static extern IntPtr GetForegroundWindow();
+
         private const uint SHOWWINDOW = 0x0040;
 
         public TestForm() 
@@ -28,13 +31,14 @@ namespace spectacle_windows
             hotkey.KeyCode = Keys.H;
             hotkey.Shift = true;
             hotkey.Control = true;
+
             hotkey.Pressed += delegate { this.ResizeWindow(); };
             hotkey.Register(this);
         }
 
         private void ResizeWindow()
         {
-            IntPtr activeWindowHandle = GetActiveWindow();
+            IntPtr activeWindowHandle = GetForegroundWindow();
             WindowSizePosition windowSizeHandler = new WindowSizePosition(activeWindowHandle);
             Rectangle newWindowSize = windowSizeHandler.BottomRightQuarter();
             SetWindowPos(activeWindowHandle, 
