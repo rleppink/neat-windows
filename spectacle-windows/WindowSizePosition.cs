@@ -26,8 +26,8 @@ namespace spectacle_windows
         public Rectangle HalfScreenWidthLeft()
         {
             return new Rectangle (
-                this.TopLeft().Item1,
-                this.TopLeft().Item2,
+                this.LeftX(),
+                this.TopY(),
                 this.HalfScreenWidth(),
                 this.FullScreenHeight()
                 );
@@ -36,8 +36,8 @@ namespace spectacle_windows
         public Rectangle HalfScreenWidthRight()
         {
             return new Rectangle (
-                this.TopMid().Item1,
-                this.TopMid().Item2,
+                this.LeftX(),
+                this.TopY(),
                 this.FullScreenWidth(),
                 this.HalfScreenHeight()
                 );
@@ -46,8 +46,8 @@ namespace spectacle_windows
         public Rectangle TopLeftQuarter()
         {
             return new Rectangle(
-                this.TopLeft().Item1,
-                this.TopLeft().Item2,
+                this.LeftX(),
+                this.TopY(),
                 this.HalfScreenWidth(),
                 this.HalfScreenHeight()
                 );
@@ -56,8 +56,8 @@ namespace spectacle_windows
         public Rectangle TopRightQuarter()
         {
             return new Rectangle(
-                this.TopMid().Item1,
-                this.TopMid().Item2,
+                this.MidX(),
+                this.TopY(),
                 this.HalfScreenWidth(),
                 this.HalfScreenHeight()
                 );
@@ -66,8 +66,8 @@ namespace spectacle_windows
         public Rectangle BottomLeftQuarter()
         {
             return new Rectangle(
-                this.MidLeft().Item1,
-                this.MidLeft().Item2,
+                this.LeftX(),
+                this.MidY(),
                 this.HalfScreenWidth(),
                 this.HalfScreenHeight()
                 );
@@ -76,8 +76,8 @@ namespace spectacle_windows
         public Rectangle BottomRightQuarter()
         {
             return new Rectangle(
-                this.Mid().Item1,
-                this.Mid().Item2,
+                this.MidX(),
+                this.MidY(),
                 this.HalfScreenWidth(),
                 this.HalfScreenHeight()
                 );
@@ -96,32 +96,24 @@ namespace spectacle_windows
 
 
         #region Positions
-        private Tuple<int, int> TopLeft() 
+        private int LeftX()
         {
-            int xPosition = this.activeScreenSize.X;
-            int yPosition = this.activeScreenSize.Y;
-            return new Tuple<int, int>(xPosition, yPosition);
+            return this.activeScreenSize.X;
+        }
+        
+        private int MidX()
+        {
+            return this.activeScreenSize.X + this.HalfScreenWidth();
         }
 
-        private Tuple<int, int> MidLeft() 
+        private int TopY()
         {
-            int xPosition = this.activeScreenSize.X;
-            int yPosition = this.HalfScreenHeight();
-            return new Tuple<int, int>(xPosition, yPosition);
+            return this.activeScreenSize.Y;
         }
 
-        private Tuple<int, int> TopMid() 
+        private int MidY()
         {
-            int xPosition = this.HalfScreenWidth();
-            int yPosition = this.activeScreenSize.Y;
-            return new Tuple<int, int>(xPosition, yPosition);
-        }
-
-        private Tuple<int, int> Mid()
-        {
-            int xPosition = this.HalfScreenWidth();
-            int yPosition = this.HalfScreenHeight();
-            return new Tuple<int, int>(xPosition, yPosition);
+            return this.activeScreenSize.Y + this.HalfScreenHeight();
         }
         #endregion
 

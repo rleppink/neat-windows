@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Hotkey.cs" />
     <Compile Include="WindowSizePosition.cs" />
     <Compile Include="WindowConstants.cs" />
     <Compile Include="TestForm.cs">

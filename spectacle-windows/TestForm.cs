@@ -20,14 +20,23 @@ namespace spectacle_windows
         private static extern IntPtr GetActiveWindow();
 
         private const uint SHOWWINDOW = 0x0040;
-        public TestForm() { InitializeComponent(); }
 
-        private void button1_Click(object sender, EventArgs e)
+        public TestForm() 
+        { 
+            InitializeComponent();
+            Hotkey hotkey = new Hotkey();
+            hotkey.KeyCode = Keys.H;
+            hotkey.Shift = true;
+            hotkey.Control = true;
+            hotkey.Pressed += delegate { this.ResizeWindow(); };
+            hotkey.Register(this);
+        }
+
+        private void ResizeWindow()
         {
             IntPtr activeWindowHandle = GetActiveWindow();
             WindowSizePosition windowSizeHandler = new WindowSizePosition(activeWindowHandle);
             Rectangle newWindowSize = windowSizeHandler.BottomRightQuarter();
-
             SetWindowPos(activeWindowHandle, 
                             WindowConstants.HWND.TOP,
                             newWindowSize.X, 
