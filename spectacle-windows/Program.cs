@@ -15,7 +15,14 @@ namespace spectacle_windows
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new TestForm());
+
+            NotifyIcon notifyIcon = new NotifyIcon();
+            SettingsForm settingsForm = new SettingsForm();
+
+            HotkeyHandler hotkeyHandler = new HotkeyHandler();
+            hotkeyHandler.RegisterHotkeys(settingsForm);
+
+            Application.Run(new SettingsForm());
         }
     }
 }
