@@ -38,5 +38,28 @@ namespace spectacle_windows
             this.settingsIcon.Visible = false;
         }
 
+        private void handleKeyInput(object sender, KeyEventArgs keyEventArgs)
+        {
+            keyEventArgs.Handled = true;
+            TextBox senderTextBox = (TextBox)sender;
+
+            bool controlPressed = keyEventArgs.Control;
+            bool shiftPressed = keyEventArgs.Shift;
+            bool altPressed = keyEventArgs.Alt;
+            // TODO: bool windowsPressed = (Control.ModifierKeys | Keys.LWin) == keyEventArgs.Modifiers;
+
+            string keysPressedText = "";
+            if (controlPressed)
+                keysPressedText += "Ctrl + ";
+            if (altPressed)
+                keysPressedText += "Alt + ";
+            if (shiftPressed)
+                keysPressedText += "Shift + ";
+            keysPressedText += keyEventArgs.KeyValue;
+            senderTextBox.Text = keysPressedText;
+
+            // TODO: Register hotkeys
+        }
+
     }
 }

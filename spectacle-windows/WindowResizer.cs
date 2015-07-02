@@ -19,7 +19,6 @@ namespace spectacle_windows
         private IntPtr foregroundWindowHandle;
         private ScreenSizePosition screenSizePosition;
 
-
         public void ResizeTo(WindowConstants.WindowSizePosition windowSizePosition) 
         {
             this.foregroundWindowHandle = GetForegroundWindow();
