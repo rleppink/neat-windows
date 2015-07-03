@@ -6,6 +6,10 @@ using System.Runtime.InteropServices;
 
 namespace spectacle_windows
 {
+    /*
+     *  Hotkey abstraction kindly taken from:
+     *  https://bloggablea.wordpress.com/2007/05/01/global-hotkeys-with-net/
+     */
     public class Hotkey : IMessageFilter
 	{
 		#region Interop

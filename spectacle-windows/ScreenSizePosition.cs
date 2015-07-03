@@ -23,7 +23,7 @@ namespace spectacle_windows
             return this.activeScreenSize;
         }
 
-        public Rectangle HalfScreenWidthLeft()
+        public Rectangle HalfWidthLeft()
         {
             return new Rectangle (
                 this.LeftX(),
@@ -33,7 +33,7 @@ namespace spectacle_windows
                 );
         }
 
-        public Rectangle HalfScreenWidthRight()
+        public Rectangle HalfWidthRight()
         {
             return new Rectangle (
                 this.MidX(),
@@ -43,7 +43,7 @@ namespace spectacle_windows
                 );
         }
 
-        public Rectangle HalfScreenHeightTop()
+        public Rectangle HalfHeightTop()
         {
             return new Rectangle(
                 this.LeftX(),
@@ -53,7 +53,7 @@ namespace spectacle_windows
                 );
         }
 
-        public Rectangle HalfScreenHeightBottom()
+        public Rectangle HalfHeightBottom()
         {
             return new Rectangle(
                 this.LeftX(),

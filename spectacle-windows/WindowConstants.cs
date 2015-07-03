@@ -47,18 +47,6 @@ namespace spectacle_windows
            ASYNCWINDOWPOS = 0x4000;
         }
 
-        public enum WindowSizePosition
-        {
-            FULLSCREEN,
-            LEFT_HALF,
-            RIGHT_HALF,
-            TOP_HALF,
-            BOTTOM_HALF,
-            TOP_LEFT,
-            TOP_RIGHT,
-            BOTTOM_LEFT,
-            BOTTOM_RIGHT
-        }
     }
 
 }
