@@ -5,6 +5,10 @@ using System.Text;
 
 namespace spectacle_windows
 {
+    /*
+     *  Constants kindly taken from:
+     *  http://www.pinvoke.net/default.aspx/user32.setwindowpos
+     */
     public static class WindowConstants
     {
         static readonly IntPtr HWND_TOPMOST = new IntPtr(-1);

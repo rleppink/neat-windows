@@ -17,14 +17,15 @@ namespace spectacle_windows
         private static extern bool SetWindowPos(IntPtr hWnd, IntPtr hWndInsertAfter, int xPosition, int yPosition, int width, int height, uint uFlags);
 
         [DllImport("user32.dll")]
+        [return: MarshalAs(UnmanagedType.Bool)]  
         private static extern bool GetWindowRect(IntPtr hWnd, out RECT lpRect);
 
         private struct RECT
         {
-            private int Left;
-            private int Right;
-            private int Top;
-            private int Bottom;
+            public int Left;
+            public int Top;
+            public int Right;
+            public int Bottom;
         }
 
         public enum WindowSizePosition
@@ -40,13 +41,14 @@ namespace spectacle_windows
             BOTTOM_RIGHT
         }
 
-
         private IntPtr foregroundWindowHandle;
+        private Rectangle foregroundWindowBounds;
         private ScreenSizePosition screenSizePosition;
 
         public void ResizeTo(WindowSizePosition windowSizePosition) 
         {
             this.foregroundWindowHandle = GetForegroundWindow();
+            this.foregroundWindowBounds = this.GetForegroundWindowBounds();
             this.screenSizePosition = new ScreenSizePosition(this.foregroundWindowHandle);
 
             switch (windowSizePosition)
@@ -55,7 +57,7 @@ namespace spectacle_windows
                     this.ResizeActiveWindow(this.screenSizePosition.FullScreen());
                     break;
                 case WindowSizePosition.LEFT_HALF:
-                    
+
                     this.ResizeActiveWindow(this.screenSizePosition.HalfWidthLeft());
                     break;
                 case WindowSizePosition.RIGHT_HALF:
@@ -91,6 +93,18 @@ namespace spectacle_windows
                                 newWindowSize.Width, 
                                 newWindowSize.Height, 
                                 WindowConstants.SWP.SHOWWINDOW);
+        }
+
+        private Rectangle GetForegroundWindowBounds()
+        {
+            RECT outRect;
+            GetWindowRect(this.foregroundWindowHandle, out outRect);
+            return new Rectangle(
+                outRect.Left,
+                outRect.Top,
+                outRect.Right - outRect.Left,
+                outRect.Bottom - outRect.Top
+                );
         }
 
     }

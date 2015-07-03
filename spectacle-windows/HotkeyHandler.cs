@@ -47,25 +47,24 @@ namespace spectacle_windows
         {
             WindowResizer windowResizer = new WindowResizer();
             this.hotkeyFullScreen.Pressed +=
-                delegate { windowResizer.ResizeTo(WindowConstants.WindowSizePosition.FULLSCREEN); };
-
+                delegate { windowResizer.ResizeTo(WindowResizer.WindowSizePosition.FULLSCREEN); };
             this.hotkeyLeftHalf.Pressed +=
-                delegate { windowResizer.ResizeTo(WindowConstants.WindowSizePosition.LEFT_HALF); };
+                delegate { windowResizer.ResizeTo(WindowResizer.WindowSizePosition.LEFT_HALF); };
             this.hotkeyRightHalf.Pressed +=
-                delegate { windowResizer.ResizeTo(WindowConstants.WindowSizePosition.RIGHT_HALF); };
+                delegate { windowResizer.ResizeTo(WindowResizer.WindowSizePosition.RIGHT_HALF); };
             this.hotkeyTopHalf.Pressed +=
-                delegate { windowResizer.ResizeTo(WindowConstants.WindowSizePosition.TOP_HALF); };
+                delegate { windowResizer.ResizeTo(WindowResizer.WindowSizePosition.TOP_HALF); };
             this.hotkeyBottomHalf.Pressed +=
-                delegate { windowResizer.ResizeTo(WindowConstants.WindowSizePosition.BOTTOM_HALF); };
+                delegate { windowResizer.ResizeTo(WindowResizer.WindowSizePosition.BOTTOM_HALF); };
 
             this.hotkeyTopLeft.Pressed +=
-                delegate { windowResizer.ResizeTo(WindowConstants.WindowSizePosition.TOP_LEFT); };
+                delegate { windowResizer.ResizeTo(WindowResizer.WindowSizePosition.TOP_LEFT); };
             this.hotkeyTopRight.Pressed +=
-                delegate { windowResizer.ResizeTo(WindowConstants.WindowSizePosition.TOP_RIGHT); };
+                delegate { windowResizer.ResizeTo(WindowResizer.WindowSizePosition.TOP_RIGHT); };
             this.hotkeyBottomLeft.Pressed +=
-                delegate { windowResizer.ResizeTo(WindowConstants.WindowSizePosition.BOTTOM_LEFT); };
+                delegate { windowResizer.ResizeTo(WindowResizer.WindowSizePosition.BOTTOM_LEFT); };
             this.hotkeyBottomRight.Pressed +=
-                delegate { windowResizer.ResizeTo(WindowConstants.WindowSizePosition.BOTTOM_RIGHT); };
+                delegate { windowResizer.ResizeTo(WindowResizer.WindowSizePosition.BOTTOM_RIGHT); };
         }
 
         public void RegisterHotkeys(Form form)
