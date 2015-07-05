@@ -89,7 +89,7 @@ namespace spectacle_windows
         public Rectangle ThirdWidthRight()
         {
             return new Rectangle(
-                this.ThirdX() * 2,
+                this.TwoThirdsX(),
                 this.TopY(),
                 this.ThirdScreenWidth(),
                 this.FullScreenHeight()
@@ -130,7 +130,7 @@ namespace spectacle_windows
         {
             return new Rectangle(
                 this.LeftX(),
-                this.ThirdY() * 2,
+                this.TwoThirdsY(),
                 this.FullScreenWidth(),
                 this.ThirdScreenHeight()
                 );
@@ -204,10 +204,12 @@ namespace spectacle_windows
         private int LeftX() { return this.activeScreenSize.X; }
         private int MidX() { return this.activeScreenSize.X + this.HalfScreenWidth(); }
         private int ThirdX() { return this.activeScreenSize.X + this.ThirdScreenWidth(); }
+        private int TwoThirdsX() { return this.activeScreenSize.X + (this.ThirdScreenWidth() * 2); }
 
         private int TopY() { return this.activeScreenSize.Y; }
         private int MidY() { return this.activeScreenSize.Y + this.HalfScreenHeight(); }
         private int ThirdY() { return this.activeScreenSize.Y + this.ThirdScreenHeight(); }
+        private int TwoThirdsY() { return this.activeScreenSize.Y + (this.ThirdScreenHeight() * 2); }
         #endregion
 
     }
