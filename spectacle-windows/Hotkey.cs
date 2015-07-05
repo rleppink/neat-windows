@@ -125,7 +125,9 @@ namespace spectacle_windows
 			if (!this.windowControl.IsDisposed)
 			{
 				if (Hotkey.UnregisterHotKey(this.windowControl.Handle, this.id) == 0)
-				{ throw new Win32Exception(); }
+				{ 
+                    throw new Win32Exception(); 
+                }
 			}
 
 			this.registered = false;
