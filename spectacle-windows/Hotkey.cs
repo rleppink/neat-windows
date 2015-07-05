@@ -14,12 +14,6 @@ namespace spectacle_windows
 	{
 		#region Interop
 
-		[DllImport("user32.dll", SetLastError = true)]
-		private static extern int RegisterHotKey(IntPtr hWnd, int id, uint fsModifiers, Keys vk);
-
-		[DllImport("user32.dll", SetLastError=true)]
-		private static extern int UnregisterHotKey(IntPtr hWnd, int id);
-
 		private const uint WM_HOTKEY = 0x312;
 
 		private const uint MOD_ALT = 0x1;
@@ -103,7 +97,7 @@ namespace spectacle_windows
 			uint modifiers = (this.Alt ? Hotkey.MOD_ALT : 0) | (this.Control ? Hotkey.MOD_CONTROL : 0) |
 							(this.Shift ? Hotkey.MOD_SHIFT : 0) | (this.Windows ? Hotkey.MOD_WIN : 0);
 
-			if (Hotkey.RegisterHotKey(windowControl.Handle, this.id, modifiers, keyCode) == 0)
+			if (NativeMethods.RegisterHotKey(windowControl.Handle, this.id, modifiers, keyCode) == 0)
 			{ 
 				if (Marshal.GetLastWin32Error() == ERROR_HOTKEY_ALREADY_REGISTERED)
 				{ return false; }
@@ -124,7 +118,7 @@ namespace spectacle_windows
         
 			if (!this.windowControl.IsDisposed)
 			{
-				if (Hotkey.UnregisterHotKey(this.windowControl.Handle, this.id) == 0)
+                if (NativeMethods.UnregisterHotKey(this.windowControl.Handle, this.id) == 0)
 				{ 
                     throw new Win32Exception(); 
                 }

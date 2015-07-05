@@ -1,33 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
 
 namespace spectacle_windows
 {
     class WindowResizer
     {
-
-        [DllImport("user32.dll", SetLastError = true)]
-        private static extern IntPtr GetForegroundWindow();
-
-        [DllImport("user32.dll", SetLastError=true)]
-        private static extern bool SetWindowPos(IntPtr hWnd, IntPtr hWndInsertAfter, int xPosition, int yPosition, int width, int height, uint uFlags);
-
-        [DllImport("user32.dll", SetLastError=true)]
-        [return: MarshalAs(UnmanagedType.Bool)]  
-        private static extern bool GetWindowRect(IntPtr hWnd, out RECT lpRect);
-
-        private struct RECT
-        {
-            public int Left;
-            public int Top;
-            public int Right;
-            public int Bottom;
-        }
-
         public enum WindowSizePosition
         {
             FULLSCREEN,
@@ -42,20 +19,35 @@ namespace spectacle_windows
             CENTER
         }
 
+        public struct RECT
+        {
+            public int Left;
+            public int Top;
+            public int Right;
+            public int Bottom;
+        }
+
         private IntPtr foregroundWindowHandle;
         private Rectangle foregroundWindowBounds;
         private ScreenSizePosition screenSizePosition;
 
         public void ResizeTo(WindowSizePosition windowSizePosition) 
         {
-            this.foregroundWindowHandle = GetForegroundWindow();
+            this.foregroundWindowHandle = NativeMethods.GetForegroundWindow();
             this.foregroundWindowBounds = this.GetForegroundWindowBounds();
             this.screenSizePosition = new ScreenSizePosition(this.foregroundWindowHandle);
 
             switch (windowSizePosition)
             {
                 case WindowSizePosition.FULLSCREEN:
-                    this.ResizeActiveWindow(this.screenSizePosition.FullScreen());
+                    if (this.foregroundWindowBounds == this.screenSizePosition.FullScreen())
+                        this.ResizeActiveWindow(this.screenSizePosition.TwoThirdsCenter());
+                    else if (this.foregroundWindowBounds == this.screenSizePosition.TwoThirdsCenter())
+                        this.ResizeActiveWindow(this.screenSizePosition.QuarterCenter());
+                    else if (this.foregroundWindowBounds == this.screenSizePosition.QuarterCenter())
+                        this.ResizeActiveWindow(this.screenSizePosition.ThirdCenter());
+                    else
+                        this.ResizeActiveWindow(this.screenSizePosition.FullScreen());
                     break;
 
                 case WindowSizePosition.CENTER:
@@ -115,7 +107,7 @@ namespace spectacle_windows
 
         private bool ResizeActiveWindow(Rectangle newWindowSize)
         {
-            return SetWindowPos(this.foregroundWindowHandle, 
+            return NativeMethods.SetWindowPos(this.foregroundWindowHandle, 
                                 WindowConstants.HWND.TOP,
                                 newWindowSize.X, 
                                 newWindowSize.Y, 
@@ -127,7 +119,7 @@ namespace spectacle_windows
         private Rectangle GetForegroundWindowBounds()
         {
             RECT outRect;
-            GetWindowRect(this.foregroundWindowHandle, out outRect);
+            NativeMethods.GetWindowRect(this.foregroundWindowHandle, out outRect);
             return new Rectangle(
                 outRect.Left,
                 outRect.Top,

@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace spectacle_windows
 {
@@ -11,17 +8,12 @@ namespace spectacle_windows
      */
     public static class WindowConstants
     {
-        static readonly IntPtr HWND_TOPMOST = new IntPtr(-1);
-        static readonly IntPtr HWND_NOTOPMOST = new IntPtr(-2);
-        static readonly IntPtr HWND_TOP = new IntPtr(0);
-        static readonly IntPtr HWND_BOTTOM = new IntPtr(1);
-
         /// <summary>
         /// Window handles (HWND) used for hWndInsertAfter
         /// </summary>
         public static class HWND
         {
-           public static IntPtr
+           public static readonly IntPtr
            NOTOPMOST = new IntPtr(-2),
            TOPMOST = new IntPtr(-1),
            TOP = new IntPtr(0),

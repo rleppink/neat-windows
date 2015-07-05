@@ -74,6 +74,7 @@
   <ItemGroup>
     <Compile Include="Hotkey.cs" />
     <Compile Include="HotkeyHandler.cs" />
+    <Compile Include="NativeMethods.cs" />
     <Compile Include="WindowResizer.cs" />
     <Compile Include="ScreenSizePosition.cs" />
     <Compile Include="WindowConstants.cs" />

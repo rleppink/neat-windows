@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace spectacle_windows
@@ -21,6 +18,36 @@ namespace spectacle_windows
         public Rectangle FullScreen()
         {
             return this.activeScreenSize;
+        }
+
+        public Rectangle TwoThirdsCenter()
+        {
+            return new Rectangle(
+                (this.activeScreenSize.Width - this.TwoThirdsScreenWidth()) / 2,
+                (this.activeScreenSize.Height - this.TwoThirdsScreenHeight()) / 2,
+                this.TwoThirdsScreenWidth(),
+                this.TwoThirdsScreenHeight()
+                );
+        }
+
+        public Rectangle QuarterCenter()
+        {
+            return new Rectangle(
+                (this.activeScreenSize.Width - this.HalfScreenWidth()) / 2,
+                (this.activeScreenSize.Height - this.HalfScreenHeight()) / 2,
+                this.HalfScreenWidth(),
+                this.HalfScreenHeight()
+                );
+        }
+
+        public Rectangle ThirdCenter()
+        {
+            return new Rectangle(
+                (this.activeScreenSize.Width - this.ThirdScreenWidth()) / 2,
+                (this.activeScreenSize.Height - this.ThirdScreenHeight()) / 2,
+                this.ThirdScreenWidth(),
+                this.ThirdScreenHeight()
+                );
         }
 
         public Rectangle Center(Rectangle window)
@@ -92,7 +119,7 @@ namespace spectacle_windows
             return new Rectangle(
                 this.LeftX(),
                 this.TopY(),
-                this.ThirdScreenWidth() * 2,
+                this.TwoThirdsScreenWidth(),
                 this.FullScreenHeight()
                 );
         }
@@ -112,7 +139,7 @@ namespace spectacle_windows
             return new Rectangle(
                 this.ThirdX(),
                 this.TopY(),
-                this.ThirdScreenWidth() * 2,
+                this.TwoThirdsScreenWidth(),
                 this.FullScreenHeight()
                 );
         }
@@ -133,7 +160,7 @@ namespace spectacle_windows
                 this.LeftX(),
                 this.TopY(),
                 this.FullScreenWidth(),
-                this.ThirdScreenHeight() * 2
+                this.TwoThirdsScreenHeight()
                 );
         }
 
@@ -153,7 +180,7 @@ namespace spectacle_windows
                 this.LeftX(),
                 this.ThirdY(),
                 this.FullScreenWidth(),
-                this.ThirdScreenHeight() * 2
+                this.TwoThirdsScreenHeight()
                 );
         }
         #endregion Third sizes
@@ -209,6 +236,9 @@ namespace spectacle_windows
 
         private int ThirdScreenWidth() { return this.activeScreenSize.Width / 3;  }
         private int ThirdScreenHeight() { return this.activeScreenSize.Height / 3; }
+
+        private int TwoThirdsScreenWidth() { return this.ThirdScreenWidth() * 2; }
+        private int TwoThirdsScreenHeight() { return this.ThirdScreenHeight() * 2; }
         #endregion
 
         #region Positions

@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace spectacle_windows
 {
     class HotkeyHandler
     {
-
         private Hotkey hotkeyFullScreen;
         private Hotkey hotkeyCenter;
 
