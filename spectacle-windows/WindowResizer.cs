@@ -16,7 +16,7 @@ namespace spectacle_windows
         [DllImport("user32.dll", SetLastError=true)]
         private static extern bool SetWindowPos(IntPtr hWnd, IntPtr hWndInsertAfter, int xPosition, int yPosition, int width, int height, uint uFlags);
 
-        [DllImport("user32.dll")]
+        [DllImport("user32.dll", SetLastError=true)]
         [return: MarshalAs(UnmanagedType.Bool)]  
         private static extern bool GetWindowRect(IntPtr hWnd, out RECT lpRect);
 
@@ -56,19 +56,43 @@ namespace spectacle_windows
                 case WindowSizePosition.FULLSCREEN:
                     this.ResizeActiveWindow(this.screenSizePosition.FullScreen());
                     break;
-                case WindowSizePosition.LEFT_HALF:
 
-                    this.ResizeActiveWindow(this.screenSizePosition.HalfWidthLeft());
+                case WindowSizePosition.LEFT_HALF:
+                    if (this.foregroundWindowBounds == this.screenSizePosition.HalfWidthLeft())
+                        this.ResizeActiveWindow(this.screenSizePosition.ThirdWidthLeft());
+                    else if (this.foregroundWindowBounds == this.screenSizePosition.ThirdWidthLeft())
+                        this.ResizeActiveWindow(this.screenSizePosition.TwoThirdsWidthLeft());
+                    else
+                        this.ResizeActiveWindow(this.screenSizePosition.HalfWidthLeft());
                     break;
+
                 case WindowSizePosition.RIGHT_HALF:
-                    this.ResizeActiveWindow(this.screenSizePosition.HalfWidthRight());
+                    if (this.foregroundWindowBounds == this.screenSizePosition.HalfWidthRight())
+                        this.ResizeActiveWindow(this.screenSizePosition.ThirdWidthRight());
+                    else if (this.foregroundWindowBounds == this.screenSizePosition.ThirdWidthRight())
+                        this.ResizeActiveWindow(this.screenSizePosition.TwoThirdsWidthRight());
+                    else
+                        this.ResizeActiveWindow(this.screenSizePosition.HalfWidthRight());
                     break;
+
                 case WindowSizePosition.TOP_HALF:
-                    this.ResizeActiveWindow(this.screenSizePosition.HalfHeightTop());
+                    if (this.foregroundWindowBounds == this.screenSizePosition.HalfHeightTop())
+                        this.ResizeActiveWindow(this.screenSizePosition.ThirdHeightTop());
+                    else if (this.foregroundWindowBounds == this.screenSizePosition.ThirdHeightTop())
+                        this.ResizeActiveWindow(this.screenSizePosition.TwoThirdsHeightTop());
+                    else
+                        this.ResizeActiveWindow(this.screenSizePosition.HalfHeightTop());
                     break;
+
                 case WindowSizePosition.BOTTOM_HALF:
+                    if (this.foregroundWindowBounds == this.screenSizePosition.HalfHeightBottom())
+                        this.ResizeActiveWindow(this.screenSizePosition.ThirdHeightBottom());
+                    else if (this.foregroundWindowBounds == this.screenSizePosition.ThirdHeightBottom())
+                        this.ResizeActiveWindow(this.screenSizePosition.TwoThirdsHeightBottom());
+                    else
                     this.ResizeActiveWindow(this.screenSizePosition.HalfHeightBottom());
                     break;
+
                 case WindowSizePosition.TOP_LEFT:
                     this.ResizeActiveWindow(this.screenSizePosition.TopLeftQuarter());
                     break;
