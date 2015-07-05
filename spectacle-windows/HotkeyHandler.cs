@@ -10,6 +10,7 @@ namespace spectacle_windows
     {
 
         private Hotkey hotkeyFullScreen;
+        private Hotkey hotkeyCenter;
 
         private Hotkey hotkeyLeftHalf;
         private Hotkey hotkeyRightHalf;
@@ -31,6 +32,7 @@ namespace spectacle_windows
         public void InitializeDefaultHotkeys() 
         {
             this.hotkeyFullScreen = new Hotkey(Keys.F, true, true, false, false);
+            this.hotkeyCenter = new Hotkey(Keys.C, true, true, false, false);
 
             this.hotkeyLeftHalf = new Hotkey(Keys.H, true, true, false, false);
             this.hotkeyRightHalf = new Hotkey(Keys.L, true, true, false, false);
@@ -46,8 +48,12 @@ namespace spectacle_windows
         public void MapHotkeys()
         {
             WindowResizer windowResizer = new WindowResizer();
+
             this.hotkeyFullScreen.Pressed +=
                 delegate { windowResizer.ResizeTo(WindowResizer.WindowSizePosition.FULLSCREEN); };
+            this.hotkeyCenter.Pressed +=
+                delegate { windowResizer.ResizeTo(WindowResizer.WindowSizePosition.CENTER); };
+
             this.hotkeyLeftHalf.Pressed +=
                 delegate { windowResizer.ResizeTo(WindowResizer.WindowSizePosition.LEFT_HALF); };
             this.hotkeyRightHalf.Pressed +=
@@ -70,6 +76,7 @@ namespace spectacle_windows
         public void RegisterHotkeys(Form form)
         {
             this.hotkeyFullScreen.Register(form);
+            this.hotkeyCenter.Register(form);
 
             this.hotkeyLeftHalf.Register(form);
             this.hotkeyRightHalf.Register(form);

@@ -38,7 +38,8 @@ namespace spectacle_windows
             TOP_LEFT,
             TOP_RIGHT,
             BOTTOM_LEFT,
-            BOTTOM_RIGHT
+            BOTTOM_RIGHT,
+            CENTER
         }
 
         private IntPtr foregroundWindowHandle;
@@ -55,6 +56,10 @@ namespace spectacle_windows
             {
                 case WindowSizePosition.FULLSCREEN:
                     this.ResizeActiveWindow(this.screenSizePosition.FullScreen());
+                    break;
+
+                case WindowSizePosition.CENTER:
+                    this.ResizeActiveWindow(this.screenSizePosition.Center(this.foregroundWindowBounds));
                     break;
 
                 case WindowSizePosition.LEFT_HALF:

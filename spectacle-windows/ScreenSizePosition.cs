@@ -9,7 +9,6 @@ namespace spectacle_windows
 {
     class ScreenSizePosition
     {
-
         private Rectangle activeScreenSize;
 
 
@@ -18,10 +17,22 @@ namespace spectacle_windows
             this.activeScreenSize = Screen.FromHandle(activeWindow).Bounds;
         }
 
+        #region Fullscreen, centered
         public Rectangle FullScreen()
         {
             return this.activeScreenSize;
         }
+
+        public Rectangle Center(Rectangle window)
+        {
+            return new Rectangle(
+                (this.activeScreenSize.Width - window.Width) / 2,
+                (this.activeScreenSize.Height - window.Height) / 2,
+                window.Width,
+                window.Height);
+        }
+
+        #endregion Fullscreen, centered
 
         #region Half sizes
         public Rectangle HalfWidthLeft()
