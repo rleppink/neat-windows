@@ -5,13 +5,18 @@ namespace spectacle_windows
 {
     public partial class SettingsForm : Form
     {
+        private HotkeyHandler hotkeyHandler;
 
         public SettingsForm() 
         { 
             InitializeComponent();
+
+            this.hotkeyHandler = new HotkeyHandler(this);
+            this.hotkeyHandler.InitializeDefaultHotkeys();
             this.Resize += delegate { this.SettingsForm_Resize(); };
         }
 
+        #region Minimizing, notifyicon
         private void SettingsForm_Resize()
         {
             if (this.WindowState == FormWindowState.Minimized)
@@ -32,7 +37,9 @@ namespace spectacle_windows
             this.WindowState = FormWindowState.Normal;
             this.settingsIcon.Visible = false;
         }
+        #endregion Minimizing, notifyicon
 
+        #region Keyhandling
         private void HandleKeyDownEvent(object sender, KeyEventArgs keyEventArgs)
         {
             keyEventArgs.Handled = true;
@@ -53,8 +60,14 @@ namespace spectacle_windows
                 (keyEventArgs.KeyCode == Keys.RWin))
                 return;
 
-            labelBottomHalf.Focus();
-            
+            labelFullscreen.Focus();
+            this.hotkeyHandler.MapHotkey(this,
+                                            WindowResizer.WindowSizePosition.LEFT_HALF,
+                                            keyEventArgs.KeyCode,
+                                            keyEventArgs.Shift,
+                                            keyEventArgs.Control,
+                                            keyEventArgs.Alt,
+                                            false);
         }
 
         private string GenerateKeyString(KeyEventArgs keyEventArgs)
@@ -75,6 +88,7 @@ namespace spectacle_windows
 
             return string.Join(" + ", keys.ToArray());
         }
+        #endregion Keyhandling
 
     }
 }

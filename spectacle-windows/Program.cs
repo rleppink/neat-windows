@@ -15,10 +15,6 @@ namespace spectacle_windows
             Application.SetCompatibleTextRenderingDefault(false);
 
             SettingsForm settingsForm = new SettingsForm();
-
-            HotkeyHandler hotkeyHandler = new HotkeyHandler();
-            hotkeyHandler.RegisterHotkeys(settingsForm);
-
             Application.Run(new SettingsForm());
         }
     }

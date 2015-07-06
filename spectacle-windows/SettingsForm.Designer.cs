@@ -49,6 +49,14 @@
             this.textBoxTopRightQuarter = new System.Windows.Forms.TextBox();
             this.labelTopLeftQuarter = new System.Windows.Forms.Label();
             this.textBoxTopLeftQuarter = new System.Windows.Forms.TextBox();
+            this.labelPreviousDisplay = new System.Windows.Forms.Label();
+            this.textBoxPreviousDisplay = new System.Windows.Forms.TextBox();
+            this.labelNextDisplay = new System.Windows.Forms.Label();
+            this.textBoxNextDisplay = new System.Windows.Forms.TextBox();
+            this.labelCenter = new System.Windows.Forms.Label();
+            this.textBoxCenter = new System.Windows.Forms.TextBox();
+            this.labelFullscreen = new System.Windows.Forms.Label();
+            this.textBoxFullscreen = new System.Windows.Forms.TextBox();
             this.groupBoxScreenHalves.SuspendLayout();
             this.groupBoxScreenQuarters.SuspendLayout();
             this.SuspendLayout();
@@ -69,7 +77,7 @@
             this.groupBoxScreenHalves.Controls.Add(this.textBoxRightHalf);
             this.groupBoxScreenHalves.Controls.Add(this.labelLeftHalf);
             this.groupBoxScreenHalves.Controls.Add(this.textBoxLeftHalf);
-            this.groupBoxScreenHalves.Location = new System.Drawing.Point(12, 12);
+            this.groupBoxScreenHalves.Location = new System.Drawing.Point(10, 119);
             this.groupBoxScreenHalves.Name = "groupBoxScreenHalves";
             this.groupBoxScreenHalves.Size = new System.Drawing.Size(374, 121);
             this.groupBoxScreenHalves.TabIndex = 0;
@@ -96,6 +104,7 @@
             this.textBoxBottomHalf.Size = new System.Drawing.Size(207, 20);
             this.textBoxBottomHalf.TabIndex = 6;
             this.textBoxBottomHalf.TabStop = false;
+            this.textBoxBottomHalf.Tag = "BOTTOM_HALF";
             this.textBoxBottomHalf.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBoxBottomHalf.WordWrap = false;
             this.textBoxBottomHalf.KeyDown += new System.Windows.Forms.KeyEventHandler(this.HandleKeyDownEvent);
@@ -121,6 +130,7 @@
             this.textBoxTopHalf.Size = new System.Drawing.Size(207, 20);
             this.textBoxTopHalf.TabIndex = 4;
             this.textBoxTopHalf.TabStop = false;
+            this.textBoxTopHalf.Tag = "TOP_HALF";
             this.textBoxTopHalf.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBoxTopHalf.WordWrap = false;
             this.textBoxTopHalf.KeyDown += new System.Windows.Forms.KeyEventHandler(this.HandleKeyDownEvent);
@@ -146,6 +156,7 @@
             this.textBoxRightHalf.Size = new System.Drawing.Size(207, 20);
             this.textBoxRightHalf.TabIndex = 2;
             this.textBoxRightHalf.TabStop = false;
+            this.textBoxRightHalf.Tag = "RIGHT_HALF";
             this.textBoxRightHalf.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBoxRightHalf.WordWrap = false;
             this.textBoxRightHalf.KeyDown += new System.Windows.Forms.KeyEventHandler(this.HandleKeyDownEvent);
@@ -171,6 +182,7 @@
             this.textBoxLeftHalf.Size = new System.Drawing.Size(207, 20);
             this.textBoxLeftHalf.TabIndex = 0;
             this.textBoxLeftHalf.TabStop = false;
+            this.textBoxLeftHalf.Tag = "LEFT_HALF";
             this.textBoxLeftHalf.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBoxLeftHalf.WordWrap = false;
             this.textBoxLeftHalf.KeyDown += new System.Windows.Forms.KeyEventHandler(this.HandleKeyDownEvent);
@@ -186,7 +198,7 @@
             this.groupBoxScreenQuarters.Controls.Add(this.textBoxTopRightQuarter);
             this.groupBoxScreenQuarters.Controls.Add(this.labelTopLeftQuarter);
             this.groupBoxScreenQuarters.Controls.Add(this.textBoxTopLeftQuarter);
-            this.groupBoxScreenQuarters.Location = new System.Drawing.Point(12, 139);
+            this.groupBoxScreenQuarters.Location = new System.Drawing.Point(10, 246);
             this.groupBoxScreenQuarters.Name = "groupBoxScreenQuarters";
             this.groupBoxScreenQuarters.Size = new System.Drawing.Size(374, 123);
             this.groupBoxScreenQuarters.TabIndex = 8;
@@ -213,6 +225,7 @@
             this.textBoxBottomRightQuarter.Size = new System.Drawing.Size(207, 20);
             this.textBoxBottomRightQuarter.TabIndex = 6;
             this.textBoxBottomRightQuarter.TabStop = false;
+            this.textBoxBottomRightQuarter.Tag = "BOTTOM_RIGHT";
             this.textBoxBottomRightQuarter.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBoxBottomRightQuarter.WordWrap = false;
             this.textBoxBottomRightQuarter.KeyDown += new System.Windows.Forms.KeyEventHandler(this.HandleKeyDownEvent);
@@ -238,6 +251,7 @@
             this.textBoxBottomLeftQuarter.Size = new System.Drawing.Size(207, 20);
             this.textBoxBottomLeftQuarter.TabIndex = 4;
             this.textBoxBottomLeftQuarter.TabStop = false;
+            this.textBoxBottomLeftQuarter.Tag = "BOTTOM_LEFT";
             this.textBoxBottomLeftQuarter.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBoxBottomLeftQuarter.WordWrap = false;
             this.textBoxBottomLeftQuarter.KeyDown += new System.Windows.Forms.KeyEventHandler(this.HandleKeyDownEvent);
@@ -263,6 +277,7 @@
             this.textBoxTopRightQuarter.Size = new System.Drawing.Size(207, 20);
             this.textBoxTopRightQuarter.TabIndex = 2;
             this.textBoxTopRightQuarter.TabStop = false;
+            this.textBoxTopRightQuarter.Tag = "TOP_RIGHT";
             this.textBoxTopRightQuarter.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBoxTopRightQuarter.WordWrap = false;
             this.textBoxTopRightQuarter.KeyDown += new System.Windows.Forms.KeyEventHandler(this.HandleKeyDownEvent);
@@ -288,18 +303,131 @@
             this.textBoxTopLeftQuarter.Size = new System.Drawing.Size(207, 20);
             this.textBoxTopLeftQuarter.TabIndex = 0;
             this.textBoxTopLeftQuarter.TabStop = false;
+            this.textBoxTopLeftQuarter.Tag = "TOP_LEFT";
             this.textBoxTopLeftQuarter.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBoxTopLeftQuarter.WordWrap = false;
             this.textBoxTopLeftQuarter.KeyDown += new System.Windows.Forms.KeyEventHandler(this.HandleKeyDownEvent);
             this.textBoxTopLeftQuarter.KeyUp += new System.Windows.Forms.KeyEventHandler(this.HandleKeyUpEvent);
             // 
+            // labelPreviousDisplay
+            // 
+            this.labelPreviousDisplay.AutoSize = true;
+            this.labelPreviousDisplay.Location = new System.Drawing.Point(32, 96);
+            this.labelPreviousDisplay.Name = "labelPreviousDisplay";
+            this.labelPreviousDisplay.Size = new System.Drawing.Size(124, 13);
+            this.labelPreviousDisplay.TabIndex = 7;
+            this.labelPreviousDisplay.Text = "Move to previous display";
+            this.labelPreviousDisplay.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // textBoxPreviousDisplay
+            // 
+            this.textBoxPreviousDisplay.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.textBoxPreviousDisplay.Location = new System.Drawing.Point(162, 93);
+            this.textBoxPreviousDisplay.Name = "textBoxPreviousDisplay";
+            this.textBoxPreviousDisplay.ReadOnly = true;
+            this.textBoxPreviousDisplay.ShortcutsEnabled = false;
+            this.textBoxPreviousDisplay.Size = new System.Drawing.Size(207, 20);
+            this.textBoxPreviousDisplay.TabIndex = 6;
+            this.textBoxPreviousDisplay.TabStop = false;
+            this.textBoxPreviousDisplay.Tag = "PREVIOUS_SCREEN";
+            this.textBoxPreviousDisplay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxPreviousDisplay.WordWrap = false;
+            this.textBoxPreviousDisplay.KeyDown += new System.Windows.Forms.KeyEventHandler(this.HandleKeyDownEvent);
+            this.textBoxPreviousDisplay.KeyUp += new System.Windows.Forms.KeyEventHandler(this.HandleKeyUpEvent);
+            // 
+            // labelNextDisplay
+            // 
+            this.labelNextDisplay.AutoSize = true;
+            this.labelNextDisplay.Location = new System.Drawing.Point(52, 70);
+            this.labelNextDisplay.Name = "labelNextDisplay";
+            this.labelNextDisplay.Size = new System.Drawing.Size(104, 13);
+            this.labelNextDisplay.TabIndex = 5;
+            this.labelNextDisplay.Text = "Move to next display";
+            this.labelNextDisplay.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // textBoxNextDisplay
+            // 
+            this.textBoxNextDisplay.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.textBoxNextDisplay.Location = new System.Drawing.Point(162, 67);
+            this.textBoxNextDisplay.Name = "textBoxNextDisplay";
+            this.textBoxNextDisplay.ReadOnly = true;
+            this.textBoxNextDisplay.ShortcutsEnabled = false;
+            this.textBoxNextDisplay.Size = new System.Drawing.Size(207, 20);
+            this.textBoxNextDisplay.TabIndex = 4;
+            this.textBoxNextDisplay.TabStop = false;
+            this.textBoxNextDisplay.Tag = "NEXT_SCREEN";
+            this.textBoxNextDisplay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxNextDisplay.WordWrap = false;
+            this.textBoxNextDisplay.KeyDown += new System.Windows.Forms.KeyEventHandler(this.HandleKeyDownEvent);
+            this.textBoxNextDisplay.KeyUp += new System.Windows.Forms.KeyEventHandler(this.HandleKeyUpEvent);
+            // 
+            // labelCenter
+            // 
+            this.labelCenter.AutoSize = true;
+            this.labelCenter.Location = new System.Drawing.Point(118, 44);
+            this.labelCenter.Name = "labelCenter";
+            this.labelCenter.Size = new System.Drawing.Size(38, 13);
+            this.labelCenter.TabIndex = 3;
+            this.labelCenter.Text = "Center";
+            this.labelCenter.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // textBoxCenter
+            // 
+            this.textBoxCenter.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.textBoxCenter.Location = new System.Drawing.Point(162, 41);
+            this.textBoxCenter.Name = "textBoxCenter";
+            this.textBoxCenter.ReadOnly = true;
+            this.textBoxCenter.ShortcutsEnabled = false;
+            this.textBoxCenter.Size = new System.Drawing.Size(207, 20);
+            this.textBoxCenter.TabIndex = 2;
+            this.textBoxCenter.TabStop = false;
+            this.textBoxCenter.Tag = "CENTER";
+            this.textBoxCenter.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxCenter.WordWrap = false;
+            this.textBoxCenter.KeyDown += new System.Windows.Forms.KeyEventHandler(this.HandleKeyDownEvent);
+            this.textBoxCenter.KeyUp += new System.Windows.Forms.KeyEventHandler(this.HandleKeyUpEvent);
+            // 
+            // labelFullscreen
+            // 
+            this.labelFullscreen.AutoSize = true;
+            this.labelFullscreen.Location = new System.Drawing.Point(101, 18);
+            this.labelFullscreen.Name = "labelFullscreen";
+            this.labelFullscreen.Size = new System.Drawing.Size(55, 13);
+            this.labelFullscreen.TabIndex = 1;
+            this.labelFullscreen.Text = "Fullscreen";
+            this.labelFullscreen.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // textBoxFullscreen
+            // 
+            this.textBoxFullscreen.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.textBoxFullscreen.Location = new System.Drawing.Point(162, 15);
+            this.textBoxFullscreen.Name = "textBoxFullscreen";
+            this.textBoxFullscreen.ReadOnly = true;
+            this.textBoxFullscreen.ShortcutsEnabled = false;
+            this.textBoxFullscreen.Size = new System.Drawing.Size(207, 20);
+            this.textBoxFullscreen.TabIndex = 0;
+            this.textBoxFullscreen.TabStop = false;
+            this.textBoxFullscreen.Tag = "FULLSCREEN";
+            this.textBoxFullscreen.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxFullscreen.WordWrap = false;
+            this.textBoxFullscreen.KeyDown += new System.Windows.Forms.KeyEventHandler(this.HandleKeyDownEvent);
+            this.textBoxFullscreen.KeyUp += new System.Windows.Forms.KeyEventHandler(this.HandleKeyUpEvent);
+            // 
             // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(400, 274);
+            this.ClientSize = new System.Drawing.Size(398, 385);
+            this.Controls.Add(this.labelPreviousDisplay);
+            this.Controls.Add(this.textBoxPreviousDisplay);
             this.Controls.Add(this.groupBoxScreenQuarters);
+            this.Controls.Add(this.labelNextDisplay);
             this.Controls.Add(this.groupBoxScreenHalves);
+            this.Controls.Add(this.textBoxNextDisplay);
+            this.Controls.Add(this.labelCenter);
+            this.Controls.Add(this.textBoxFullscreen);
+            this.Controls.Add(this.textBoxCenter);
+            this.Controls.Add(this.labelFullscreen);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "SettingsForm";
             this.Text = "Spectacle Settings";
@@ -308,6 +436,7 @@
             this.groupBoxScreenQuarters.ResumeLayout(false);
             this.groupBoxScreenQuarters.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -332,6 +461,14 @@
         private System.Windows.Forms.TextBox textBoxTopRightQuarter;
         private System.Windows.Forms.Label labelTopLeftQuarter;
         private System.Windows.Forms.TextBox textBoxTopLeftQuarter;
+        private System.Windows.Forms.Label labelPreviousDisplay;
+        private System.Windows.Forms.TextBox textBoxPreviousDisplay;
+        private System.Windows.Forms.Label labelNextDisplay;
+        private System.Windows.Forms.TextBox textBoxNextDisplay;
+        private System.Windows.Forms.Label labelCenter;
+        private System.Windows.Forms.TextBox textBoxCenter;
+        private System.Windows.Forms.Label labelFullscreen;
+        private System.Windows.Forms.TextBox textBoxFullscreen;
 
     }
 }
