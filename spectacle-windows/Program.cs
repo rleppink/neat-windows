@@ -14,7 +14,6 @@ namespace spectacle_windows
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            NotifyIcon notifyIcon = new NotifyIcon();
             SettingsForm settingsForm = new SettingsForm();
 
             HotkeyHandler hotkeyHandler = new HotkeyHandler();

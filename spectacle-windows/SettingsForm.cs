@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace spectacle_windows
 {
@@ -32,27 +33,47 @@ namespace spectacle_windows
             this.settingsIcon.Visible = false;
         }
 
-        private void handleKeyInput(object sender, KeyEventArgs keyEventArgs)
+        private void HandleKeyDownEvent(object sender, KeyEventArgs keyEventArgs)
         {
             keyEventArgs.Handled = true;
             TextBox senderTextBox = (TextBox)sender;
+            senderTextBox.Text = this.GenerateKeyString(keyEventArgs);
+        }
 
-            bool controlPressed = keyEventArgs.Control;
-            bool shiftPressed = keyEventArgs.Shift;
-            bool altPressed = keyEventArgs.Alt;
+        private void HandleKeyUpEvent(object sender, KeyEventArgs keyEventArgs)
+        {
+            keyEventArgs.Handled = true;
+            TextBox senderTextBox = (TextBox)sender;
+            senderTextBox.Text = this.GenerateKeyString(keyEventArgs);
+
+            if ((keyEventArgs.KeyCode == Keys.ShiftKey) ||
+                (keyEventArgs.KeyCode == Keys.ControlKey) ||
+                (keyEventArgs.KeyCode == Keys.Menu) ||
+                (keyEventArgs.KeyCode == Keys.LWin) ||
+                (keyEventArgs.KeyCode == Keys.RWin))
+                return;
+
+            labelBottomHalf.Focus();
+            
+        }
+
+        private string GenerateKeyString(KeyEventArgs keyEventArgs)
+        {
+            List<string> keys = new List<string>();
+
+            if (keyEventArgs.Control) keys.Add("Ctrl");
+            if (keyEventArgs.Shift) keys.Add("Shift");
+            if (keyEventArgs.Alt) keys.Add("Alt");
             // TODO: bool windowsPressed = (Control.ModifierKeys | Keys.LWin) == keyEventArgs.Modifiers;
 
-            string keysPressedText = "";
-            if (controlPressed)
-                keysPressedText += "Ctrl + ";
-            if (altPressed)
-                keysPressedText += "Alt + ";
-            if (shiftPressed)
-                keysPressedText += "Shift + ";
-            keysPressedText += keyEventArgs.KeyValue;
-            senderTextBox.Text = keysPressedText;
+            if ((keyEventArgs.KeyCode != Keys.ShiftKey) &&
+                (keyEventArgs.KeyCode != Keys.ControlKey) &&
+                (keyEventArgs.KeyCode != Keys.Menu) &&
+                (keyEventArgs.KeyCode != Keys.LWin) &&
+                (keyEventArgs.KeyCode != Keys.RWin))
+                keys.Add(keyEventArgs.KeyCode.ToString());
 
-            // TODO: Register hotkeys
+            return string.Join(" + ", keys.ToArray());
         }
 
     }
