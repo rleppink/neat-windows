@@ -7,6 +7,9 @@ namespace spectacle_windows
         private Hotkey hotkeyFullScreen;
         private Hotkey hotkeyCenter;
 
+        private Hotkey hotkeyNextScreen;
+        private Hotkey hotkeyPreviousScreen;
+
         private Hotkey hotkeyLeftHalf;
         private Hotkey hotkeyRightHalf;
         private Hotkey hotkeyTopHalf;
@@ -29,6 +32,9 @@ namespace spectacle_windows
             this.hotkeyFullScreen = new Hotkey(Keys.F, true, true, false, false);
             this.hotkeyCenter = new Hotkey(Keys.C, true, true, false, false);
 
+            this.hotkeyNextScreen = new Hotkey(Keys.O, true, true, false, false);
+            this.hotkeyPreviousScreen = new Hotkey(Keys.I, true, true, false, false);
+
             this.hotkeyLeftHalf = new Hotkey(Keys.H, true, true, false, false);
             this.hotkeyRightHalf = new Hotkey(Keys.L, true, true, false, false);
             this.hotkeyTopHalf = new Hotkey(Keys.K, true, true, false, false);
@@ -48,6 +54,11 @@ namespace spectacle_windows
                 delegate { windowResizer.ResizeTo(WindowResizer.WindowSizePosition.FULLSCREEN); };
             this.hotkeyCenter.Pressed +=
                 delegate { windowResizer.ResizeTo(WindowResizer.WindowSizePosition.CENTER); };
+
+            this.hotkeyNextScreen.Pressed +=
+                delegate { windowResizer.ResizeTo(WindowResizer.WindowSizePosition.NEXT_SCREEN); };
+            this.hotkeyPreviousScreen.Pressed +=
+                delegate { windowResizer.ResizeTo(WindowResizer.WindowSizePosition.PREVIOUS_SCREEN); };
 
             this.hotkeyLeftHalf.Pressed +=
                 delegate { windowResizer.ResizeTo(WindowResizer.WindowSizePosition.LEFT_HALF); };
@@ -72,6 +83,9 @@ namespace spectacle_windows
         {
             this.hotkeyFullScreen.Register(form);
             this.hotkeyCenter.Register(form);
+
+            this.hotkeyNextScreen.Register(form);
+            this.hotkeyPreviousScreen.Register(form);
 
             this.hotkeyLeftHalf.Register(form);
             this.hotkeyRightHalf.Register(form);

@@ -16,7 +16,9 @@ namespace spectacle_windows
             TOP_RIGHT,
             BOTTOM_LEFT,
             BOTTOM_RIGHT,
-            CENTER
+            CENTER,
+            NEXT_SCREEN,
+            PREVIOUS_SCREEN
         }
 
         public struct RECT
@@ -87,7 +89,7 @@ namespace spectacle_windows
                     else if (this.foregroundWindowBounds == this.screenSizePosition.ThirdHeightBottom())
                         this.ResizeActiveWindow(this.screenSizePosition.TwoThirdsHeightBottom());
                     else
-                    this.ResizeActiveWindow(this.screenSizePosition.HalfHeightBottom());
+                        this.ResizeActiveWindow(this.screenSizePosition.HalfHeightBottom());
                     break;
 
                 case WindowSizePosition.TOP_LEFT:
@@ -101,6 +103,13 @@ namespace spectacle_windows
                     break;
                 case WindowSizePosition.BOTTOM_RIGHT:
                     this.ResizeActiveWindow(this.screenSizePosition.BottomRightQuarter());
+                    break;
+
+                case WindowSizePosition.NEXT_SCREEN:
+                    this.ResizeActiveWindow(this.screenSizePosition.NextScreen(this.foregroundWindowBounds));
+                    break;
+                case WindowSizePosition.PREVIOUS_SCREEN:
+                    this.ResizeActiveWindow(this.screenSizePosition.PreviousScreen(this.foregroundWindowBounds));
                     break;
             }
         }
