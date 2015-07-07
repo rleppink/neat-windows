@@ -9,15 +9,15 @@ namespace neat_windows
         private Form form;
         private Dictionary<WindowConstants.WindowSizePosition, Hotkey> hotkeys;
         private WindowResizer windowResizer;
-
+        private ConfigurationManager configurationManager;
 
         public HotkeyHandler(Form form)
         {
             this.form = form;
-            this.hotkeys = new Dictionary<WindowConstants.WindowSizePosition, Hotkey>();
             this.windowResizer = new WindowResizer();
+            this.configurationManager = new ConfigurationManager();
 
-            // TODO: loadsavedhotkeys() or somesort
+            this.hotkeys = configurationManager.GetSavedHotkeys();
         }
 
         public void MapHotkey(Form form, WindowConstants.WindowSizePosition windowSizePosition, Keys keyCode, bool shift, bool control, bool alt, bool windows)
@@ -38,27 +38,13 @@ namespace neat_windows
             if (!hotkey.Registered) hotkey.Register(form);
 
             this.hotkeys[windowSizePosition] = hotkey;
-
+            this.SaveHotkeys();
         }
 
-        public void InitializeDefaultHotkeys() 
+        private void SaveHotkeys()
         {
-            this.MapHotkey(this.form, WindowConstants.WindowSizePosition.FULLSCREEN, new Hotkey(Keys.F, true, true, false, false));
-            this.MapHotkey(this.form, WindowConstants.WindowSizePosition.CENTER, new Hotkey(Keys.C, true, true, false, false));
-            this.MapHotkey(this.form, WindowConstants.WindowSizePosition.NEXT_SCREEN, new Hotkey(Keys.O, true, true, false, false));
-            this.MapHotkey(this.form, WindowConstants.WindowSizePosition.PREVIOUS_SCREEN, new Hotkey(Keys.I, true, true, false, false));
-
-            this.MapHotkey(this.form, WindowConstants.WindowSizePosition.LEFT_HALF, new Hotkey(Keys.H, true, true, false, false));
-            this.MapHotkey(this.form, WindowConstants.WindowSizePosition.RIGHT_HALF, new Hotkey(Keys.L, true, true, false, false));
-            this.MapHotkey(this.form, WindowConstants.WindowSizePosition.TOP_HALF, new Hotkey(Keys.K, true, true, false, false));
-            this.MapHotkey(this.form, WindowConstants.WindowSizePosition.BOTTOM_HALF, new Hotkey(Keys.J, true, true, false, false));
-
-            this.MapHotkey(this.form, WindowConstants.WindowSizePosition.TOP_LEFT, new Hotkey(Keys.U, true, true, false, false));
-            this.MapHotkey(this.form, WindowConstants.WindowSizePosition.TOP_RIGHT, new Hotkey(Keys.P, true, true, false, false));
-            this.MapHotkey(this.form, WindowConstants.WindowSizePosition.BOTTOM_LEFT, new Hotkey(Keys.M, true, true, false, false));
-            this.MapHotkey(this.form, WindowConstants.WindowSizePosition.BOTTOM_RIGHT, new Hotkey(Keys.OemQuestion, true, true, false, false));
+            this.configurationManager.SaveHotkeys(this.hotkeys);
         }
-
 
     }
 }

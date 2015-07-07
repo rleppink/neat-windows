@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using System.ComponentModel;
 using System.Xml.Serialization;
 using System.Runtime.InteropServices;
+using System.Collections.Generic;
 
 namespace neat_windows
 {
@@ -163,39 +164,21 @@ namespace neat_windows
 
         public override string ToString()
         {
-			if (this.Empty)
-			{ return "(none)"; }
+            List<string> keys = new List<string>();
 
-			string keyName = Enum.GetName(typeof(Keys), this.keyCode);;
-			switch (this.keyCode)
-			{
-				case Keys.D0:
-				case Keys.D1:
-				case Keys.D2:
-				case Keys.D3:
-				case Keys.D4:
-				case Keys.D5:
-				case Keys.D6:
-				case Keys.D7:
-				case Keys.D8:
-				case Keys.D9:
-					keyName = keyName.Substring(1);
-					break;
-				default:
-					break;
-			}
+            if (this.Control) keys.Add("Ctrl");
+            if (this.Shift) keys.Add("Shift");
+            if (this.Alt) keys.Add("Alt");
+            // TODO: bool windowsPressed = (Control.ModifierKeys | Keys.LWin) == keyEventArgs.Modifiers;
 
-            string modifiers = "";
-            if (this.shift)
-            { modifiers += "Shift+"; }
-            if (this.control)
-            { modifiers += "Control+"; }
-            if (this.alt)
-            { modifiers += "Alt+"; }
-			if (this.windows)
-			{ modifiers += "Windows+"; }
+            if ((this.KeyCode != Keys.ShiftKey) &&
+                (this.KeyCode != Keys.ControlKey) &&
+                (this.KeyCode != Keys.Menu) &&
+                (this.KeyCode != Keys.LWin) &&
+                (this.KeyCode != Keys.RWin))
+                keys.Add(this.KeyCode.ToString());
 
-            return modifiers + keyName;
+            return string.Join(" + ", keys.ToArray());
         }
 
 		public bool Empty
