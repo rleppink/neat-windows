@@ -47,7 +47,22 @@ namespace neat_windows
             this.configurationManager.SaveHotkeys(this.hotkeyMap);
         }
 
-        private void RegisterHotkeys()
+        public void UnregisterHotkeys()
+        {
+            foreach (KeyValuePair<WindowConstants.WindowSizePosition, Hotkey> hotkeyMapping in this.hotkeyMap)
+            {
+                this.UnregisterHotkey(hotkeyMapping.Value);
+            }
+            
+        }
+
+        private void UnregisterHotkey(Hotkey hotkey)
+        {
+            if (hotkey.Registered)
+                hotkey.Unregister();
+        }
+
+        public void RegisterHotkeys()
         {
             foreach (KeyValuePair<WindowConstants.WindowSizePosition, Hotkey> hotkeyMapping in this.hotkeyMap)
             {
@@ -60,6 +75,19 @@ namespace neat_windows
         {
             if (!hotkey.Registered)
                 hotkey.Register(this.form);
+        }
+
+        public bool HotkeyExists(Hotkey hotkey)
+        {
+            foreach (Hotkey mappedHotkey in this.hotkeyMap.Values)
+            {
+                if (mappedHotkey.KeyCode == hotkey.KeyCode &&
+                    mappedHotkey.Control == hotkey.Control &&
+                    mappedHotkey.Alt == hotkey.Alt &&
+                    mappedHotkey.Shift == hotkey.Shift)
+                    return true;
+            }
+            return false;
         }
 
     }
