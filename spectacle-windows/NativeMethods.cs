@@ -13,7 +13,7 @@ namespace spectacle_windows
 
         [DllImport("user32.dll", SetLastError = true)]
         [return: MarshalAs(UnmanagedType.Bool)]
-        public static extern bool GetWindowRect(IntPtr hWnd, out WindowResizer.RECT lpRect);
+        public static extern bool GetWindowRect(IntPtr hWnd, out WindowConstants.RECT lpRect);
 
         [DllImport("user32.dll", SetLastError = true)]
         public static extern int RegisterHotKey(IntPtr hWnd, int id, uint fsModifiers, System.Windows.Forms.Keys vk);

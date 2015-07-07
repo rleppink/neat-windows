@@ -45,7 +45,6 @@ namespace spectacle_windows
         #endregion Minimizing, notifyicon
 
         #region TextBox mapping
-
         private void MapTextBoxTags()
         {
             this.textBoxFullscreen.Tag = WindowConstants.WindowSizePosition.FULLSCREEN;
@@ -63,7 +62,6 @@ namespace spectacle_windows
             this.textBoxBottomLeftQuarter.Tag = WindowConstants.WindowSizePosition.BOTTOM_LEFT;
             this.textBoxBottomRightQuarter.Tag = WindowConstants.WindowSizePosition.BOTTOM_RIGHT;
         }
-
         #endregion TextBox mapping
 
         #region Keyhandling
@@ -80,6 +78,7 @@ namespace spectacle_windows
             TextBox senderTextBox = (TextBox)sender;
             senderTextBox.Text = this.GenerateKeyString(keyEventArgs);
 
+            // We don't want anything to happen when a modifier key up event happened
             if ((keyEventArgs.KeyCode == Keys.ShiftKey) ||
                 (keyEventArgs.KeyCode == Keys.ControlKey) ||
                 (keyEventArgs.KeyCode == Keys.Menu) ||
@@ -90,13 +89,7 @@ namespace spectacle_windows
             labelFullscreen.Focus();
 
             WindowConstants.WindowSizePosition windowSizePosition = (WindowConstants.WindowSizePosition) senderTextBox.Tag;
-            this.hotkeyHandler.MapHotkey(this,
-                                            windowSizePosition,
-                                            keyEventArgs.KeyCode,
-                                            keyEventArgs.Shift,
-                                            keyEventArgs.Control,
-                                            keyEventArgs.Alt,
-                                            false);
+            this.hotkeyHandler.MapHotkey(this, windowSizePosition, keyEventArgs.KeyCode, keyEventArgs.Shift, keyEventArgs.Control, keyEventArgs.Alt, false);
         }
 
         private string GenerateKeyString(KeyEventArgs keyEventArgs)

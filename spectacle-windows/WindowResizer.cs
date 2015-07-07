@@ -6,14 +6,6 @@ namespace spectacle_windows
     class WindowResizer
     {
 
-        public struct RECT
-        {
-            public int Left;
-            public int Top;
-            public int Right;
-            public int Bottom;
-        }
-
         private IntPtr foregroundWindowHandle;
         private Rectangle foregroundWindowBounds;
         private ScreenSizePosition screenSizePosition;
@@ -112,7 +104,7 @@ namespace spectacle_windows
 
         private Rectangle GetForegroundWindowBounds()
         {
-            RECT outRect;
+            WindowConstants.RECT outRect;
             NativeMethods.GetWindowRect(this.foregroundWindowHandle, out outRect);
             return new Rectangle(
                 outRect.Left,
