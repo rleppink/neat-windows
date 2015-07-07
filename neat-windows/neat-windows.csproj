@@ -7,8 +7,8 @@
     <ProjectGuid>{FD06D960-AE86-4869-9CDB-E23776F66D3F}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>spectacle_windows</RootNamespace>
-    <AssemblyName>spectacle-windows</AssemblyName>
+    <RootNamespace>neat_windows</RootNamespace>
+    <AssemblyName>neat-windows</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <IsWebBootstrapper>false</IsWebBootstrapper>
@@ -49,9 +49,6 @@
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>6902562EE7BB76B1D065A478F36954E2F5FF6C3C</ManifestCertificateThumbprint>
-  </PropertyGroup>
-  <PropertyGroup>
-    <ManifestKeyFile>spectacle-windows_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
@@ -100,6 +97,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

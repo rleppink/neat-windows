@@ -1,4 +1,4 @@
-﻿namespace spectacle_windows
+﻿namespace neat_windows
 {
     partial class SettingsForm
     {
@@ -64,7 +64,7 @@
             // settingsIcon
             // 
             this.settingsIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("settingsIcon.Icon")));
-            this.settingsIcon.Text = "Spectacle Settings";
+            this.settingsIcon.Text = "Neat Windows";
             this.settingsIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.settingsIcon_MouseDoubleClick);
             // 
             // groupBoxScreenHalves
@@ -430,7 +430,7 @@
             this.Controls.Add(this.labelFullscreen);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "SettingsForm";
-            this.Text = "Spectacle Settings";
+            this.Text = "Neat Windows";
             this.groupBoxScreenHalves.ResumeLayout(false);
             this.groupBoxScreenHalves.PerformLayout();
             this.groupBoxScreenQuarters.ResumeLayout(false);

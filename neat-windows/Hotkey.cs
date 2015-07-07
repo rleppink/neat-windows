@@ -4,7 +4,7 @@ using System.ComponentModel;
 using System.Xml.Serialization;
 using System.Runtime.InteropServices;
 
-namespace spectacle_windows
+namespace neat_windows
 {
     /*
      *  Hotkey abstraction kindly taken from:

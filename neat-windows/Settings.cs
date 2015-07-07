@@ -1,4 +1,4 @@
-﻿namespace spectacle_windows.Properties {
+﻿namespace neat_windows.Properties {
     
     
     // This class allows you to handle specific events on the settings class:

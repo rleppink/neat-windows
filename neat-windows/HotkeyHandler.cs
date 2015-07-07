@@ -2,7 +2,7 @@
 using System.Configuration;
 using System.Windows.Forms;
 
-namespace spectacle_windows
+namespace neat_windows
 {
     class HotkeyHandler
     {

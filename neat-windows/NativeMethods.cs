@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-namespace spectacle_windows
+namespace neat_windows
 {
     static class NativeMethods
     {

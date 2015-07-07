@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace spectacle_windows
+namespace neat_windows
 {
     class ScreenSizePosition
     {

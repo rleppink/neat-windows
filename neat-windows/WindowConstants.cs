@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace spectacle_windows
+namespace neat_windows
 {
     /*
      *  Constants kindly taken from:

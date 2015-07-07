@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace spectacle_windows
+namespace neat_windows
 {
     static class Program
     {

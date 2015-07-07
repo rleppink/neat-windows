@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Forms;
 
-namespace spectacle_windows
+namespace neat_windows
 {
     public partial class SettingsForm : Form
     {

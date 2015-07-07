@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Drawing;
 
-namespace spectacle_windows
+namespace neat_windows
 {
     class WindowResizer
     {
