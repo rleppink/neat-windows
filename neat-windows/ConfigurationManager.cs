@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace neat_windows
@@ -16,11 +17,11 @@ namespace neat_windows
             Directory.CreateDirectory(Application.UserAppDataPath);
         }
 
-        public void SaveHotkeys(Dictionary<WindowConstants.WindowSizePosition, Hotkey> hotkeys)
+        public void SaveHotkeys(Dictionary<WindowConstants.WindowSizePosition, Hotkey> hotkeyMap)
         {
             using (StreamWriter configFile = new StreamWriter(this.GetFullConfigPath(), false))
             {
-                foreach (KeyValuePair<WindowConstants.WindowSizePosition, Hotkey> entry in hotkeys)
+                foreach (KeyValuePair<WindowConstants.WindowSizePosition, Hotkey> entry in hotkeyMap)
                 {
                     configFile.WriteLine(this.GenerateHotkeyLine(entry.Key, entry.Value));
                 }
@@ -29,13 +30,15 @@ namespace neat_windows
 
         public Dictionary<WindowConstants.WindowSizePosition, Hotkey> GetSavedHotkeys()
         {
-            Dictionary<WindowConstants.WindowSizePosition, Hotkey> hotkeys = new Dictionary<WindowConstants.WindowSizePosition, Hotkey>();
+            Dictionary<WindowConstants.WindowSizePosition, Hotkey> hotkeyMap = new Dictionary<WindowConstants.WindowSizePosition, Hotkey>();
+            if (!File.Exists(this.GetFullConfigPath())) return hotkeyMap;
+
             string[] lines = File.ReadAllLines(this.GetFullConfigPath());
             foreach (string line in lines) {
                 KeyValuePair<WindowConstants.WindowSizePosition, Hotkey> keyValuePair = this.ParseLine(line);
-                hotkeys.Add(keyValuePair.Key, keyValuePair.Value);
+                hotkeyMap.Add(keyValuePair.Key, keyValuePair.Value);
             }
-            return hotkeys;
+            return hotkeyMap;
         }
 
         private KeyValuePair<WindowConstants.WindowSizePosition, Hotkey> ParseLine(string line)
@@ -44,8 +47,11 @@ namespace neat_windows
 
             string[] keyValueSplit = line.Split('=');
             WindowConstants.WindowSizePosition windowSizePosition = (WindowConstants.WindowSizePosition) Enum.Parse(typeof(WindowConstants.WindowSizePosition), keyValueSplit[0]);
-            foreach (stringkeyValueSplit.Skip(1);
-
+            Hotkey hotkey = this.ParseHotkeys(keyValueSplit[1]);
+            if (windowSizePosition != null && hotkey != null)
+            {
+                keyValuePair = new KeyValuePair<WindowConstants.WindowSizePosition, Hotkey>(windowSizePosition, hotkey);
+            }
             return keyValuePair;
         }
 
@@ -63,5 +69,17 @@ namespace neat_windows
             return line;
         }
 
+        private Hotkey ParseHotkeys(string line)
+        {
+            Hotkey hotkey = new Hotkey();
+
+            if (line.Contains("Ctrl")) hotkey.Control = true;
+            if (line.Contains("Alt")) hotkey.Alt = true;
+            if (line.Contains("Shift")) hotkey.Shift = true;
+
+            hotkey.KeyCode = (Keys)Enum.Parse(typeof(Keys), line.Split(' ').Last());
+
+            return hotkey;
+        }
     }
 }

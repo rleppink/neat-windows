@@ -91,7 +91,7 @@ namespace neat_windows
             labelFullscreen.Focus();
 
             WindowConstants.WindowSizePosition windowSizePosition = (WindowConstants.WindowSizePosition) senderTextBox.Tag;
-            this.hotkeyHandler.MapHotkey(this, windowSizePosition, hotkey);
+            this.hotkeyHandler.MapHotkey(windowSizePosition, hotkey);
         }
         #endregion Keyhandling
 

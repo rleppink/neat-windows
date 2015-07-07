@@ -14,7 +14,6 @@ namespace neat_windows
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            SettingsForm settingsForm = new SettingsForm();
             Application.Run(new SettingsForm());
         }
     }

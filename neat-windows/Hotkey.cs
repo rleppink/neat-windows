@@ -167,8 +167,8 @@ namespace neat_windows
             List<string> keys = new List<string>();
 
             if (this.Control) keys.Add("Ctrl");
-            if (this.Shift) keys.Add("Shift");
             if (this.Alt) keys.Add("Alt");
+            if (this.Shift) keys.Add("Shift");
             // TODO: bool windowsPressed = (Control.ModifierKeys | Keys.LWin) == keyEventArgs.Modifiers;
 
             if ((this.KeyCode != Keys.ShiftKey) &&
