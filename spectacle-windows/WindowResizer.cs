@@ -5,21 +5,6 @@ namespace spectacle_windows
 {
     class WindowResizer
     {
-        public enum WindowSizePosition
-        {
-            FULLSCREEN,
-            LEFT_HALF,
-            RIGHT_HALF,
-            TOP_HALF,
-            BOTTOM_HALF,
-            TOP_LEFT,
-            TOP_RIGHT,
-            BOTTOM_LEFT,
-            BOTTOM_RIGHT,
-            CENTER,
-            NEXT_SCREEN,
-            PREVIOUS_SCREEN
-        }
 
         public struct RECT
         {
@@ -33,7 +18,7 @@ namespace spectacle_windows
         private Rectangle foregroundWindowBounds;
         private ScreenSizePosition screenSizePosition;
 
-        public void ResizeTo(WindowSizePosition windowSizePosition) 
+        public void ResizeTo(WindowConstants.WindowSizePosition windowSizePosition) 
         {
             this.foregroundWindowHandle = NativeMethods.GetForegroundWindow();
             this.foregroundWindowBounds = this.GetForegroundWindowBounds();
@@ -41,7 +26,7 @@ namespace spectacle_windows
 
             switch (windowSizePosition)
             {
-                case WindowSizePosition.FULLSCREEN:
+                case WindowConstants.WindowSizePosition.FULLSCREEN:
                     if (this.foregroundWindowBounds == this.screenSizePosition.FullScreen())
                         this.ResizeActiveWindow(this.screenSizePosition.TwoThirdsCenter());
                     else if (this.foregroundWindowBounds == this.screenSizePosition.TwoThirdsCenter())
@@ -52,11 +37,18 @@ namespace spectacle_windows
                         this.ResizeActiveWindow(this.screenSizePosition.FullScreen());
                     break;
 
-                case WindowSizePosition.CENTER:
+                case WindowConstants.WindowSizePosition.CENTER:
                     this.ResizeActiveWindow(this.screenSizePosition.Center(this.foregroundWindowBounds));
                     break;
 
-                case WindowSizePosition.LEFT_HALF:
+                case WindowConstants.WindowSizePosition.NEXT_SCREEN:
+                    this.ResizeActiveWindow(this.screenSizePosition.NextScreen(this.foregroundWindowBounds));
+                    break;
+                case WindowConstants.WindowSizePosition.PREVIOUS_SCREEN:
+                    this.ResizeActiveWindow(this.screenSizePosition.PreviousScreen(this.foregroundWindowBounds));
+                    break;
+
+                case WindowConstants.WindowSizePosition.LEFT_HALF:
                     if (this.foregroundWindowBounds == this.screenSizePosition.HalfWidthLeft())
                         this.ResizeActiveWindow(this.screenSizePosition.ThirdWidthLeft());
                     else if (this.foregroundWindowBounds == this.screenSizePosition.ThirdWidthLeft())
@@ -65,7 +57,7 @@ namespace spectacle_windows
                         this.ResizeActiveWindow(this.screenSizePosition.HalfWidthLeft());
                     break;
 
-                case WindowSizePosition.RIGHT_HALF:
+                case WindowConstants.WindowSizePosition.RIGHT_HALF:
                     if (this.foregroundWindowBounds == this.screenSizePosition.HalfWidthRight())
                         this.ResizeActiveWindow(this.screenSizePosition.ThirdWidthRight());
                     else if (this.foregroundWindowBounds == this.screenSizePosition.ThirdWidthRight())
@@ -74,7 +66,7 @@ namespace spectacle_windows
                         this.ResizeActiveWindow(this.screenSizePosition.HalfWidthRight());
                     break;
 
-                case WindowSizePosition.TOP_HALF:
+                case WindowConstants.WindowSizePosition.TOP_HALF:
                     if (this.foregroundWindowBounds == this.screenSizePosition.HalfHeightTop())
                         this.ResizeActiveWindow(this.screenSizePosition.ThirdHeightTop());
                     else if (this.foregroundWindowBounds == this.screenSizePosition.ThirdHeightTop())
@@ -83,7 +75,7 @@ namespace spectacle_windows
                         this.ResizeActiveWindow(this.screenSizePosition.HalfHeightTop());
                     break;
 
-                case WindowSizePosition.BOTTOM_HALF:
+                case WindowConstants.WindowSizePosition.BOTTOM_HALF:
                     if (this.foregroundWindowBounds == this.screenSizePosition.HalfHeightBottom())
                         this.ResizeActiveWindow(this.screenSizePosition.ThirdHeightBottom());
                     else if (this.foregroundWindowBounds == this.screenSizePosition.ThirdHeightBottom())
@@ -92,24 +84,17 @@ namespace spectacle_windows
                         this.ResizeActiveWindow(this.screenSizePosition.HalfHeightBottom());
                     break;
 
-                case WindowSizePosition.TOP_LEFT:
+                case WindowConstants.WindowSizePosition.TOP_LEFT:
                     this.ResizeActiveWindow(this.screenSizePosition.TopLeftQuarter());
                     break;
-                case WindowSizePosition.TOP_RIGHT:
+                case WindowConstants.WindowSizePosition.TOP_RIGHT:
                     this.ResizeActiveWindow(this.screenSizePosition.TopRightQuarter());
                     break;
-                case WindowSizePosition.BOTTOM_LEFT:
+                case WindowConstants.WindowSizePosition.BOTTOM_LEFT:
                     this.ResizeActiveWindow(this.screenSizePosition.BottomLeftQuarter());
                     break;
-                case WindowSizePosition.BOTTOM_RIGHT:
+                case WindowConstants.WindowSizePosition.BOTTOM_RIGHT:
                     this.ResizeActiveWindow(this.screenSizePosition.BottomRightQuarter());
-                    break;
-
-                case WindowSizePosition.NEXT_SCREEN:
-                    this.ResizeActiveWindow(this.screenSizePosition.NextScreen(this.foregroundWindowBounds));
-                    break;
-                case WindowSizePosition.PREVIOUS_SCREEN:
-                    this.ResizeActiveWindow(this.screenSizePosition.PreviousScreen(this.foregroundWindowBounds));
                     break;
             }
         }

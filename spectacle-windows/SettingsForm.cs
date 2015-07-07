@@ -12,8 +12,10 @@ namespace spectacle_windows
             InitializeComponent();
 
             this.hotkeyHandler = new HotkeyHandler(this);
-            this.hotkeyHandler.InitializeDefaultHotkeys();
+            //this.hotkeyHandler.InitializeDefaultHotkeys();
             this.Resize += delegate { this.SettingsForm_Resize(); };
+
+            this.MapTextBoxTags();
         }
 
         #region Minimizing, notifyicon
@@ -22,13 +24,14 @@ namespace spectacle_windows
             if (this.WindowState == FormWindowState.Minimized)
             {
                 this.settingsIcon.Visible = true;
-                this.WindowState = FormWindowState.Minimized;
                 this.ShowInTaskbar = false;
+                this.Hide();
             }
             else if (this.WindowState == FormWindowState.Normal)
             {
                 this.settingsIcon.Visible = false;
                 this.ShowInTaskbar = true;
+                this.Show();
             }
         }
 
@@ -36,8 +39,32 @@ namespace spectacle_windows
         {
             this.WindowState = FormWindowState.Normal;
             this.settingsIcon.Visible = false;
+            this.ShowInTaskbar = true;
+            this.Show();
         }
         #endregion Minimizing, notifyicon
+
+        #region TextBox mapping
+
+        private void MapTextBoxTags()
+        {
+            this.textBoxFullscreen.Tag = WindowConstants.WindowSizePosition.FULLSCREEN;
+            this.textBoxCenter.Tag = WindowConstants.WindowSizePosition.CENTER;
+            this.textBoxNextDisplay.Tag = WindowConstants.WindowSizePosition.NEXT_SCREEN;
+            this.textBoxPreviousDisplay.Tag = WindowConstants.WindowSizePosition.PREVIOUS_SCREEN;
+
+            this.textBoxLeftHalf.Tag = WindowConstants.WindowSizePosition.LEFT_HALF;
+            this.textBoxRightHalf.Tag = WindowConstants.WindowSizePosition.RIGHT_HALF;
+            this.textBoxTopHalf.Tag = WindowConstants.WindowSizePosition.TOP_HALF;
+            this.textBoxBottomHalf.Tag = WindowConstants.WindowSizePosition.BOTTOM_HALF;
+
+            this.textBoxTopLeftQuarter.Tag = WindowConstants.WindowSizePosition.TOP_LEFT;
+            this.textBoxTopRightQuarter.Tag = WindowConstants.WindowSizePosition.TOP_RIGHT;
+            this.textBoxBottomLeftQuarter.Tag = WindowConstants.WindowSizePosition.BOTTOM_LEFT;
+            this.textBoxBottomRightQuarter.Tag = WindowConstants.WindowSizePosition.BOTTOM_RIGHT;
+        }
+
+        #endregion TextBox mapping
 
         #region Keyhandling
         private void HandleKeyDownEvent(object sender, KeyEventArgs keyEventArgs)
@@ -61,8 +88,10 @@ namespace spectacle_windows
                 return;
 
             labelFullscreen.Focus();
+
+            WindowConstants.WindowSizePosition windowSizePosition = (WindowConstants.WindowSizePosition) senderTextBox.Tag;
             this.hotkeyHandler.MapHotkey(this,
-                                            WindowResizer.WindowSizePosition.LEFT_HALF,
+                                            windowSizePosition,
                                             keyEventArgs.KeyCode,
                                             keyEventArgs.Shift,
                                             keyEventArgs.Control,
