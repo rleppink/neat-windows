@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Configuration;
 using System.Windows.Forms;
 
 namespace spectacle_windows
@@ -37,6 +38,7 @@ namespace spectacle_windows
             if (!hotkey.Registered) hotkey.Register(form);
 
             this.hotkeys[windowSizePosition] = hotkey;
+
         }
 
         public void InitializeDefaultHotkeys() 

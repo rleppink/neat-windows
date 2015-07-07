@@ -72,10 +72,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConfigurationManager.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Hotkey.cs" />
     <Compile Include="HotkeyHandler.cs" />
     <Compile Include="NativeMethods.cs" />
+    <Compile Include="Settings.cs" />
     <Compile Include="WindowResizer.cs" />
     <Compile Include="ScreenSizePosition.cs" />
     <Compile Include="WindowConstants.cs" />

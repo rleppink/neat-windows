@@ -5,10 +5,10 @@ namespace spectacle_windows
 {
     class WindowResizer
     {
-
         private IntPtr foregroundWindowHandle;
         private Rectangle foregroundWindowBounds;
         private ScreenSizePosition screenSizePosition;
+
 
         public void ResizeTo(WindowConstants.WindowSizePosition windowSizePosition) 
         {

@@ -6,6 +6,7 @@ namespace spectacle_windows
     public partial class SettingsForm : Form
     {
         private HotkeyHandler hotkeyHandler;
+        private ConfigurationManager configurationManager;
 
         public SettingsForm() 
         { 
@@ -16,6 +17,8 @@ namespace spectacle_windows
             this.Resize += delegate { this.SettingsForm_Resize(); };
 
             this.MapTextBoxTags();
+
+            this.configurationManager = new ConfigurationManager();
         }
 
         #region Minimizing, notifyicon
