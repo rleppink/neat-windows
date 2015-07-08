@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace neat_windows
@@ -12,35 +13,34 @@ namespace neat_windows
             InitializeComponent();
 
             this.hotkeyHandler = new HotkeyHandler(this);
-            //this.hotkeyHandler.InitializeDefaultHotkeys();
-            this.Resize += delegate { this.SettingsForm_Resize(); };
-
             this.MapTextBoxTags();
+            this.FillTextBoxes(this.hotkeyHandler.GetHotkeyMap());
         }
 
         #region Minimizing, notifyicon
-        private void SettingsForm_Resize()
+        private void settingsIcon_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             if (this.WindowState == FormWindowState.Minimized)
             {
-                this.settingsIcon.Visible = true;
-                this.ShowInTaskbar = false;
-                this.Hide();
-            }
-            else if (this.WindowState == FormWindowState.Normal)
-            {
-                this.settingsIcon.Visible = false;
-                this.ShowInTaskbar = true;
+                this.WindowState = FormWindowState.Minimized;
                 this.Show();
+                this.WindowState = FormWindowState.Normal;
+            }
+            else
+            {
+                this.WindowState = FormWindowState.Minimized;
+                this.Hide();
+                this.settingsIcon.ShowBalloonTip(3000);
             }
         }
 
-        private void settingsIcon_MouseDoubleClick(object sender, MouseEventArgs e)
+        private void SettingsForm_Resize(object sender, EventArgs e)
         {
-            this.WindowState = FormWindowState.Normal;
-            this.settingsIcon.Visible = false;
-            this.ShowInTaskbar = true;
-            this.Show();
+            if (this.WindowState == FormWindowState.Minimized)
+            {
+                this.Hide();
+                this.settingsIcon.ShowBalloonTip(3000);
+            }
         }
         #endregion Minimizing, notifyicon
 
@@ -61,6 +61,33 @@ namespace neat_windows
             this.textBoxTopRightQuarter.Tag = WindowConstants.WindowSizePosition.TOP_RIGHT;
             this.textBoxBottomLeftQuarter.Tag = WindowConstants.WindowSizePosition.BOTTOM_LEFT;
             this.textBoxBottomRightQuarter.Tag = WindowConstants.WindowSizePosition.BOTTOM_RIGHT;
+        }
+
+        public void FillTextBoxes(Dictionary<WindowConstants.WindowSizePosition, Hotkey> hotkeyMap)
+        {
+            foreach (KeyValuePair<WindowConstants.WindowSizePosition, Hotkey> hotkeyMapping in hotkeyMap) 
+            {
+                TextBox taggedTextBox = (TextBox) this.GetControlByTag(hotkeyMapping.Key);
+                if (taggedTextBox == null)
+                {
+                    Console.WriteLine("Null found for key: " + hotkeyMapping.Key.ToString());
+                    continue;
+                }
+
+                taggedTextBox.Text = hotkeyMapping.Value.ToString();
+            }
+        }
+
+        private Control GetControlByTag(WindowConstants.WindowSizePosition windowSizePosition)
+        {
+            foreach (Control control in this.Controls)
+            {
+                if (control.GetType() != typeof(TextBox))
+                    continue;
+                if (control.Tag.Equals(windowSizePosition))
+                    return control;
+            }
+            return null;
         }
         #endregion TextBox mapping
 

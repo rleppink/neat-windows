@@ -90,5 +90,10 @@ namespace neat_windows
             return false;
         }
 
+        public Dictionary<WindowConstants.WindowSizePosition, Hotkey> GetHotkeyMap()
+        {
+            return this.hotkeyMap;
+        }
+
     }
 }

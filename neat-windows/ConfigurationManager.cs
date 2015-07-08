@@ -48,7 +48,7 @@ namespace neat_windows
             string[] keyValueSplit = line.Split('=');
             WindowConstants.WindowSizePosition windowSizePosition = (WindowConstants.WindowSizePosition) Enum.Parse(typeof(WindowConstants.WindowSizePosition), keyValueSplit[0]);
             Hotkey hotkey = this.ParseHotkeys(keyValueSplit[1]);
-            if (windowSizePosition != null && hotkey != null)
+            if (hotkey != null)
             {
                 keyValuePair = new KeyValuePair<WindowConstants.WindowSizePosition, Hotkey>(windowSizePosition, hotkey);
             }
