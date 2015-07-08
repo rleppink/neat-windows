@@ -16,7 +16,7 @@ namespace neat_windows
 
         private Rectangle ActiveScreenSize()
         {
-            return this.activeScreen.Bounds;
+            return this.activeScreen.WorkingArea;
         }
 
         #region Fullscreen, centered
