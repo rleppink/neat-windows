@@ -31,6 +31,9 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SettingsForm));
             this.settingsIcon = new System.Windows.Forms.NotifyIcon(this.components);
+            this.settingsIconContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.openSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitNeatWindowsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.labelBottomRightQuarter = new System.Windows.Forms.Label();
             this.textBoxBottomRightQuarter = new System.Windows.Forms.TextBox();
             this.labelBottomLeftQuarter = new System.Windows.Forms.Label();
@@ -55,6 +58,19 @@
             this.labelTopHalf = new System.Windows.Forms.Label();
             this.textBoxBottomHalf = new System.Windows.Forms.TextBox();
             this.labelBottomHalf = new System.Windows.Forms.Label();
+            this.buttonFullscreen = new System.Windows.Forms.Button();
+            this.buttonCenter = new System.Windows.Forms.Button();
+            this.buttonNextDisplay = new System.Windows.Forms.Button();
+            this.buttonPreviousDisplay = new System.Windows.Forms.Button();
+            this.buttonLeftHalf = new System.Windows.Forms.Button();
+            this.buttonRightHalf = new System.Windows.Forms.Button();
+            this.buttonTopHalf = new System.Windows.Forms.Button();
+            this.buttonBottomHalf = new System.Windows.Forms.Button();
+            this.buttonTopLeft = new System.Windows.Forms.Button();
+            this.buttonTopRight = new System.Windows.Forms.Button();
+            this.buttonBottomLeft = new System.Windows.Forms.Button();
+            this.buttonBottomRight = new System.Windows.Forms.Button();
+            this.settingsIconContextMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // settingsIcon
@@ -63,15 +79,39 @@
             this.settingsIcon.BalloonTipText = "Neat Windows will run here when minimized. Double click the icon to reopen the se" +
     "ttings screen.";
             this.settingsIcon.BalloonTipTitle = "Neat Windows";
+            this.settingsIcon.ContextMenuStrip = this.settingsIconContextMenu;
             this.settingsIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("settingsIcon.Icon")));
             this.settingsIcon.Text = "Neat Windows";
             this.settingsIcon.Visible = true;
             this.settingsIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.settingsIcon_MouseDoubleClick);
             // 
+            // settingsIconContextMenu
+            // 
+            this.settingsIconContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.openSettingsToolStripMenuItem,
+            this.exitNeatWindowsToolStripMenuItem});
+            this.settingsIconContextMenu.Name = "settingsIconContextMenu";
+            this.settingsIconContextMenu.Size = new System.Drawing.Size(173, 48);
+            this.settingsIconContextMenu.Text = "asd";
+            // 
+            // openSettingsToolStripMenuItem
+            // 
+            this.openSettingsToolStripMenuItem.Name = "openSettingsToolStripMenuItem";
+            this.openSettingsToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.openSettingsToolStripMenuItem.Text = "Open settings";
+            this.openSettingsToolStripMenuItem.Click += new System.EventHandler(this.openSettingsToolStripMenuItem_Click);
+            // 
+            // exitNeatWindowsToolStripMenuItem
+            // 
+            this.exitNeatWindowsToolStripMenuItem.Name = "exitNeatWindowsToolStripMenuItem";
+            this.exitNeatWindowsToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.exitNeatWindowsToolStripMenuItem.Text = "Exit Neat Windows";
+            this.exitNeatWindowsToolStripMenuItem.Click += new System.EventHandler(this.exitNeatWindowsToolStripMenuItem_Click);
+            // 
             // labelBottomRightQuarter
             // 
             this.labelBottomRightQuarter.AutoSize = true;
-            this.labelBottomRightQuarter.Location = new System.Drawing.Point(16, 356);
+            this.labelBottomRightQuarter.Location = new System.Drawing.Point(16, 355);
             this.labelBottomRightQuarter.Name = "labelBottomRightQuarter";
             this.labelBottomRightQuarter.Size = new System.Drawing.Size(140, 13);
             this.labelBottomRightQuarter.TabIndex = 7;
@@ -81,11 +121,12 @@
             // textBoxBottomRightQuarter
             // 
             this.textBoxBottomRightQuarter.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.textBoxBottomRightQuarter.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxBottomRightQuarter.Location = new System.Drawing.Point(162, 353);
             this.textBoxBottomRightQuarter.Name = "textBoxBottomRightQuarter";
             this.textBoxBottomRightQuarter.ReadOnly = true;
             this.textBoxBottomRightQuarter.ShortcutsEnabled = false;
-            this.textBoxBottomRightQuarter.Size = new System.Drawing.Size(207, 20);
+            this.textBoxBottomRightQuarter.Size = new System.Drawing.Size(181, 20);
             this.textBoxBottomRightQuarter.TabIndex = 6;
             this.textBoxBottomRightQuarter.TabStop = false;
             this.textBoxBottomRightQuarter.Tag = "BOTTOM_RIGHT";
@@ -97,7 +138,7 @@
             // labelBottomLeftQuarter
             // 
             this.labelBottomLeftQuarter.AutoSize = true;
-            this.labelBottomLeftQuarter.Location = new System.Drawing.Point(22, 330);
+            this.labelBottomLeftQuarter.Location = new System.Drawing.Point(22, 329);
             this.labelBottomLeftQuarter.Name = "labelBottomLeftQuarter";
             this.labelBottomLeftQuarter.Size = new System.Drawing.Size(134, 13);
             this.labelBottomLeftQuarter.TabIndex = 5;
@@ -107,11 +148,12 @@
             // textBoxBottomLeftQuarter
             // 
             this.textBoxBottomLeftQuarter.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.textBoxBottomLeftQuarter.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxBottomLeftQuarter.Location = new System.Drawing.Point(162, 327);
             this.textBoxBottomLeftQuarter.Name = "textBoxBottomLeftQuarter";
             this.textBoxBottomLeftQuarter.ReadOnly = true;
             this.textBoxBottomLeftQuarter.ShortcutsEnabled = false;
-            this.textBoxBottomLeftQuarter.Size = new System.Drawing.Size(207, 20);
+            this.textBoxBottomLeftQuarter.Size = new System.Drawing.Size(181, 20);
             this.textBoxBottomLeftQuarter.TabIndex = 4;
             this.textBoxBottomLeftQuarter.TabStop = false;
             this.textBoxBottomLeftQuarter.Tag = "BOTTOM_LEFT";
@@ -123,7 +165,7 @@
             // labelTopRightQuarter
             // 
             this.labelTopRightQuarter.AutoSize = true;
-            this.labelTopRightQuarter.Location = new System.Drawing.Point(33, 304);
+            this.labelTopRightQuarter.Location = new System.Drawing.Point(33, 303);
             this.labelTopRightQuarter.Name = "labelTopRightQuarter";
             this.labelTopRightQuarter.Size = new System.Drawing.Size(123, 13);
             this.labelTopRightQuarter.TabIndex = 3;
@@ -133,11 +175,12 @@
             // textBoxTopRightQuarter
             // 
             this.textBoxTopRightQuarter.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.textBoxTopRightQuarter.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxTopRightQuarter.Location = new System.Drawing.Point(162, 301);
             this.textBoxTopRightQuarter.Name = "textBoxTopRightQuarter";
             this.textBoxTopRightQuarter.ReadOnly = true;
             this.textBoxTopRightQuarter.ShortcutsEnabled = false;
-            this.textBoxTopRightQuarter.Size = new System.Drawing.Size(207, 20);
+            this.textBoxTopRightQuarter.Size = new System.Drawing.Size(181, 20);
             this.textBoxTopRightQuarter.TabIndex = 2;
             this.textBoxTopRightQuarter.TabStop = false;
             this.textBoxTopRightQuarter.Tag = "TOP_RIGHT";
@@ -149,7 +192,7 @@
             // labelTopLeftQuarter
             // 
             this.labelTopLeftQuarter.AutoSize = true;
-            this.labelTopLeftQuarter.Location = new System.Drawing.Point(39, 278);
+            this.labelTopLeftQuarter.Location = new System.Drawing.Point(39, 277);
             this.labelTopLeftQuarter.Name = "labelTopLeftQuarter";
             this.labelTopLeftQuarter.Size = new System.Drawing.Size(117, 13);
             this.labelTopLeftQuarter.TabIndex = 1;
@@ -159,11 +202,12 @@
             // textBoxTopLeftQuarter
             // 
             this.textBoxTopLeftQuarter.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.textBoxTopLeftQuarter.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxTopLeftQuarter.Location = new System.Drawing.Point(162, 275);
             this.textBoxTopLeftQuarter.Name = "textBoxTopLeftQuarter";
             this.textBoxTopLeftQuarter.ReadOnly = true;
             this.textBoxTopLeftQuarter.ShortcutsEnabled = false;
-            this.textBoxTopLeftQuarter.Size = new System.Drawing.Size(207, 20);
+            this.textBoxTopLeftQuarter.Size = new System.Drawing.Size(181, 20);
             this.textBoxTopLeftQuarter.TabIndex = 0;
             this.textBoxTopLeftQuarter.TabStop = false;
             this.textBoxTopLeftQuarter.Tag = "TOP_LEFT";
@@ -175,7 +219,7 @@
             // labelPreviousDisplay
             // 
             this.labelPreviousDisplay.AutoSize = true;
-            this.labelPreviousDisplay.Location = new System.Drawing.Point(32, 96);
+            this.labelPreviousDisplay.Location = new System.Drawing.Point(32, 95);
             this.labelPreviousDisplay.Name = "labelPreviousDisplay";
             this.labelPreviousDisplay.Size = new System.Drawing.Size(124, 13);
             this.labelPreviousDisplay.TabIndex = 7;
@@ -185,11 +229,14 @@
             // textBoxPreviousDisplay
             // 
             this.textBoxPreviousDisplay.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.textBoxPreviousDisplay.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBoxPreviousDisplay.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxPreviousDisplay.Location = new System.Drawing.Point(162, 93);
             this.textBoxPreviousDisplay.Name = "textBoxPreviousDisplay";
             this.textBoxPreviousDisplay.ReadOnly = true;
+            this.textBoxPreviousDisplay.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.textBoxPreviousDisplay.ShortcutsEnabled = false;
-            this.textBoxPreviousDisplay.Size = new System.Drawing.Size(207, 20);
+            this.textBoxPreviousDisplay.Size = new System.Drawing.Size(181, 20);
             this.textBoxPreviousDisplay.TabIndex = 6;
             this.textBoxPreviousDisplay.TabStop = false;
             this.textBoxPreviousDisplay.Tag = "PREVIOUS_SCREEN";
@@ -201,7 +248,7 @@
             // labelNextDisplay
             // 
             this.labelNextDisplay.AutoSize = true;
-            this.labelNextDisplay.Location = new System.Drawing.Point(52, 70);
+            this.labelNextDisplay.Location = new System.Drawing.Point(52, 69);
             this.labelNextDisplay.Name = "labelNextDisplay";
             this.labelNextDisplay.Size = new System.Drawing.Size(104, 13);
             this.labelNextDisplay.TabIndex = 5;
@@ -211,11 +258,14 @@
             // textBoxNextDisplay
             // 
             this.textBoxNextDisplay.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.textBoxNextDisplay.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBoxNextDisplay.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxNextDisplay.Location = new System.Drawing.Point(162, 67);
             this.textBoxNextDisplay.Name = "textBoxNextDisplay";
             this.textBoxNextDisplay.ReadOnly = true;
+            this.textBoxNextDisplay.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.textBoxNextDisplay.ShortcutsEnabled = false;
-            this.textBoxNextDisplay.Size = new System.Drawing.Size(207, 20);
+            this.textBoxNextDisplay.Size = new System.Drawing.Size(181, 20);
             this.textBoxNextDisplay.TabIndex = 4;
             this.textBoxNextDisplay.TabStop = false;
             this.textBoxNextDisplay.Tag = "NEXT_SCREEN";
@@ -227,7 +277,7 @@
             // labelCenter
             // 
             this.labelCenter.AutoSize = true;
-            this.labelCenter.Location = new System.Drawing.Point(118, 44);
+            this.labelCenter.Location = new System.Drawing.Point(118, 43);
             this.labelCenter.Name = "labelCenter";
             this.labelCenter.Size = new System.Drawing.Size(38, 13);
             this.labelCenter.TabIndex = 3;
@@ -237,11 +287,14 @@
             // textBoxCenter
             // 
             this.textBoxCenter.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.textBoxCenter.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBoxCenter.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxCenter.Location = new System.Drawing.Point(162, 41);
             this.textBoxCenter.Name = "textBoxCenter";
             this.textBoxCenter.ReadOnly = true;
+            this.textBoxCenter.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.textBoxCenter.ShortcutsEnabled = false;
-            this.textBoxCenter.Size = new System.Drawing.Size(207, 20);
+            this.textBoxCenter.Size = new System.Drawing.Size(181, 20);
             this.textBoxCenter.TabIndex = 2;
             this.textBoxCenter.TabStop = false;
             this.textBoxCenter.Tag = "CENTER";
@@ -253,7 +306,7 @@
             // labelFullscreen
             // 
             this.labelFullscreen.AutoSize = true;
-            this.labelFullscreen.Location = new System.Drawing.Point(101, 18);
+            this.labelFullscreen.Location = new System.Drawing.Point(101, 17);
             this.labelFullscreen.Name = "labelFullscreen";
             this.labelFullscreen.Size = new System.Drawing.Size(55, 13);
             this.labelFullscreen.TabIndex = 1;
@@ -263,11 +316,14 @@
             // textBoxFullscreen
             // 
             this.textBoxFullscreen.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.textBoxFullscreen.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBoxFullscreen.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxFullscreen.Location = new System.Drawing.Point(162, 15);
             this.textBoxFullscreen.Name = "textBoxFullscreen";
             this.textBoxFullscreen.ReadOnly = true;
+            this.textBoxFullscreen.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.textBoxFullscreen.ShortcutsEnabled = false;
-            this.textBoxFullscreen.Size = new System.Drawing.Size(207, 20);
+            this.textBoxFullscreen.Size = new System.Drawing.Size(181, 20);
             this.textBoxFullscreen.TabIndex = 0;
             this.textBoxFullscreen.TabStop = false;
             this.textBoxFullscreen.Tag = "FULLSCREEN";
@@ -279,11 +335,14 @@
             // textBoxLeftHalf
             // 
             this.textBoxLeftHalf.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.textBoxLeftHalf.Location = new System.Drawing.Point(162, 143);
+            this.textBoxLeftHalf.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBoxLeftHalf.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxLeftHalf.Location = new System.Drawing.Point(162, 145);
             this.textBoxLeftHalf.Name = "textBoxLeftHalf";
             this.textBoxLeftHalf.ReadOnly = true;
+            this.textBoxLeftHalf.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.textBoxLeftHalf.ShortcutsEnabled = false;
-            this.textBoxLeftHalf.Size = new System.Drawing.Size(207, 20);
+            this.textBoxLeftHalf.Size = new System.Drawing.Size(181, 20);
             this.textBoxLeftHalf.TabIndex = 0;
             this.textBoxLeftHalf.TabStop = false;
             this.textBoxLeftHalf.Tag = "LEFT_HALF";
@@ -295,7 +354,7 @@
             // labelLeftHalf
             // 
             this.labelLeftHalf.AutoSize = true;
-            this.labelLeftHalf.Location = new System.Drawing.Point(73, 146);
+            this.labelLeftHalf.Location = new System.Drawing.Point(73, 147);
             this.labelLeftHalf.Name = "labelLeftHalf";
             this.labelLeftHalf.Size = new System.Drawing.Size(83, 13);
             this.labelLeftHalf.TabIndex = 1;
@@ -305,11 +364,14 @@
             // textBoxRightHalf
             // 
             this.textBoxRightHalf.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.textBoxRightHalf.Location = new System.Drawing.Point(162, 169);
+            this.textBoxRightHalf.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBoxRightHalf.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxRightHalf.Location = new System.Drawing.Point(162, 171);
             this.textBoxRightHalf.Name = "textBoxRightHalf";
             this.textBoxRightHalf.ReadOnly = true;
+            this.textBoxRightHalf.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.textBoxRightHalf.ShortcutsEnabled = false;
-            this.textBoxRightHalf.Size = new System.Drawing.Size(207, 20);
+            this.textBoxRightHalf.Size = new System.Drawing.Size(181, 20);
             this.textBoxRightHalf.TabIndex = 2;
             this.textBoxRightHalf.TabStop = false;
             this.textBoxRightHalf.Tag = "RIGHT_HALF";
@@ -321,7 +383,7 @@
             // labelRightHalf
             // 
             this.labelRightHalf.AutoSize = true;
-            this.labelRightHalf.Location = new System.Drawing.Point(67, 172);
+            this.labelRightHalf.Location = new System.Drawing.Point(67, 173);
             this.labelRightHalf.Name = "labelRightHalf";
             this.labelRightHalf.Size = new System.Drawing.Size(89, 13);
             this.labelRightHalf.TabIndex = 3;
@@ -331,11 +393,12 @@
             // textBoxTopHalf
             // 
             this.textBoxTopHalf.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.textBoxTopHalf.Location = new System.Drawing.Point(162, 195);
+            this.textBoxTopHalf.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBoxTopHalf.Location = new System.Drawing.Point(162, 197);
             this.textBoxTopHalf.Name = "textBoxTopHalf";
             this.textBoxTopHalf.ReadOnly = true;
             this.textBoxTopHalf.ShortcutsEnabled = false;
-            this.textBoxTopHalf.Size = new System.Drawing.Size(207, 20);
+            this.textBoxTopHalf.Size = new System.Drawing.Size(181, 20);
             this.textBoxTopHalf.TabIndex = 4;
             this.textBoxTopHalf.TabStop = false;
             this.textBoxTopHalf.Tag = "TOP_HALF";
@@ -347,7 +410,7 @@
             // labelTopHalf
             // 
             this.labelTopHalf.AutoSize = true;
-            this.labelTopHalf.Location = new System.Drawing.Point(72, 198);
+            this.labelTopHalf.Location = new System.Drawing.Point(72, 199);
             this.labelTopHalf.Name = "labelTopHalf";
             this.labelTopHalf.Size = new System.Drawing.Size(84, 13);
             this.labelTopHalf.TabIndex = 5;
@@ -357,11 +420,12 @@
             // textBoxBottomHalf
             // 
             this.textBoxBottomHalf.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.textBoxBottomHalf.Location = new System.Drawing.Point(162, 221);
+            this.textBoxBottomHalf.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBoxBottomHalf.Location = new System.Drawing.Point(162, 223);
             this.textBoxBottomHalf.Name = "textBoxBottomHalf";
             this.textBoxBottomHalf.ReadOnly = true;
             this.textBoxBottomHalf.ShortcutsEnabled = false;
-            this.textBoxBottomHalf.Size = new System.Drawing.Size(207, 20);
+            this.textBoxBottomHalf.Size = new System.Drawing.Size(181, 20);
             this.textBoxBottomHalf.TabIndex = 6;
             this.textBoxBottomHalf.TabStop = false;
             this.textBoxBottomHalf.Tag = "BOTTOM_HALF";
@@ -373,18 +437,282 @@
             // labelBottomHalf
             // 
             this.labelBottomHalf.AutoSize = true;
-            this.labelBottomHalf.Location = new System.Drawing.Point(55, 224);
+            this.labelBottomHalf.Location = new System.Drawing.Point(55, 225);
             this.labelBottomHalf.Name = "labelBottomHalf";
             this.labelBottomHalf.Size = new System.Drawing.Size(101, 13);
             this.labelBottomHalf.TabIndex = 7;
             this.labelBottomHalf.Text = "Move to bottom half";
             this.labelBottomHalf.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
+            // buttonFullscreen
+            // 
+            this.buttonFullscreen.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.buttonFullscreen.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.buttonFullscreen.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.buttonFullscreen.FlatAppearance.CheckedBackColor = System.Drawing.Color.White;
+            this.buttonFullscreen.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightGray;
+            this.buttonFullscreen.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
+            this.buttonFullscreen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonFullscreen.Image = ((System.Drawing.Image)(resources.GetObject("buttonFullscreen.Image")));
+            this.buttonFullscreen.Location = new System.Drawing.Point(349, 15);
+            this.buttonFullscreen.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonFullscreen.Name = "buttonFullscreen";
+            this.buttonFullscreen.Padding = new System.Windows.Forms.Padding(0, 0, 1, 1);
+            this.buttonFullscreen.Size = new System.Drawing.Size(20, 20);
+            this.buttonFullscreen.TabIndex = 8;
+            this.buttonFullscreen.TabStop = false;
+            this.buttonFullscreen.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.buttonFullscreen.UseVisualStyleBackColor = false;
+            this.buttonFullscreen.Click += new System.EventHandler(this.UnmapButton_Click);
+            // 
+            // buttonCenter
+            // 
+            this.buttonCenter.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.buttonCenter.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.buttonCenter.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.buttonCenter.FlatAppearance.CheckedBackColor = System.Drawing.Color.White;
+            this.buttonCenter.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightGray;
+            this.buttonCenter.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
+            this.buttonCenter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonCenter.Image = ((System.Drawing.Image)(resources.GetObject("buttonCenter.Image")));
+            this.buttonCenter.Location = new System.Drawing.Point(349, 41);
+            this.buttonCenter.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonCenter.Name = "buttonCenter";
+            this.buttonCenter.Padding = new System.Windows.Forms.Padding(0, 0, 1, 1);
+            this.buttonCenter.Size = new System.Drawing.Size(20, 20);
+            this.buttonCenter.TabIndex = 9;
+            this.buttonCenter.TabStop = false;
+            this.buttonCenter.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.buttonCenter.UseVisualStyleBackColor = false;
+            this.buttonCenter.Click += new System.EventHandler(this.UnmapButton_Click);
+            // 
+            // buttonNextDisplay
+            // 
+            this.buttonNextDisplay.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.buttonNextDisplay.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.buttonNextDisplay.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.buttonNextDisplay.FlatAppearance.CheckedBackColor = System.Drawing.Color.White;
+            this.buttonNextDisplay.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightGray;
+            this.buttonNextDisplay.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
+            this.buttonNextDisplay.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonNextDisplay.Image = ((System.Drawing.Image)(resources.GetObject("buttonNextDisplay.Image")));
+            this.buttonNextDisplay.Location = new System.Drawing.Point(349, 67);
+            this.buttonNextDisplay.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonNextDisplay.Name = "buttonNextDisplay";
+            this.buttonNextDisplay.Padding = new System.Windows.Forms.Padding(0, 0, 1, 1);
+            this.buttonNextDisplay.Size = new System.Drawing.Size(20, 20);
+            this.buttonNextDisplay.TabIndex = 10;
+            this.buttonNextDisplay.TabStop = false;
+            this.buttonNextDisplay.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.buttonNextDisplay.UseVisualStyleBackColor = false;
+            this.buttonNextDisplay.Click += new System.EventHandler(this.UnmapButton_Click);
+            // 
+            // buttonPreviousDisplay
+            // 
+            this.buttonPreviousDisplay.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.buttonPreviousDisplay.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.buttonPreviousDisplay.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.buttonPreviousDisplay.FlatAppearance.CheckedBackColor = System.Drawing.Color.White;
+            this.buttonPreviousDisplay.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightGray;
+            this.buttonPreviousDisplay.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
+            this.buttonPreviousDisplay.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonPreviousDisplay.Image = ((System.Drawing.Image)(resources.GetObject("buttonPreviousDisplay.Image")));
+            this.buttonPreviousDisplay.Location = new System.Drawing.Point(349, 93);
+            this.buttonPreviousDisplay.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonPreviousDisplay.Name = "buttonPreviousDisplay";
+            this.buttonPreviousDisplay.Padding = new System.Windows.Forms.Padding(0, 0, 1, 1);
+            this.buttonPreviousDisplay.Size = new System.Drawing.Size(20, 20);
+            this.buttonPreviousDisplay.TabIndex = 11;
+            this.buttonPreviousDisplay.TabStop = false;
+            this.buttonPreviousDisplay.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.buttonPreviousDisplay.UseVisualStyleBackColor = false;
+            this.buttonPreviousDisplay.Click += new System.EventHandler(this.UnmapButton_Click);
+            // 
+            // buttonLeftHalf
+            // 
+            this.buttonLeftHalf.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.buttonLeftHalf.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.buttonLeftHalf.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.buttonLeftHalf.FlatAppearance.CheckedBackColor = System.Drawing.Color.White;
+            this.buttonLeftHalf.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightGray;
+            this.buttonLeftHalf.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
+            this.buttonLeftHalf.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonLeftHalf.Image = ((System.Drawing.Image)(resources.GetObject("buttonLeftHalf.Image")));
+            this.buttonLeftHalf.Location = new System.Drawing.Point(349, 145);
+            this.buttonLeftHalf.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonLeftHalf.Name = "buttonLeftHalf";
+            this.buttonLeftHalf.Padding = new System.Windows.Forms.Padding(0, 0, 1, 1);
+            this.buttonLeftHalf.Size = new System.Drawing.Size(20, 20);
+            this.buttonLeftHalf.TabIndex = 12;
+            this.buttonLeftHalf.TabStop = false;
+            this.buttonLeftHalf.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.buttonLeftHalf.UseVisualStyleBackColor = false;
+            this.buttonLeftHalf.Click += new System.EventHandler(this.UnmapButton_Click);
+            // 
+            // buttonRightHalf
+            // 
+            this.buttonRightHalf.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.buttonRightHalf.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.buttonRightHalf.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.buttonRightHalf.FlatAppearance.CheckedBackColor = System.Drawing.Color.White;
+            this.buttonRightHalf.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightGray;
+            this.buttonRightHalf.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
+            this.buttonRightHalf.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonRightHalf.Image = ((System.Drawing.Image)(resources.GetObject("buttonRightHalf.Image")));
+            this.buttonRightHalf.Location = new System.Drawing.Point(349, 171);
+            this.buttonRightHalf.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonRightHalf.Name = "buttonRightHalf";
+            this.buttonRightHalf.Padding = new System.Windows.Forms.Padding(0, 0, 1, 1);
+            this.buttonRightHalf.Size = new System.Drawing.Size(20, 20);
+            this.buttonRightHalf.TabIndex = 13;
+            this.buttonRightHalf.TabStop = false;
+            this.buttonRightHalf.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.buttonRightHalf.UseVisualStyleBackColor = false;
+            this.buttonRightHalf.Click += new System.EventHandler(this.UnmapButton_Click);
+            // 
+            // buttonTopHalf
+            // 
+            this.buttonTopHalf.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.buttonTopHalf.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.buttonTopHalf.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.buttonTopHalf.FlatAppearance.CheckedBackColor = System.Drawing.Color.White;
+            this.buttonTopHalf.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightGray;
+            this.buttonTopHalf.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
+            this.buttonTopHalf.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonTopHalf.Image = ((System.Drawing.Image)(resources.GetObject("buttonTopHalf.Image")));
+            this.buttonTopHalf.Location = new System.Drawing.Point(349, 197);
+            this.buttonTopHalf.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonTopHalf.Name = "buttonTopHalf";
+            this.buttonTopHalf.Padding = new System.Windows.Forms.Padding(0, 0, 1, 1);
+            this.buttonTopHalf.Size = new System.Drawing.Size(20, 20);
+            this.buttonTopHalf.TabIndex = 14;
+            this.buttonTopHalf.TabStop = false;
+            this.buttonTopHalf.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.buttonTopHalf.UseVisualStyleBackColor = false;
+            this.buttonTopHalf.Click += new System.EventHandler(this.UnmapButton_Click);
+            // 
+            // buttonBottomHalf
+            // 
+            this.buttonBottomHalf.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.buttonBottomHalf.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.buttonBottomHalf.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.buttonBottomHalf.FlatAppearance.CheckedBackColor = System.Drawing.Color.White;
+            this.buttonBottomHalf.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightGray;
+            this.buttonBottomHalf.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
+            this.buttonBottomHalf.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonBottomHalf.Image = ((System.Drawing.Image)(resources.GetObject("buttonBottomHalf.Image")));
+            this.buttonBottomHalf.Location = new System.Drawing.Point(349, 223);
+            this.buttonBottomHalf.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonBottomHalf.Name = "buttonBottomHalf";
+            this.buttonBottomHalf.Padding = new System.Windows.Forms.Padding(0, 0, 1, 1);
+            this.buttonBottomHalf.Size = new System.Drawing.Size(20, 20);
+            this.buttonBottomHalf.TabIndex = 15;
+            this.buttonBottomHalf.TabStop = false;
+            this.buttonBottomHalf.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.buttonBottomHalf.UseVisualStyleBackColor = false;
+            this.buttonBottomHalf.Click += new System.EventHandler(this.UnmapButton_Click);
+            // 
+            // buttonTopLeft
+            // 
+            this.buttonTopLeft.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.buttonTopLeft.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.buttonTopLeft.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.buttonTopLeft.FlatAppearance.CheckedBackColor = System.Drawing.Color.White;
+            this.buttonTopLeft.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightGray;
+            this.buttonTopLeft.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
+            this.buttonTopLeft.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonTopLeft.Image = ((System.Drawing.Image)(resources.GetObject("buttonTopLeft.Image")));
+            this.buttonTopLeft.Location = new System.Drawing.Point(349, 275);
+            this.buttonTopLeft.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonTopLeft.Name = "buttonTopLeft";
+            this.buttonTopLeft.Padding = new System.Windows.Forms.Padding(0, 0, 1, 1);
+            this.buttonTopLeft.Size = new System.Drawing.Size(20, 20);
+            this.buttonTopLeft.TabIndex = 16;
+            this.buttonTopLeft.TabStop = false;
+            this.buttonTopLeft.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.buttonTopLeft.UseVisualStyleBackColor = false;
+            this.buttonTopLeft.Click += new System.EventHandler(this.UnmapButton_Click);
+            // 
+            // buttonTopRight
+            // 
+            this.buttonTopRight.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.buttonTopRight.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.buttonTopRight.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.buttonTopRight.FlatAppearance.CheckedBackColor = System.Drawing.Color.White;
+            this.buttonTopRight.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightGray;
+            this.buttonTopRight.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
+            this.buttonTopRight.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonTopRight.Image = ((System.Drawing.Image)(resources.GetObject("buttonTopRight.Image")));
+            this.buttonTopRight.Location = new System.Drawing.Point(349, 301);
+            this.buttonTopRight.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonTopRight.Name = "buttonTopRight";
+            this.buttonTopRight.Padding = new System.Windows.Forms.Padding(0, 0, 1, 1);
+            this.buttonTopRight.Size = new System.Drawing.Size(20, 20);
+            this.buttonTopRight.TabIndex = 17;
+            this.buttonTopRight.TabStop = false;
+            this.buttonTopRight.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.buttonTopRight.UseVisualStyleBackColor = false;
+            this.buttonTopRight.Click += new System.EventHandler(this.UnmapButton_Click);
+            // 
+            // buttonBottomLeft
+            // 
+            this.buttonBottomLeft.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.buttonBottomLeft.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.buttonBottomLeft.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.buttonBottomLeft.FlatAppearance.CheckedBackColor = System.Drawing.Color.White;
+            this.buttonBottomLeft.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightGray;
+            this.buttonBottomLeft.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
+            this.buttonBottomLeft.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonBottomLeft.Image = ((System.Drawing.Image)(resources.GetObject("buttonBottomLeft.Image")));
+            this.buttonBottomLeft.Location = new System.Drawing.Point(349, 327);
+            this.buttonBottomLeft.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonBottomLeft.Name = "buttonBottomLeft";
+            this.buttonBottomLeft.Padding = new System.Windows.Forms.Padding(0, 0, 1, 1);
+            this.buttonBottomLeft.Size = new System.Drawing.Size(20, 20);
+            this.buttonBottomLeft.TabIndex = 18;
+            this.buttonBottomLeft.TabStop = false;
+            this.buttonBottomLeft.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.buttonBottomLeft.UseVisualStyleBackColor = false;
+            this.buttonBottomLeft.Click += new System.EventHandler(this.UnmapButton_Click);
+            // 
+            // buttonBottomRight
+            // 
+            this.buttonBottomRight.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.buttonBottomRight.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.buttonBottomRight.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.buttonBottomRight.FlatAppearance.CheckedBackColor = System.Drawing.Color.White;
+            this.buttonBottomRight.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightGray;
+            this.buttonBottomRight.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
+            this.buttonBottomRight.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonBottomRight.Image = ((System.Drawing.Image)(resources.GetObject("buttonBottomRight.Image")));
+            this.buttonBottomRight.Location = new System.Drawing.Point(349, 353);
+            this.buttonBottomRight.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonBottomRight.Name = "buttonBottomRight";
+            this.buttonBottomRight.Padding = new System.Windows.Forms.Padding(0, 0, 1, 1);
+            this.buttonBottomRight.Size = new System.Drawing.Size(20, 20);
+            this.buttonBottomRight.TabIndex = 19;
+            this.buttonBottomRight.TabStop = false;
+            this.buttonBottomRight.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.buttonBottomRight.UseVisualStyleBackColor = false;
+            this.buttonBottomRight.Click += new System.EventHandler(this.UnmapButton_Click);
+            // 
             // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(388, 387);
+            this.ClientSize = new System.Drawing.Size(384, 387);
+            this.Controls.Add(this.buttonBottomRight);
+            this.Controls.Add(this.buttonBottomLeft);
+            this.Controls.Add(this.buttonTopRight);
+            this.Controls.Add(this.buttonTopLeft);
+            this.Controls.Add(this.buttonBottomHalf);
+            this.Controls.Add(this.buttonTopHalf);
+            this.Controls.Add(this.buttonRightHalf);
+            this.Controls.Add(this.buttonLeftHalf);
+            this.Controls.Add(this.buttonPreviousDisplay);
+            this.Controls.Add(this.buttonNextDisplay);
+            this.Controls.Add(this.buttonCenter);
+            this.Controls.Add(this.buttonFullscreen);
             this.Controls.Add(this.labelBottomRightQuarter);
             this.Controls.Add(this.labelBottomHalf);
             this.Controls.Add(this.textBoxBottomRightQuarter);
@@ -410,9 +738,12 @@
             this.Controls.Add(this.textBoxCenter);
             this.Controls.Add(this.labelFullscreen);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximumSize = new System.Drawing.Size(390, 412);
+            this.MinimumSize = new System.Drawing.Size(390, 412);
             this.Name = "SettingsForm";
             this.Text = "Neat Windows";
             this.Resize += new System.EventHandler(this.SettingsForm_Resize);
+            this.settingsIconContextMenu.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -445,6 +776,21 @@
         private System.Windows.Forms.Label labelTopHalf;
         private System.Windows.Forms.TextBox textBoxBottomHalf;
         private System.Windows.Forms.Label labelBottomHalf;
+        private System.Windows.Forms.Button buttonFullscreen;
+        private System.Windows.Forms.Button buttonCenter;
+        private System.Windows.Forms.Button buttonNextDisplay;
+        private System.Windows.Forms.Button buttonPreviousDisplay;
+        private System.Windows.Forms.Button buttonLeftHalf;
+        private System.Windows.Forms.Button buttonRightHalf;
+        private System.Windows.Forms.Button buttonTopHalf;
+        private System.Windows.Forms.Button buttonBottomHalf;
+        private System.Windows.Forms.Button buttonTopLeft;
+        private System.Windows.Forms.Button buttonTopRight;
+        private System.Windows.Forms.Button buttonBottomLeft;
+        private System.Windows.Forms.Button buttonBottomRight;
+        private System.Windows.Forms.ContextMenuStrip settingsIconContextMenu;
+        private System.Windows.Forms.ToolStripMenuItem openSettingsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exitNeatWindowsToolStripMenuItem;
 
     }
 }

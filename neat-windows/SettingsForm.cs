@@ -13,8 +13,9 @@ namespace neat_windows
             InitializeComponent();
 
             this.hotkeyHandler = new HotkeyHandler(this);
-            this.MapTextBoxTags();
+            this.MapTags();
             this.FillTextBoxes(this.hotkeyHandler.GetHotkeyMap());
+            labelFullscreen.Focus();
         }
 
         #region Minimizing, notifyicon
@@ -44,8 +45,8 @@ namespace neat_windows
         }
         #endregion Minimizing, notifyicon
 
-        #region TextBox mapping
-        private void MapTextBoxTags()
+        #region Tag mapping
+        private void MapTags()
         {
             this.textBoxFullscreen.Tag = WindowConstants.WindowSizePosition.FULLSCREEN;
             this.textBoxCenter.Tag = WindowConstants.WindowSizePosition.CENTER;
@@ -61,31 +62,31 @@ namespace neat_windows
             this.textBoxTopRightQuarter.Tag = WindowConstants.WindowSizePosition.TOP_RIGHT;
             this.textBoxBottomLeftQuarter.Tag = WindowConstants.WindowSizePosition.BOTTOM_LEFT;
             this.textBoxBottomRightQuarter.Tag = WindowConstants.WindowSizePosition.BOTTOM_RIGHT;
+
+            this.buttonFullscreen.Tag = WindowConstants.WindowSizePosition.FULLSCREEN;
+            this.buttonCenter.Tag = WindowConstants.WindowSizePosition.CENTER;
+            this.buttonNextDisplay.Tag = WindowConstants.WindowSizePosition.NEXT_SCREEN;
+            this.buttonPreviousDisplay.Tag = WindowConstants.WindowSizePosition.PREVIOUS_SCREEN;
+
+            this.buttonLeftHalf.Tag = WindowConstants.WindowSizePosition.LEFT_HALF;
+            this.buttonRightHalf.Tag = WindowConstants.WindowSizePosition.RIGHT_HALF;
+            this.buttonTopHalf.Tag = WindowConstants.WindowSizePosition.TOP_HALF;
+            this.buttonBottomHalf.Tag = WindowConstants.WindowSizePosition.BOTTOM_HALF;
+
+            this.buttonTopLeft.Tag = WindowConstants.WindowSizePosition.TOP_LEFT;
+            this.buttonTopRight.Tag = WindowConstants.WindowSizePosition.TOP_RIGHT;
+            this.buttonBottomLeft.Tag = WindowConstants.WindowSizePosition.BOTTOM_LEFT;
+            this.buttonBottomRight.Tag = WindowConstants.WindowSizePosition.BOTTOM_RIGHT;
         }
 
-        public void FillTextBoxes(Dictionary<WindowConstants.WindowSizePosition, Hotkey> hotkeyMap)
-        {
-            foreach (KeyValuePair<WindowConstants.WindowSizePosition, Hotkey> hotkeyMapping in hotkeyMap) 
-            {
-                TextBox taggedTextBox = (TextBox) this.GetControlByTag(hotkeyMapping.Key);
-                if (taggedTextBox == null)
-                {
-                    Console.WriteLine("Null found for key: " + hotkeyMapping.Key.ToString());
-                    continue;
-                }
-
-                taggedTextBox.Text = hotkeyMapping.Value.ToString();
-            }
-        }
-
-        private Control GetControlByTag(WindowConstants.WindowSizePosition windowSizePosition)
+        private TextBox GetTextBoxByTag(WindowConstants.WindowSizePosition windowSizePosition)
         {
             foreach (Control control in this.Controls)
             {
                 if (control.GetType() != typeof(TextBox))
                     continue;
                 if (control.Tag.Equals(windowSizePosition))
-                    return control;
+                    return (TextBox)control;
             }
             return null;
         }
@@ -121,6 +122,49 @@ namespace neat_windows
             this.hotkeyHandler.MapHotkey(windowSizePosition, hotkey);
         }
         #endregion Keyhandling
+
+        #region Context menu
+        private void openSettingsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Minimized)
+            {
+                this.WindowState = FormWindowState.Minimized;
+                this.Show();
+                this.WindowState = FormWindowState.Normal;
+            }
+        }
+
+        private void exitNeatWindowsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+        #endregion Context menu
+
+        #region Textbox control
+        public void FillTextBoxes(Dictionary<WindowConstants.WindowSizePosition, Hotkey> hotkeyMap)
+        {
+            foreach (KeyValuePair<WindowConstants.WindowSizePosition, Hotkey> hotkeyMapping in hotkeyMap) 
+            {
+                TextBox taggedTextBox = this.GetTextBoxByTag(hotkeyMapping.Key);
+                if (taggedTextBox == null)
+                {
+                    Console.WriteLine("Null found for key: " + hotkeyMapping.Key.ToString());
+                    continue;
+                }
+
+                taggedTextBox.Text = hotkeyMapping.Value.ToString();
+            }
+        }
+
+        private void UnmapButton_Click(object sender, EventArgs e)
+        {
+            Button clickedButton = (Button)sender;
+            WindowConstants.WindowSizePosition windowSizePosition = (WindowConstants.WindowSizePosition)clickedButton.Tag;
+            this.hotkeyHandler.UnmapHotkey(windowSizePosition);
+            this.GetTextBoxByTag(windowSizePosition).Text = "";
+        }
+
+        #endregion Textbox control
 
     }
 }

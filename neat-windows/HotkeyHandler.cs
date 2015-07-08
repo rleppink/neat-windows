@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Windows.Forms;
 
@@ -21,12 +22,6 @@ namespace neat_windows
             this.RegisterHotkeys();
         }
 
-        public void MapHotkey(WindowConstants.WindowSizePosition windowSizePosition, Keys keyCode, bool shift, bool control, bool alt, bool windows)
-        {
-            Hotkey newHotkey = new Hotkey(keyCode, shift, control, alt, windows);
-            this.MapHotkey(windowSizePosition, newHotkey);
-        }
-
         public void MapHotkey(WindowConstants.WindowSizePosition windowSizePosition, Hotkey hotkey)
         {
             if (this.hotkeyMap.ContainsKey(windowSizePosition))
@@ -40,6 +35,19 @@ namespace neat_windows
 
             this.hotkeyMap[windowSizePosition] = hotkey;
             this.SaveHotkeys();
+        }
+
+        public void UnmapHotkey(WindowConstants.WindowSizePosition windowSizePosition)
+        {
+            try
+            {
+                this.UnregisterHotkey(hotkeyMap[windowSizePosition]);
+                this.hotkeyMap.Remove(windowSizePosition);
+            }
+            catch (Exception e)
+            {
+                // Already unmapped, no need to do anything
+            }
         }
 
         private void SaveHotkeys()
