@@ -42,7 +42,7 @@ namespace neat_windows
 		[XmlIgnore]
 		private Control windowControl;
 
-		public event HandledEventHandler Pressed;
+        public event HandledEventHandler Pressed;
 
 		public Hotkey() : this(Keys.None, false, false, false, false) { }
 		

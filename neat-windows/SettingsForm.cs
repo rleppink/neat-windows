@@ -116,10 +116,16 @@ namespace neat_windows
                 (keyEventArgs.KeyCode == Keys.RWin))
                 return;
 
-            labelFullscreen.Focus();
-
             WindowConstants.WindowSizePosition windowSizePosition = (WindowConstants.WindowSizePosition) senderTextBox.Tag;
+
+            if (this.hotkeyHandler.HotkeyExists(windowSizePosition, hotkey))
+            {
+                senderTextBox.Text = "That hotkey already exists.";
+                return;
+            }
+
             this.hotkeyHandler.MapHotkey(windowSizePosition, hotkey);
+            labelFullscreen.Focus();
         }
         #endregion Keyhandling
 
@@ -151,7 +157,6 @@ namespace neat_windows
                     Console.WriteLine("Null found for key: " + hotkeyMapping.Key.ToString());
                     continue;
                 }
-
                 taggedTextBox.Text = hotkeyMapping.Value.ToString();
             }
         }
@@ -164,7 +169,29 @@ namespace neat_windows
             this.GetTextBoxByTag(windowSizePosition).Text = "";
         }
 
+        private void TextBox_FocusEnter(object sender, EventArgs e)
+        {
+            TextBox senderTextBox = (TextBox)sender;
+            senderTextBox.Text = "";
+            this.hotkeyHandler.UnregisterHotkeys();
+        }
+
+        private void TextBox_FocusLeave(object sender, EventArgs e)
+        {
+            TextBox senderTextBox = (TextBox)sender;
+            senderTextBox.Text = "";
+            senderTextBox.TabStop = false;
+            this.hotkeyHandler.RegisterHotkeys();
+            this.FillTextBoxes(this.hotkeyHandler.GetHotkeyMap());
+        }
         #endregion Textbox control
+
+        private void SettingsForm_MouseDown(object sender, MouseEventArgs e)
+        {
+            this.labelFullscreen.Focus();
+            this.FillTextBoxes(this.hotkeyHandler.GetHotkeyMap());
+        }
+
 
     }
 }

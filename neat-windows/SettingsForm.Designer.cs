@@ -132,8 +132,10 @@
             this.textBoxBottomRightQuarter.Tag = "BOTTOM_RIGHT";
             this.textBoxBottomRightQuarter.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBoxBottomRightQuarter.WordWrap = false;
+            this.textBoxBottomRightQuarter.Enter += new System.EventHandler(this.TextBox_FocusEnter);
             this.textBoxBottomRightQuarter.KeyDown += new System.Windows.Forms.KeyEventHandler(this.HandleKeyDownEvent);
             this.textBoxBottomRightQuarter.KeyUp += new System.Windows.Forms.KeyEventHandler(this.HandleKeyUpEvent);
+            this.textBoxBottomRightQuarter.Leave += new System.EventHandler(this.TextBox_FocusLeave);
             // 
             // labelBottomLeftQuarter
             // 
@@ -159,8 +161,10 @@
             this.textBoxBottomLeftQuarter.Tag = "BOTTOM_LEFT";
             this.textBoxBottomLeftQuarter.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBoxBottomLeftQuarter.WordWrap = false;
+            this.textBoxBottomLeftQuarter.Enter += new System.EventHandler(this.TextBox_FocusEnter);
             this.textBoxBottomLeftQuarter.KeyDown += new System.Windows.Forms.KeyEventHandler(this.HandleKeyDownEvent);
             this.textBoxBottomLeftQuarter.KeyUp += new System.Windows.Forms.KeyEventHandler(this.HandleKeyUpEvent);
+            this.textBoxBottomLeftQuarter.Leave += new System.EventHandler(this.TextBox_FocusLeave);
             // 
             // labelTopRightQuarter
             // 
@@ -186,8 +190,10 @@
             this.textBoxTopRightQuarter.Tag = "TOP_RIGHT";
             this.textBoxTopRightQuarter.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBoxTopRightQuarter.WordWrap = false;
+            this.textBoxTopRightQuarter.Enter += new System.EventHandler(this.TextBox_FocusEnter);
             this.textBoxTopRightQuarter.KeyDown += new System.Windows.Forms.KeyEventHandler(this.HandleKeyDownEvent);
             this.textBoxTopRightQuarter.KeyUp += new System.Windows.Forms.KeyEventHandler(this.HandleKeyUpEvent);
+            this.textBoxTopRightQuarter.Leave += new System.EventHandler(this.TextBox_FocusLeave);
             // 
             // labelTopLeftQuarter
             // 
@@ -213,8 +219,10 @@
             this.textBoxTopLeftQuarter.Tag = "TOP_LEFT";
             this.textBoxTopLeftQuarter.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBoxTopLeftQuarter.WordWrap = false;
+            this.textBoxTopLeftQuarter.Enter += new System.EventHandler(this.TextBox_FocusEnter);
             this.textBoxTopLeftQuarter.KeyDown += new System.Windows.Forms.KeyEventHandler(this.HandleKeyDownEvent);
             this.textBoxTopLeftQuarter.KeyUp += new System.Windows.Forms.KeyEventHandler(this.HandleKeyUpEvent);
+            this.textBoxTopLeftQuarter.Leave += new System.EventHandler(this.TextBox_FocusLeave);
             // 
             // labelPreviousDisplay
             // 
@@ -242,8 +250,10 @@
             this.textBoxPreviousDisplay.Tag = "PREVIOUS_SCREEN";
             this.textBoxPreviousDisplay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBoxPreviousDisplay.WordWrap = false;
+            this.textBoxPreviousDisplay.Enter += new System.EventHandler(this.TextBox_FocusEnter);
             this.textBoxPreviousDisplay.KeyDown += new System.Windows.Forms.KeyEventHandler(this.HandleKeyDownEvent);
             this.textBoxPreviousDisplay.KeyUp += new System.Windows.Forms.KeyEventHandler(this.HandleKeyUpEvent);
+            this.textBoxPreviousDisplay.Leave += new System.EventHandler(this.TextBox_FocusLeave);
             // 
             // labelNextDisplay
             // 
@@ -271,8 +281,10 @@
             this.textBoxNextDisplay.Tag = "NEXT_SCREEN";
             this.textBoxNextDisplay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBoxNextDisplay.WordWrap = false;
+            this.textBoxNextDisplay.Enter += new System.EventHandler(this.TextBox_FocusEnter);
             this.textBoxNextDisplay.KeyDown += new System.Windows.Forms.KeyEventHandler(this.HandleKeyDownEvent);
             this.textBoxNextDisplay.KeyUp += new System.Windows.Forms.KeyEventHandler(this.HandleKeyUpEvent);
+            this.textBoxNextDisplay.Leave += new System.EventHandler(this.TextBox_FocusLeave);
             // 
             // labelCenter
             // 
@@ -300,8 +312,10 @@
             this.textBoxCenter.Tag = "CENTER";
             this.textBoxCenter.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBoxCenter.WordWrap = false;
+            this.textBoxCenter.Enter += new System.EventHandler(this.TextBox_FocusEnter);
             this.textBoxCenter.KeyDown += new System.Windows.Forms.KeyEventHandler(this.HandleKeyDownEvent);
             this.textBoxCenter.KeyUp += new System.Windows.Forms.KeyEventHandler(this.HandleKeyUpEvent);
+            this.textBoxCenter.Leave += new System.EventHandler(this.TextBox_FocusLeave);
             // 
             // labelFullscreen
             // 
@@ -329,8 +343,10 @@
             this.textBoxFullscreen.Tag = "FULLSCREEN";
             this.textBoxFullscreen.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBoxFullscreen.WordWrap = false;
+            this.textBoxFullscreen.Enter += new System.EventHandler(this.TextBox_FocusEnter);
             this.textBoxFullscreen.KeyDown += new System.Windows.Forms.KeyEventHandler(this.HandleKeyDownEvent);
             this.textBoxFullscreen.KeyUp += new System.Windows.Forms.KeyEventHandler(this.HandleKeyUpEvent);
+            this.textBoxFullscreen.Leave += new System.EventHandler(this.TextBox_FocusLeave);
             // 
             // textBoxLeftHalf
             // 
@@ -348,8 +364,10 @@
             this.textBoxLeftHalf.Tag = "LEFT_HALF";
             this.textBoxLeftHalf.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBoxLeftHalf.WordWrap = false;
+            this.textBoxLeftHalf.Enter += new System.EventHandler(this.TextBox_FocusEnter);
             this.textBoxLeftHalf.KeyDown += new System.Windows.Forms.KeyEventHandler(this.HandleKeyDownEvent);
             this.textBoxLeftHalf.KeyUp += new System.Windows.Forms.KeyEventHandler(this.HandleKeyUpEvent);
+            this.textBoxLeftHalf.Leave += new System.EventHandler(this.TextBox_FocusLeave);
             // 
             // labelLeftHalf
             // 
@@ -377,8 +395,10 @@
             this.textBoxRightHalf.Tag = "RIGHT_HALF";
             this.textBoxRightHalf.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBoxRightHalf.WordWrap = false;
+            this.textBoxRightHalf.Enter += new System.EventHandler(this.TextBox_FocusEnter);
             this.textBoxRightHalf.KeyDown += new System.Windows.Forms.KeyEventHandler(this.HandleKeyDownEvent);
             this.textBoxRightHalf.KeyUp += new System.Windows.Forms.KeyEventHandler(this.HandleKeyUpEvent);
+            this.textBoxRightHalf.Leave += new System.EventHandler(this.TextBox_FocusLeave);
             // 
             // labelRightHalf
             // 
@@ -404,8 +424,10 @@
             this.textBoxTopHalf.Tag = "TOP_HALF";
             this.textBoxTopHalf.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBoxTopHalf.WordWrap = false;
+            this.textBoxTopHalf.Enter += new System.EventHandler(this.TextBox_FocusEnter);
             this.textBoxTopHalf.KeyDown += new System.Windows.Forms.KeyEventHandler(this.HandleKeyDownEvent);
             this.textBoxTopHalf.KeyUp += new System.Windows.Forms.KeyEventHandler(this.HandleKeyUpEvent);
+            this.textBoxTopHalf.Leave += new System.EventHandler(this.TextBox_FocusLeave);
             // 
             // labelTopHalf
             // 
@@ -431,8 +453,10 @@
             this.textBoxBottomHalf.Tag = "BOTTOM_HALF";
             this.textBoxBottomHalf.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBoxBottomHalf.WordWrap = false;
+            this.textBoxBottomHalf.Enter += new System.EventHandler(this.TextBox_FocusEnter);
             this.textBoxBottomHalf.KeyDown += new System.Windows.Forms.KeyEventHandler(this.HandleKeyDownEvent);
             this.textBoxBottomHalf.KeyUp += new System.Windows.Forms.KeyEventHandler(this.HandleKeyUpEvent);
+            this.textBoxBottomHalf.Leave += new System.EventHandler(this.TextBox_FocusLeave);
             // 
             // labelBottomHalf
             // 
@@ -742,6 +766,7 @@
             this.MinimumSize = new System.Drawing.Size(390, 412);
             this.Name = "SettingsForm";
             this.Text = "Neat Windows";
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.SettingsForm_MouseDown);
             this.Resize += new System.EventHandler(this.SettingsForm_Resize);
             this.settingsIconContextMenu.ResumeLayout(false);
             this.ResumeLayout(false);

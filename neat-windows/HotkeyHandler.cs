@@ -30,6 +30,7 @@ namespace neat_windows
                 if (currentHotkey.Registered) currentHotkey.Unregister();
             }
 
+            hotkey.Pressed -= delegate { this.windowResizer.ResizeTo(windowSizePosition); };
             hotkey.Pressed += delegate { this.windowResizer.ResizeTo(windowSizePosition); };
             if (!hotkey.Registered) hotkey.Register(this.form);
 
@@ -74,6 +75,7 @@ namespace neat_windows
         {
             foreach (KeyValuePair<WindowConstants.WindowSizePosition, Hotkey> hotkeyMapping in this.hotkeyMap)
             {
+                hotkeyMapping.Value.Pressed -= delegate { this.windowResizer.ResizeTo(hotkeyMapping.Key); };
                 hotkeyMapping.Value.Pressed += delegate { this.windowResizer.ResizeTo(hotkeyMapping.Key); };
                 this.RegisterHotkey(hotkeyMapping.Value);
             }
@@ -85,11 +87,13 @@ namespace neat_windows
                 hotkey.Register(this.form);
         }
 
-        public bool HotkeyExists(Hotkey hotkey)
+        public bool HotkeyExists(WindowConstants.WindowSizePosition windowSizePosition, Hotkey hotkey)
         {
-            foreach (Hotkey mappedHotkey in this.hotkeyMap.Values)
+            foreach (KeyValuePair<WindowConstants.WindowSizePosition, Hotkey> mappedHotkeys in this.hotkeyMap)
             {
-                if (mappedHotkey.KeyCode == hotkey.KeyCode &&
+                Hotkey mappedHotkey = mappedHotkeys.Value;
+                if (mappedHotkeys.Key != windowSizePosition &&
+                    mappedHotkey.KeyCode == hotkey.KeyCode &&
                     mappedHotkey.Control == hotkey.Control &&
                     mappedHotkey.Alt == hotkey.Alt &&
                     mappedHotkey.Shift == hotkey.Shift)
