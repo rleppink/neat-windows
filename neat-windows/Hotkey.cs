@@ -8,7 +8,7 @@ using System.Collections.Generic;
 namespace neat_windows
 {
     /*
-     *  Hotkey abstraction kindly taken from:
+     *  Hotkey abstraction kindly taken (and modified) from:
      *  https://bloggablea.wordpress.com/2007/05/01/global-hotkeys-with-net/
      */
     public class Hotkey : IMessageFilter
@@ -63,11 +63,6 @@ namespace neat_windows
 			{ this.Unregister(); }
 		}
 
-		public Hotkey Clone()
-		{
-			return new Hotkey(this.keyCode, this.shift, this.control, this.alt, this.windows);
-		}
-
 		public bool GetCanRegister(Control windowControl)
 		{
 			try
@@ -87,7 +82,7 @@ namespace neat_windows
 		public bool Register(Control windowControl)
         {
 			if (this.registered)
-			{ throw new NotSupportedException("You cannot register a hotkey that is already registered"); }
+            { return true; }
         
 			if (this.Empty)
 			{ throw new NotSupportedException("You cannot register an empty hotkey"); }
@@ -115,7 +110,7 @@ namespace neat_windows
 		public void Unregister()
 		{
 			if (!this.registered)
-			{ throw new NotSupportedException("You cannot unregister a hotkey that is not registered"); }
+            { return; }
         
 			if (!this.windowControl.IsDisposed)
 			{
@@ -179,6 +174,17 @@ namespace neat_windows
                 keys.Add(this.KeyCode.ToString());
 
             return string.Join(" + ", keys.ToArray());
+        }
+
+        public void SetHandler(Action<WindowConstants.WindowSizePosition> resizeTo, WindowConstants.WindowSizePosition windowSizePosition)
+        {
+            this.Pressed = null;
+            this.Pressed += delegate { resizeTo(windowSizePosition); };
+        }
+
+        public void RemoveHandler()
+        {
+            this.Pressed = null;
         }
 
 		public bool Empty

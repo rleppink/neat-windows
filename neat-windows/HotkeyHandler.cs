@@ -24,67 +24,40 @@ namespace neat_windows
 
         public void MapHotkey(WindowConstants.WindowSizePosition windowSizePosition, Hotkey hotkey)
         {
-            if (this.hotkeyMap.ContainsKey(windowSizePosition))
-            {
-                Hotkey currentHotkey = this.hotkeyMap[windowSizePosition];
-                if (currentHotkey.Registered) currentHotkey.Unregister();
-            }
-
-            hotkey.Pressed -= delegate { this.windowResizer.ResizeTo(windowSizePosition); };
-            hotkey.Pressed += delegate { this.windowResizer.ResizeTo(windowSizePosition); };
-            if (!hotkey.Registered) hotkey.Register(this.form);
-
             this.hotkeyMap[windowSizePosition] = hotkey;
             this.SaveHotkeys();
         }
 
         public void UnmapHotkey(WindowConstants.WindowSizePosition windowSizePosition)
         {
-            try
+            if (this.hotkeyMap.ContainsKey(windowSizePosition))
             {
-                this.UnregisterHotkey(hotkeyMap[windowSizePosition]);
+                this.hotkeyMap[windowSizePosition].Unregister();
                 this.hotkeyMap.Remove(windowSizePosition);
-            }
-            catch (Exception e)
-            {
-                // Already unmapped, no need to do anything
             }
         }
 
         private void SaveHotkeys()
         {
-            this.configurationManager.SaveHotkeys(this.hotkeyMap);
+            this.configurationManager.SaveHotkeyMap(this.hotkeyMap);
         }
 
         public void UnregisterHotkeys()
         {
             foreach (KeyValuePair<WindowConstants.WindowSizePosition, Hotkey> hotkeyMapping in this.hotkeyMap)
             {
-                this.UnregisterHotkey(hotkeyMapping.Value);
+                hotkeyMapping.Value.RemoveHandler();
+                hotkeyMapping.Value.Unregister();
             }
-            
-        }
-
-        private void UnregisterHotkey(Hotkey hotkey)
-        {
-            if (hotkey.Registered)
-                hotkey.Unregister();
         }
 
         public void RegisterHotkeys()
         {
             foreach (KeyValuePair<WindowConstants.WindowSizePosition, Hotkey> hotkeyMapping in this.hotkeyMap)
             {
-                hotkeyMapping.Value.Pressed -= delegate { this.windowResizer.ResizeTo(hotkeyMapping.Key); };
-                hotkeyMapping.Value.Pressed += delegate { this.windowResizer.ResizeTo(hotkeyMapping.Key); };
-                this.RegisterHotkey(hotkeyMapping.Value);
+                hotkeyMapping.Value.SetHandler(this.windowResizer.ResizeTo, hotkeyMapping.Key);
+                hotkeyMapping.Value.Register(this.form);
             }
-        }
-
-        private void RegisterHotkey(Hotkey hotkey)
-        {
-            if (!hotkey.Registered)
-                hotkey.Register(this.form);
         }
 
         public bool HotkeyExists(WindowConstants.WindowSizePosition windowSizePosition, Hotkey hotkey)

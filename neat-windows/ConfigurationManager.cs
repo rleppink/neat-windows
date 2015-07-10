@@ -51,7 +51,6 @@ namespace neat_windows
 
         #endregion SettingsConfig
 
-
         #region HotkeyMapConfig
         public void SaveHotkeyMap(Dictionary<WindowConstants.WindowSizePosition, Hotkey> hotkeyMap)
         {
