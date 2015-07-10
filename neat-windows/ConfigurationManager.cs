@@ -10,16 +10,52 @@ namespace neat_windows
 {
     class ConfigurationManager
     {
-        private string configName = "config.txt";
+        private string settingsName = "settings.txt";
+        private string keyMapName = "keymap.txt";
 
         public ConfigurationManager()
         {
             Directory.CreateDirectory(Application.UserAppDataPath);
         }
 
-        public void SaveHotkeys(Dictionary<WindowConstants.WindowSizePosition, Hotkey> hotkeyMap)
+        #region Paths
+        private string GetSettingsPath()
         {
-            using (StreamWriter configFile = new StreamWriter(this.GetFullConfigPath(), false))
+            return this.GetCombinedPath(this.settingsName);
+        }
+
+        private string GetKeyMapPath()
+        {
+            return this.GetCombinedPath(this.keyMapName);
+        }
+
+        private string GetCombinedPath(string fileName)
+        {
+            return Path.Combine(Application.UserAppDataPath, fileName);
+        }
+        #endregion Paths
+
+        #region General
+        private KeyValuePair<string, string> ParseConfigLine(string configLine)
+        {
+            string[] configLineSplit = configLine.Split('=');
+            return new KeyValuePair<string, string>(configLineSplit[0].Trim(), configLineSplit[1].Trim());
+        }
+        #endregion General
+
+        #region SettingsConfig
+        public void SaveSettings()
+        {
+
+        }
+
+        #endregion SettingsConfig
+
+
+        #region HotkeyMapConfig
+        public void SaveHotkeyMap(Dictionary<WindowConstants.WindowSizePosition, Hotkey> hotkeyMap)
+        {
+            using (StreamWriter configFile = new StreamWriter(this.GetKeyMapPath(), false))
             {
                 foreach (KeyValuePair<WindowConstants.WindowSizePosition, Hotkey> entry in hotkeyMap)
                 {
@@ -31,33 +67,22 @@ namespace neat_windows
         public Dictionary<WindowConstants.WindowSizePosition, Hotkey> GetSavedHotkeys()
         {
             Dictionary<WindowConstants.WindowSizePosition, Hotkey> hotkeyMap = new Dictionary<WindowConstants.WindowSizePosition, Hotkey>();
-            if (!File.Exists(this.GetFullConfigPath())) return hotkeyMap;
+            if (!File.Exists(this.GetKeyMapPath())) return hotkeyMap;
 
-            string[] lines = File.ReadAllLines(this.GetFullConfigPath());
+            string[] lines = File.ReadAllLines(this.GetKeyMapPath());
             foreach (string line in lines) {
-                KeyValuePair<WindowConstants.WindowSizePosition, Hotkey> keyValuePair = this.ParseLine(line);
+                KeyValuePair<WindowConstants.WindowSizePosition, Hotkey> keyValuePair = this.ParseHotkeyLine(line);
                 hotkeyMap.Add(keyValuePair.Key, keyValuePair.Value);
             }
             return hotkeyMap;
         }
 
-        private KeyValuePair<WindowConstants.WindowSizePosition, Hotkey> ParseLine(string line)
+        private KeyValuePair<WindowConstants.WindowSizePosition, Hotkey> ParseHotkeyLine(string line)
         {
-            KeyValuePair<WindowConstants.WindowSizePosition, Hotkey> keyValuePair = new KeyValuePair<WindowConstants.WindowSizePosition, Hotkey>();
-
-            string[] keyValueSplit = line.Split('=');
-            WindowConstants.WindowSizePosition windowSizePosition = (WindowConstants.WindowSizePosition) Enum.Parse(typeof(WindowConstants.WindowSizePosition), keyValueSplit[0]);
-            Hotkey hotkey = this.ParseHotkeys(keyValueSplit[1]);
-            if (hotkey != null)
-            {
-                keyValuePair = new KeyValuePair<WindowConstants.WindowSizePosition, Hotkey>(windowSizePosition, hotkey);
-            }
-            return keyValuePair;
-        }
-
-        private string GetFullConfigPath()
-        {
-            return Path.Combine(Application.UserAppDataPath, this.configName);
+            KeyValuePair<string, string> parsedLine = this.ParseConfigLine(line);
+            WindowConstants.WindowSizePosition windowSizePosition = (WindowConstants.WindowSizePosition) Enum.Parse(typeof(WindowConstants.WindowSizePosition), parsedLine.Key);
+            Hotkey hotkey = this.ParseHotkeys(parsedLine.Value);
+            return new KeyValuePair<WindowConstants.WindowSizePosition,Hotkey>(windowSizePosition, hotkey);
         }
 
         private string GenerateHotkeyLine(WindowConstants.WindowSizePosition windowSizePosition, Hotkey hotkey) 
@@ -81,5 +106,6 @@ namespace neat_windows
 
             return hotkey;
         }
+        #endregion HotkeyMapConfig
     }
 }
