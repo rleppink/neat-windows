@@ -235,7 +235,7 @@ namespace neat_windows
         #region Multiple screens
         public Rectangle NextScreen(Rectangle window)
         {
-            Rectangle nextScreenBounds = this.GetNextScreen().Bounds;
+            Rectangle nextScreenBounds = this.GetNextScreen().WorkingArea;
             return new Rectangle(
                 nextScreenBounds.X + ((nextScreenBounds.Width - window.Width) / 2),
                 nextScreenBounds.Y + ((nextScreenBounds.Height - window.Height) / 2),
@@ -246,7 +246,7 @@ namespace neat_windows
 
         public Rectangle PreviousScreen(Rectangle window)
         {
-            Rectangle previousScreenBounds = this.GetPreviousScreen().Bounds;
+            Rectangle previousScreenBounds = this.GetPreviousScreen().WorkingArea;
             return new Rectangle(
                 previousScreenBounds.X + (previousScreenBounds.Width - window.Width) / 2,
                 previousScreenBounds.Y + (previousScreenBounds.Height - window.Height) / 2,
