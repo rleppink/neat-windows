@@ -724,7 +724,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(384, 387);
+            this.ClientSize = new System.Drawing.Size(384, 386);
             this.Controls.Add(this.buttonBottomRight);
             this.Controls.Add(this.buttonBottomLeft);
             this.Controls.Add(this.buttonTopRight);
@@ -762,8 +762,8 @@
             this.Controls.Add(this.textBoxCenter);
             this.Controls.Add(this.labelFullscreen);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.MaximumSize = new System.Drawing.Size(390, 412);
-            this.MinimumSize = new System.Drawing.Size(390, 412);
+            this.MaximumSize = new System.Drawing.Size(400, 425);
+            this.MinimumSize = new System.Drawing.Size(400, 425);
             this.Name = "SettingsForm";
             this.Text = "Neat Windows";
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.SettingsForm_MouseDown);
