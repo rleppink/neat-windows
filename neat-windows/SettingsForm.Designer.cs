@@ -70,6 +70,7 @@
             this.buttonTopRight = new System.Windows.Forms.Button();
             this.buttonBottomLeft = new System.Windows.Forms.Button();
             this.buttonBottomRight = new System.Windows.Forms.Button();
+            this.startupCheckbox = new System.Windows.Forms.CheckBox();
             this.settingsIconContextMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -720,11 +721,24 @@
             this.buttonBottomRight.UseVisualStyleBackColor = false;
             this.buttonBottomRight.Click += new System.EventHandler(this.UnmapButton_Click);
             // 
+            // startupCheckbox
+            // 
+            this.startupCheckbox.AutoSize = true;
+            this.startupCheckbox.Location = new System.Drawing.Point(217, 392);
+            this.startupCheckbox.Name = "startupCheckbox";
+            this.startupCheckbox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.startupCheckbox.Size = new System.Drawing.Size(152, 17);
+            this.startupCheckbox.TabIndex = 20;
+            this.startupCheckbox.Text = "Start when Windows starts";
+            this.startupCheckbox.UseVisualStyleBackColor = true;
+            this.startupCheckbox.CheckedChanged += new System.EventHandler(this.checkBoxStartAtLogin_CheckedChanged);
+            // 
             // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(384, 386);
+            this.ClientSize = new System.Drawing.Size(384, 421);
+            this.Controls.Add(this.startupCheckbox);
             this.Controls.Add(this.buttonBottomRight);
             this.Controls.Add(this.buttonBottomLeft);
             this.Controls.Add(this.buttonTopRight);
@@ -762,10 +776,14 @@
             this.Controls.Add(this.textBoxCenter);
             this.Controls.Add(this.labelFullscreen);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.MaximumSize = new System.Drawing.Size(400, 425);
-            this.MinimumSize = new System.Drawing.Size(400, 425);
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(400, 460);
+            this.MinimumSize = new System.Drawing.Size(400, 460);
             this.Name = "SettingsForm";
+            this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Neat Windows";
+            this.TopMost = true;
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.SettingsForm_MouseDown);
             this.Resize += new System.EventHandler(this.SettingsForm_Resize);
             this.settingsIconContextMenu.ResumeLayout(false);
@@ -816,6 +834,7 @@
         private System.Windows.Forms.ContextMenuStrip settingsIconContextMenu;
         private System.Windows.Forms.ToolStripMenuItem openSettingsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitNeatWindowsToolStripMenuItem;
+        private System.Windows.Forms.CheckBox startupCheckbox;
 
     }
 }

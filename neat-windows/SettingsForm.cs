@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace neat_windows
@@ -15,7 +17,29 @@ namespace neat_windows
             this.hotkeyHandler = new HotkeyHandler(this);
             this.MapTags();
             this.FillTextBoxes(this.hotkeyHandler.GetHotkeyMap());
+            this.handleStartupCheckBox(this.startupCheckbox);
+            this.SetWindowSize();
+
             labelFullscreen.Focus();
+        }
+
+        private void SetWindowSize()
+        {
+            int width = 0;
+            int height = 0;
+
+            foreach (Control c in this.Controls)
+            {
+                if ((c.Width + c.Location.X) > width)
+                    width = c.Width + c.Location.X;
+                if ((c.Height + c.Location.Y) > height)
+                    height = c.Height + c.Location.Y;
+            }
+
+            width += 30;
+            height += 50;
+            this.MinimumSize = new Size(width, height);
+            this.MaximumSize = new Size(width, height);
         }
 
         #region Minimizing, notifyicon
@@ -190,6 +214,26 @@ namespace neat_windows
         {
             this.labelFullscreen.Focus();
             this.FillTextBoxes(this.hotkeyHandler.GetHotkeyMap());
+        }
+
+        private void checkBoxStartAtLogin_CheckedChanged(object sender, EventArgs e)
+        {
+            this.handleStartupCheckBox((CheckBox) sender);
+        }
+
+        private void handleStartupCheckBox(CheckBox startupCheckBox)
+        {
+            string registryPath = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Run";
+            RegistryKey registryKey = Registry.CurrentUser.OpenSubKey(registryPath, true);
+            if (startupCheckBox.Checked)
+            {
+                registryKey.SetValue("NeatWindows", Application.ExecutablePath.ToString());
+            }
+            else
+            {
+                registryKey.DeleteValue("NeatWindows", false);
+            }
+
         }
 
 
