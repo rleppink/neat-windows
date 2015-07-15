@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Drawing;
 
-namespace neat_windows
+namespace NeatWindows
 {
     class WindowResizer
     {
@@ -94,12 +94,12 @@ namespace neat_windows
         private bool ResizeActiveWindow(Rectangle newWindowSize)
         {
             return NativeMethods.SetWindowPos(this.foregroundWindowHandle, 
-                                WindowConstants.HWND.TOP,
+                                WindowConstants.Hwnd.TOP,
                                 newWindowSize.X, 
                                 newWindowSize.Y, 
                                 newWindowSize.Width, 
                                 newWindowSize.Height, 
-                                WindowConstants.SWP.SHOWWINDOW);
+                                WindowConstants.Swp.SHOWWINDOW);
         }
 
         private Rectangle GetForegroundWindowBounds()

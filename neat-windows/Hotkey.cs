@@ -5,7 +5,7 @@ using System.Xml.Serialization;
 using System.Runtime.InteropServices;
 using System.Collections.Generic;
 
-namespace neat_windows
+namespace NeatWindows
 {
     /*
      *  Hotkey abstraction kindly taken (and modified) from:
@@ -135,12 +135,12 @@ namespace neat_windows
 			this.Register(windowControl);
 		}
 
-		public bool PreFilterMessage(ref Message message)
+		public bool PreFilterMessage(ref Message m)
 		{
-			if (message.Msg != Hotkey.WM_HOTKEY)
+			if (m.Msg != Hotkey.WM_HOTKEY)
 			{ return false; }
 
-			if (this.registered && (message.WParam.ToInt32() == this.id))
+			if (this.registered && (m.WParam.ToInt32() == this.id))
 			{
 				return this.OnPressed();
 			}

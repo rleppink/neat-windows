@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Windows.Forms;
 
-namespace neat_windows
+namespace NeatWindows
 {
     class HotkeyHandler
     {

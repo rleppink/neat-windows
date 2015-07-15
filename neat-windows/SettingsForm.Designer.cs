@@ -1,4 +1,4 @@
-﻿namespace neat_windows
+﻿namespace NeatWindows
 {
     partial class SettingsForm
     {

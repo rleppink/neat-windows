@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-namespace neat_windows
+namespace NeatWindows
 {
     static class NativeMethods
     {

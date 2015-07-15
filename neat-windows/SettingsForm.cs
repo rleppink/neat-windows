@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace neat_windows
+namespace NeatWindows
 {
     public partial class SettingsForm : Form
     {

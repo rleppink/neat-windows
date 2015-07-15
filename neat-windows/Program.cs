@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace neat_windows
+namespace NeatWindows
 {
     static class Program
     {

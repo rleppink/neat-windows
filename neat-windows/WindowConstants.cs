@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace neat_windows
+namespace NeatWindows
 {
     /*
      *  Constants kindly taken from:
@@ -11,7 +11,7 @@ namespace neat_windows
         /// <summary>
         /// Window handles (HWND) used for hWndInsertAfter
         /// </summary>
-        public static class HWND
+        public static class Hwnd
         {
            public static readonly IntPtr
            NOTOPMOST = new IntPtr(-2),
@@ -23,7 +23,7 @@ namespace neat_windows
         /// <summary>
         /// SetWindowPos Flags
         /// </summary>
-        public static class SWP
+        public static class Swp
         {
            public static readonly uint
            NOSIZE = 0x0001,
