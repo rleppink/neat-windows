@@ -9,6 +9,8 @@ namespace neat_windows
     public partial class SettingsForm : Form
     {
         private HotkeyHandler hotkeyHandler;
+        private static string registryPath = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Run";
+        private static string registryValue = @"NeatWindows";
 
         public SettingsForm() 
         { 
@@ -17,7 +19,7 @@ namespace neat_windows
             this.hotkeyHandler = new HotkeyHandler(this);
             this.MapTags();
             this.FillTextBoxes(this.hotkeyHandler.GetHotkeyMap());
-            this.handleStartupCheckBox(this.startupCheckbox);
+            this.initStartupCheckBox();
             this.SetWindowSize();
 
             labelFullscreen.Focus();
@@ -36,8 +38,8 @@ namespace neat_windows
                     height = c.Height + c.Location.Y;
             }
 
-            width += 30;
-            height += 50;
+            width += 25;
+            height += 35;
             this.MinimumSize = new Size(width, height);
             this.MaximumSize = new Size(width, height);
         }
@@ -218,24 +220,21 @@ namespace neat_windows
 
         private void checkBoxStartAtLogin_CheckedChanged(object sender, EventArgs e)
         {
-            this.handleStartupCheckBox((CheckBox) sender);
-        }
-
-        private void handleStartupCheckBox(CheckBox startupCheckBox)
-        {
-            string registryPath = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Run";
-            RegistryKey registryKey = Registry.CurrentUser.OpenSubKey(registryPath, true);
-            if (startupCheckBox.Checked)
-            {
-                registryKey.SetValue("NeatWindows", Application.ExecutablePath.ToString());
-            }
+            RegistryKey registryKey = Registry.CurrentUser.OpenSubKey(SettingsForm.registryPath, true);
+            if (((CheckBox)sender).Checked)
+                registryKey.SetValue(registryValue, Application.ExecutablePath.ToString());
             else
-            {
-                registryKey.DeleteValue("NeatWindows", false);
-            }
-
+                registryKey.DeleteValue(registryValue, false);
         }
 
+        private void initStartupCheckBox()
+        {
+            RegistryKey registryKey = Registry.CurrentUser.OpenSubKey(SettingsForm.registryPath, true);
+            if (registryKey.GetValue(registryValue) == null)
+                this.startupCheckbox.Checked = false;
+            else
+                this.startupCheckbox.Checked = true;
+        }
 
     }
 }
