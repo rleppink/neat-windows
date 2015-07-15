@@ -31,8 +31,7 @@ namespace neat_windows
                 this.ActiveScreenSize().X + (this.ActiveScreenSize().Width - this.TwoThirdsScreenWidth()) / 2,
                 this.ActiveScreenSize().Y + (this.ActiveScreenSize().Height - this.TwoThirdsScreenHeight()) / 2,
                 this.TwoThirdsScreenWidth(),
-                this.TwoThirdsScreenHeight()
-                );
+                this.TwoThirdsScreenHeight());
         }
 
         public Rectangle QuarterCenter()
@@ -41,8 +40,7 @@ namespace neat_windows
                 this.ActiveScreenSize().X + (this.ActiveScreenSize().Width - this.HalfScreenWidth()) / 2,
                 this.ActiveScreenSize().Y + (this.ActiveScreenSize().Height - this.HalfScreenHeight()) / 2,
                 this.HalfScreenWidth(),
-                this.HalfScreenHeight()
-                );
+                this.HalfScreenHeight());
         }
 
         public Rectangle ThirdCenter()
@@ -51,8 +49,7 @@ namespace neat_windows
                 this.ActiveScreenSize().X + (this.ActiveScreenSize().Width - this.ThirdScreenWidth()) / 2,
                 this.ActiveScreenSize().Y + (this.ActiveScreenSize().Height - this.ThirdScreenHeight()) / 2,
                 this.ThirdScreenWidth(),
-                this.ThirdScreenHeight()
-                );
+                this.ThirdScreenHeight());
         }
 
         public Rectangle Center(Rectangle window)
@@ -73,8 +70,7 @@ namespace neat_windows
                 this.LeftX(),
                 this.TopY(),
                 this.HalfScreenWidth(),
-                this.FullScreenHeight()
-                );
+                this.FullScreenHeight());
         }
 
         public Rectangle HalfWidthRight()
@@ -83,8 +79,7 @@ namespace neat_windows
                 this.MidX(),
                 this.TopY(),
                 this.HalfScreenWidth(),
-                this.FullScreenHeight()
-                );
+                this.FullScreenHeight());
         }
 
         public Rectangle HalfHeightTop()
@@ -93,8 +88,7 @@ namespace neat_windows
                 this.LeftX(),
                 this.TopY(),
                 this.FullScreenWidth(),
-                this.HalfScreenHeight()
-                );
+                this.HalfScreenHeight());
         }
 
         public Rectangle HalfHeightBottom()
@@ -103,8 +97,7 @@ namespace neat_windows
                 this.LeftX(),
                 this.MidY(),
                 this.FullScreenWidth(),
-                this.HalfScreenHeight()
-                );
+                this.HalfScreenHeight());
         }
         #endregion Half sizes
 
@@ -115,8 +108,7 @@ namespace neat_windows
                 this.LeftX(),
                 this.TopY(),
                 this.ThirdScreenWidth(),
-                this.FullScreenHeight()
-                );
+                this.FullScreenHeight());
         }
 
         public Rectangle TwoThirdsWidthLeft()
@@ -125,8 +117,7 @@ namespace neat_windows
                 this.LeftX(),
                 this.TopY(),
                 this.TwoThirdsScreenWidth(),
-                this.FullScreenHeight()
-                );
+                this.FullScreenHeight());
         }
 
         public Rectangle ThirdWidthRight()
@@ -135,8 +126,7 @@ namespace neat_windows
                 this.TwoThirdsX(),
                 this.TopY(),
                 this.ThirdScreenWidth(),
-                this.FullScreenHeight()
-                );
+                this.FullScreenHeight());
         }
 
         public Rectangle TwoThirdsWidthRight()
@@ -145,8 +135,7 @@ namespace neat_windows
                 this.ThirdX(),
                 this.TopY(),
                 this.TwoThirdsScreenWidth(),
-                this.FullScreenHeight()
-                );
+                this.FullScreenHeight());
         }
 
         public Rectangle ThirdHeightTop()
@@ -155,8 +144,7 @@ namespace neat_windows
                 this.LeftX(),
                 this.TopY(),
                 this.FullScreenWidth(),
-                this.ThirdScreenHeight()
-                );
+                this.ThirdScreenHeight());
         }
 
         public Rectangle TwoThirdsHeightTop()
@@ -165,8 +153,7 @@ namespace neat_windows
                 this.LeftX(),
                 this.TopY(),
                 this.FullScreenWidth(),
-                this.TwoThirdsScreenHeight()
-                );
+                this.TwoThirdsScreenHeight());
         }
 
         public Rectangle ThirdHeightBottom()
@@ -175,8 +162,7 @@ namespace neat_windows
                 this.LeftX(),
                 this.TwoThirdsY(),
                 this.FullScreenWidth(),
-                this.ThirdScreenHeight()
-                );
+                this.ThirdScreenHeight());
         }
 
         public Rectangle TwoThirdsHeightBottom()
@@ -185,8 +171,7 @@ namespace neat_windows
                 this.LeftX(),
                 this.ThirdY(),
                 this.FullScreenWidth(),
-                this.TwoThirdsScreenHeight()
-                );
+                this.TwoThirdsScreenHeight());
         }
         #endregion Third sizes
 
@@ -197,8 +182,7 @@ namespace neat_windows
                 this.LeftX(),
                 this.TopY(),
                 this.HalfScreenWidth(),
-                this.HalfScreenHeight()
-                );
+                this.HalfScreenHeight());
         }
 
         public Rectangle TopRightQuarter()
@@ -207,8 +191,7 @@ namespace neat_windows
                 this.MidX(),
                 this.TopY(),
                 this.HalfScreenWidth(),
-                this.HalfScreenHeight()
-                );
+                this.HalfScreenHeight());
         }
 
         public Rectangle BottomLeftQuarter()
@@ -217,8 +200,7 @@ namespace neat_windows
                 this.LeftX(),
                 this.MidY(),
                 this.HalfScreenWidth(),
-                this.HalfScreenHeight()
-                );
+                this.HalfScreenHeight());
         }
 
         public Rectangle BottomRightQuarter()
@@ -227,8 +209,7 @@ namespace neat_windows
                 this.MidX(),
                 this.MidY(),
                 this.HalfScreenWidth(),
-                this.HalfScreenHeight()
-                );
+                this.HalfScreenHeight());
         }
         #endregion Quarter sizes
 
@@ -240,8 +221,7 @@ namespace neat_windows
                 nextScreenBounds.X + ((nextScreenBounds.Width - window.Width) / 2),
                 nextScreenBounds.Y + ((nextScreenBounds.Height - window.Height) / 2),
                 window.Width,
-                window.Height
-                );
+                window.Height);
         }
 
         public Rectangle PreviousScreen(Rectangle window)
@@ -251,8 +231,7 @@ namespace neat_windows
                 previousScreenBounds.X + (previousScreenBounds.Width - window.Width) / 2,
                 previousScreenBounds.Y + (previousScreenBounds.Height - window.Height) / 2,
                 window.Width,
-                window.Height
-                );
+                window.Height);
         }
 
         private Screen GetNextScreen() 
