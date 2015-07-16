@@ -73,6 +73,7 @@ namespace NeatWindows
                 KeyValuePair<WindowSizePosition, Hotkey> keyValuePair = this.ParseHotkeyLine(line);
                 hotkeyMap.Add(keyValuePair.Key, keyValuePair.Value);
             }
+
             return hotkeyMap;
         }
 

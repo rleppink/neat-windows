@@ -190,6 +190,7 @@ namespace NeatWindows
             {
                 this.Pressed(this, handledEventArgs);
             }
+
             return handledEventArgs.Handled;
         }
 

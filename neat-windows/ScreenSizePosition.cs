@@ -247,6 +247,7 @@ namespace NeatWindows
                         nextScreenIndex = 0;
                 }
             }
+
             return Screen.AllScreens[nextScreenIndex];
         }
 
@@ -262,6 +263,7 @@ namespace NeatWindows
                         previousScreenIndex = Screen.AllScreens.Length - 1;
                 }
             }
+
             return Screen.AllScreens[previousScreenIndex];
         }
         #endregion Multiple screens

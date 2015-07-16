@@ -72,6 +72,7 @@ namespace NeatWindows
                     mappedHotkey.Shift == hotkey.Shift)
                     return true;
             }
+
             return false;
         }
 
