@@ -71,11 +71,11 @@ namespace NeatWindows
             }
         }
 
-        public bool GetCanRegister(Control control)
+        public bool GetCanRegister(Control controlToRegister)
         {
             try
             {
-                if (!this.Register(control))
+                if (!this.Register(controlToRegister))
                 {
                     return false;
                 }
@@ -93,8 +93,13 @@ namespace NeatWindows
             }
         }
 
-        public bool Register(Control windowControl)
+        public bool Register(Control controlToRegister)
         {
+            if (controlToRegister == null)
+            {
+                return false;
+            }
+
             if (this.registered)
             {
                 return true;
@@ -111,7 +116,7 @@ namespace NeatWindows
             uint modifiers = (this.Alt ? Hotkey.MOD_ALT : 0) | (this.Control ? Hotkey.MOD_CONTROL : 0) |
                             (this.Shift ? Hotkey.MOD_SHIFT : 0) | (this.Windows ? Hotkey.MOD_WIN : 0);
 
-            if (NativeMethods.RegisterHotKey(windowControl.Handle, this.id, modifiers, keyCode) == 0)
+            if (NativeMethods.RegisterHotKey(controlToRegister.Handle, this.id, modifiers, keyCode) == 0)
             {
                 if (Marshal.GetLastWin32Error() == ERROR_HOTKEY_ALREADY_REGISTERED)
                 {
@@ -124,7 +129,7 @@ namespace NeatWindows
             }
 
             this.registered = true;
-            this.windowControl = windowControl;
+            this.windowControl = controlToRegister;
 
             return true;
         }
@@ -155,10 +160,10 @@ namespace NeatWindows
                 return;
             }
 
-            Control windowControl = this.windowControl;
+            Control currentWindowControl = this.windowControl;
 
             this.Unregister();
-            this.Register(windowControl);
+            this.Register(currentWindowControl);
         }
 
         public bool PreFilterMessage(ref Message m)
