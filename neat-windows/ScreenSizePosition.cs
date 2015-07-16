@@ -7,6 +7,7 @@ namespace neat_windows
     class ScreenSizePosition
     {
         private Screen activeScreen;
+        private static int border = 0;
 
 
         public ScreenSizePosition(IntPtr activeWindow)
@@ -266,11 +267,11 @@ namespace neat_windows
         #endregion Multiple screens
 
         #region Sizes
-        private int FullScreenWidth() { return this.ActiveScreenSize().Width; }
-        private int FullScreenHeight() { return this.ActiveScreenSize().Height; }
+        private int FullScreenWidth() { return this.ActiveScreenSize().Width - (border * 2); }
+        private int FullScreenHeight() { return this.ActiveScreenSize().Height - (border * 2); }
 
-        private int HalfScreenWidth() { return this.ActiveScreenSize().Width / 2; }
-        private int HalfScreenHeight() { return this.ActiveScreenSize().Height / 2; }
+        private int HalfScreenWidth() { return (this.ActiveScreenSize().Width / 2) - (border + (border / 2)); }
+        private int HalfScreenHeight() { return this.ActiveScreenSize().Height / 2 - (border + (border / 2)); }
 
         private int ThirdScreenWidth() { return this.ActiveScreenSize().Width / 3; }
         private int ThirdScreenHeight() { return this.ActiveScreenSize().Height / 3; }
@@ -280,13 +281,13 @@ namespace neat_windows
         #endregion Sizes
 
         #region Positions
-        private int LeftX() { return this.ActiveScreenSize().X; }
-        private int MidX() { return this.ActiveScreenSize().X + this.HalfScreenWidth(); }
+        private int LeftX() { return this.ActiveScreenSize().X + border; }
+        private int MidX() { return this.ActiveScreenSize().X + (this.ActiveScreenSize().Width / 2) + (border / 2); }
         private int ThirdX() { return this.ActiveScreenSize().X + this.ThirdScreenWidth(); }
         private int TwoThirdsX() { return this.ActiveScreenSize().X + (this.ThirdScreenWidth() * 2); }
 
-        private int TopY() { return this.ActiveScreenSize().Y; }
-        private int MidY() { return this.ActiveScreenSize().Y + this.HalfScreenHeight(); }
+        private int TopY() { return this.ActiveScreenSize().Y + border; }
+        private int MidY() { return this.ActiveScreenSize().Y + (this.ActiveScreenSize().Height / 2) + (border / 2); }
         private int ThirdY() { return this.ActiveScreenSize().Y + this.ThirdScreenHeight(); }
         private int TwoThirdsY() { return this.ActiveScreenSize().Y + (this.ThirdScreenHeight() * 2); }
         #endregion Positions
