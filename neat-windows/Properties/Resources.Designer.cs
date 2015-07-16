@@ -59,5 +59,14 @@ namespace NeatWindows.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to That key combination already exists..
+        /// </summary>
+        internal static string hotkeyAlreadyExistsWarning {
+            get {
+                return ResourceManager.GetString("hotkeyAlreadyExistsWarning", resourceCulture);
+            }
+        }
     }
 }

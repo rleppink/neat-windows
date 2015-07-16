@@ -1,11 +1,11 @@
-﻿using Microsoft.Win32;
-using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Windows.Forms;
-
-namespace NeatWindows
+﻿namespace NeatWindows
 {
+    using Microsoft.Win32;
+    using System;
+    using System.Collections.Generic;
+    using System.Drawing;
+    using System.Windows.Forms;
+
     public partial class SettingsForm : Form
     {
         private HotkeyHandler hotkeyHandler;
@@ -74,7 +74,7 @@ namespace NeatWindows
         #region Tag mapping
         private void MapTags()
         {
-            this.textBoxFullscreen.Tag = WindowSizePosition.FullScreen;
+            this.textBoxFullscreen.Tag = WindowSizePosition.Fullscreen;
             this.textBoxCenter.Tag = WindowSizePosition.Center;
             this.textBoxNextDisplay.Tag = WindowSizePosition.NextScreen;
             this.textBoxPreviousDisplay.Tag = WindowSizePosition.PreviousScreen;
@@ -89,7 +89,7 @@ namespace NeatWindows
             this.textBoxBottomLeftQuarter.Tag = WindowSizePosition.BottomLeft;
             this.textBoxBottomRightQuarter.Tag = WindowSizePosition.BottomRight;
 
-            this.buttonFullscreen.Tag = WindowSizePosition.FullScreen;
+            this.buttonFullscreen.Tag = WindowSizePosition.Fullscreen;
             this.buttonCenter.Tag = WindowSizePosition.Center;
             this.buttonNextDisplay.Tag = WindowSizePosition.NextScreen;
             this.buttonPreviousDisplay.Tag = WindowSizePosition.PreviousScreen;
@@ -146,7 +146,7 @@ namespace NeatWindows
 
             if (this.hotkeyHandler.HotkeyExists(windowSizePosition, hotkey))
             {
-                senderTextBox.Text = "That hotkey already exists.";
+                senderTextBox.Text = NeatWindows.Properties.Resources.hotkeyAlreadyExistsWarning;
                 return;
             }
 
@@ -175,12 +175,15 @@ namespace NeatWindows
         #region Textbox control
         public void FillTextBoxes(Dictionary<WindowSizePosition, Hotkey> hotkeyMap)
         {
+            if (hotkeyMap == null)
+            {
+                return;
+            }
             foreach (KeyValuePair<WindowSizePosition, Hotkey> hotkeyMapping in hotkeyMap) 
             {
                 TextBox taggedTextBox = this.GetTextBoxByTag(hotkeyMapping.Key);
                 if (taggedTextBox == null)
                 {
-                    Console.WriteLine("Null found for key: " + hotkeyMapping.Key.ToString());
                     continue;
                 }
                 taggedTextBox.Text = hotkeyMapping.Value.ToString();

@@ -120,10 +120,37 @@
   <metadata name="settingsIcon.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <data name="settingsIcon.BalloonTipText" xml:space="preserve">
+    <value>Neat Windows will run here when minimized. Double click the icon to reopen the settings screen.</value>
+  </data>
+  <data name="settingsIcon.BalloonTipTitle" xml:space="preserve">
+    <value>Neat Windows</value>
+  </data>
   <metadata name="settingsIconContextMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>15, 39</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="openSettingsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>172, 22</value>
+  </data>
+  <data name="openSettingsToolStripMenuItem.Text" xml:space="preserve">
+    <value>Open settings</value>
+  </data>
+  <data name="exitNeatWindowsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>172, 22</value>
+  </data>
+  <data name="exitNeatWindowsToolStripMenuItem.Text" xml:space="preserve">
+    <value>Exit Neat Windows</value>
+  </data>
+  <data name="settingsIconContextMenu.Size" type="System.Drawing.Size, System.Drawing">
+    <value>173, 70</value>
+  </data>
+  <data name="&gt;&gt;settingsIconContextMenu.Name" xml:space="preserve">
+    <value>settingsIconContextMenu</value>
+  </data>
+  <data name="&gt;&gt;settingsIconContextMenu.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="settingsIcon.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAEAEBAAAAAAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAQAQAAAAAAAAAAAAAAAAAAAAA
@@ -148,103 +175,1338 @@
         //8AAP//AAD//w==
 </value>
   </data>
+  <data name="settingsIcon.Text" xml:space="preserve">
+    <value>Neat Windows</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="settingsIcon.Visible" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelBottomRightQuarter.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelBottomRightQuarter.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 355</value>
+  </data>
+  <data name="labelBottomRightQuarter.Size" type="System.Drawing.Size, System.Drawing">
+    <value>140, 13</value>
+  </data>
+  <data name="labelBottomRightQuarter.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="labelBottomRightQuarter.Text" xml:space="preserve">
+    <value>Move to bottom right quarter</value>
+  </data>
+  <data name="labelBottomRightQuarter.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopRight</value>
+  </data>
+  <data name="&gt;&gt;labelBottomRightQuarter.Name" xml:space="preserve">
+    <value>labelBottomRightQuarter</value>
+  </data>
+  <data name="&gt;&gt;labelBottomRightQuarter.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelBottomRightQuarter.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;labelBottomRightQuarter.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="textBoxBottomRightQuarter.Location" type="System.Drawing.Point, System.Drawing">
+    <value>162, 353</value>
+  </data>
+  <data name="textBoxBottomRightQuarter.Size" type="System.Drawing.Size, System.Drawing">
+    <value>181, 20</value>
+  </data>
+  <data name="textBoxBottomRightQuarter.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="textBoxBottomRightQuarter.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="textBoxBottomRightQuarter.WordWrap" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;textBoxBottomRightQuarter.Name" xml:space="preserve">
+    <value>textBoxBottomRightQuarter</value>
+  </data>
+  <data name="&gt;&gt;textBoxBottomRightQuarter.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxBottomRightQuarter.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;textBoxBottomRightQuarter.ZOrder" xml:space="preserve">
+    <value>16</value>
+  </data>
+  <data name="labelBottomLeftQuarter.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelBottomLeftQuarter.Location" type="System.Drawing.Point, System.Drawing">
+    <value>22, 329</value>
+  </data>
+  <data name="labelBottomLeftQuarter.Size" type="System.Drawing.Size, System.Drawing">
+    <value>134, 13</value>
+  </data>
+  <data name="labelBottomLeftQuarter.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="labelBottomLeftQuarter.Text" xml:space="preserve">
+    <value>Move to bottom left quarter</value>
+  </data>
+  <data name="labelBottomLeftQuarter.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopRight</value>
+  </data>
+  <data name="&gt;&gt;labelBottomLeftQuarter.Name" xml:space="preserve">
+    <value>labelBottomLeftQuarter</value>
+  </data>
+  <data name="&gt;&gt;labelBottomLeftQuarter.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelBottomLeftQuarter.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;labelBottomLeftQuarter.ZOrder" xml:space="preserve">
+    <value>18</value>
+  </data>
+  <data name="textBoxBottomLeftQuarter.Location" type="System.Drawing.Point, System.Drawing">
+    <value>162, 327</value>
+  </data>
+  <data name="textBoxBottomLeftQuarter.Size" type="System.Drawing.Size, System.Drawing">
+    <value>181, 20</value>
+  </data>
+  <data name="textBoxBottomLeftQuarter.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="textBoxBottomLeftQuarter.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="textBoxBottomLeftQuarter.WordWrap" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;textBoxBottomLeftQuarter.Name" xml:space="preserve">
+    <value>textBoxBottomLeftQuarter</value>
+  </data>
+  <data name="&gt;&gt;textBoxBottomLeftQuarter.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxBottomLeftQuarter.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;textBoxBottomLeftQuarter.ZOrder" xml:space="preserve">
+    <value>20</value>
+  </data>
+  <data name="labelTopRightQuarter.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelTopRightQuarter.Location" type="System.Drawing.Point, System.Drawing">
+    <value>33, 303</value>
+  </data>
+  <data name="labelTopRightQuarter.Size" type="System.Drawing.Size, System.Drawing">
+    <value>123, 13</value>
+  </data>
+  <data name="labelTopRightQuarter.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="labelTopRightQuarter.Text" xml:space="preserve">
+    <value>Move to top right quarter</value>
+  </data>
+  <data name="labelTopRightQuarter.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopRight</value>
+  </data>
+  <data name="&gt;&gt;labelTopRightQuarter.Name" xml:space="preserve">
+    <value>labelTopRightQuarter</value>
+  </data>
+  <data name="&gt;&gt;labelTopRightQuarter.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelTopRightQuarter.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;labelTopRightQuarter.ZOrder" xml:space="preserve">
+    <value>22</value>
+  </data>
+  <data name="textBoxTopRightQuarter.Location" type="System.Drawing.Point, System.Drawing">
+    <value>162, 301</value>
+  </data>
+  <data name="textBoxTopRightQuarter.Size" type="System.Drawing.Size, System.Drawing">
+    <value>181, 20</value>
+  </data>
+  <data name="textBoxTopRightQuarter.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="textBoxTopRightQuarter.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="textBoxTopRightQuarter.WordWrap" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;textBoxTopRightQuarter.Name" xml:space="preserve">
+    <value>textBoxTopRightQuarter</value>
+  </data>
+  <data name="&gt;&gt;textBoxTopRightQuarter.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxTopRightQuarter.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;textBoxTopRightQuarter.ZOrder" xml:space="preserve">
+    <value>24</value>
+  </data>
+  <data name="labelTopLeftQuarter.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelTopLeftQuarter.Location" type="System.Drawing.Point, System.Drawing">
+    <value>39, 277</value>
+  </data>
+  <data name="labelTopLeftQuarter.Size" type="System.Drawing.Size, System.Drawing">
+    <value>117, 13</value>
+  </data>
+  <data name="labelTopLeftQuarter.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="labelTopLeftQuarter.Text" xml:space="preserve">
+    <value>Move to top left quarter</value>
+  </data>
+  <data name="labelTopLeftQuarter.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopRight</value>
+  </data>
+  <data name="&gt;&gt;labelTopLeftQuarter.Name" xml:space="preserve">
+    <value>labelTopLeftQuarter</value>
+  </data>
+  <data name="&gt;&gt;labelTopLeftQuarter.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelTopLeftQuarter.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;labelTopLeftQuarter.ZOrder" xml:space="preserve">
+    <value>25</value>
+  </data>
+  <data name="textBoxTopLeftQuarter.Location" type="System.Drawing.Point, System.Drawing">
+    <value>162, 275</value>
+  </data>
+  <data name="textBoxTopLeftQuarter.Size" type="System.Drawing.Size, System.Drawing">
+    <value>181, 20</value>
+  </data>
+  <data name="textBoxTopLeftQuarter.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="textBoxTopLeftQuarter.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="textBoxTopLeftQuarter.WordWrap" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;textBoxTopLeftQuarter.Name" xml:space="preserve">
+    <value>textBoxTopLeftQuarter</value>
+  </data>
+  <data name="&gt;&gt;textBoxTopLeftQuarter.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxTopLeftQuarter.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;textBoxTopLeftQuarter.ZOrder" xml:space="preserve">
+    <value>26</value>
+  </data>
+  <data name="labelPreviousDisplay.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelPreviousDisplay.Location" type="System.Drawing.Point, System.Drawing">
+    <value>32, 95</value>
+  </data>
+  <data name="labelPreviousDisplay.Size" type="System.Drawing.Size, System.Drawing">
+    <value>124, 13</value>
+  </data>
+  <data name="labelPreviousDisplay.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="labelPreviousDisplay.Text" xml:space="preserve">
+    <value>Move to previous display</value>
+  </data>
+  <data name="labelPreviousDisplay.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopRight</value>
+  </data>
+  <data name="&gt;&gt;labelPreviousDisplay.Name" xml:space="preserve">
+    <value>labelPreviousDisplay</value>
+  </data>
+  <data name="&gt;&gt;labelPreviousDisplay.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelPreviousDisplay.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;labelPreviousDisplay.ZOrder" xml:space="preserve">
+    <value>17</value>
+  </data>
+  <data name="textBoxPreviousDisplay.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8.25pt</value>
+  </data>
+  <data name="textBoxPreviousDisplay.Location" type="System.Drawing.Point, System.Drawing">
+    <value>162, 93</value>
+  </data>
+  <data name="textBoxPreviousDisplay.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
+    <value>No</value>
+  </data>
+  <data name="textBoxPreviousDisplay.Size" type="System.Drawing.Size, System.Drawing">
+    <value>181, 20</value>
+  </data>
+  <data name="textBoxPreviousDisplay.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="textBoxPreviousDisplay.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="textBoxPreviousDisplay.WordWrap" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;textBoxPreviousDisplay.Name" xml:space="preserve">
+    <value>textBoxPreviousDisplay</value>
+  </data>
+  <data name="&gt;&gt;textBoxPreviousDisplay.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxPreviousDisplay.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;textBoxPreviousDisplay.ZOrder" xml:space="preserve">
+    <value>21</value>
+  </data>
+  <data name="labelNextDisplay.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelNextDisplay.Location" type="System.Drawing.Point, System.Drawing">
+    <value>52, 69</value>
+  </data>
+  <data name="labelNextDisplay.Size" type="System.Drawing.Size, System.Drawing">
+    <value>104, 13</value>
+  </data>
+  <data name="labelNextDisplay.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="labelNextDisplay.Text" xml:space="preserve">
+    <value>Move to next display</value>
+  </data>
+  <data name="labelNextDisplay.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopRight</value>
+  </data>
+  <data name="&gt;&gt;labelNextDisplay.Name" xml:space="preserve">
+    <value>labelNextDisplay</value>
+  </data>
+  <data name="&gt;&gt;labelNextDisplay.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelNextDisplay.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;labelNextDisplay.ZOrder" xml:space="preserve">
+    <value>28</value>
+  </data>
+  <data name="textBoxNextDisplay.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8.25pt</value>
+  </data>
+  <data name="textBoxNextDisplay.Location" type="System.Drawing.Point, System.Drawing">
+    <value>162, 67</value>
+  </data>
+  <data name="textBoxNextDisplay.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
+    <value>No</value>
+  </data>
+  <data name="textBoxNextDisplay.Size" type="System.Drawing.Size, System.Drawing">
+    <value>181, 20</value>
+  </data>
+  <data name="textBoxNextDisplay.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="textBoxNextDisplay.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="textBoxNextDisplay.WordWrap" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;textBoxNextDisplay.Name" xml:space="preserve">
+    <value>textBoxNextDisplay</value>
+  </data>
+  <data name="&gt;&gt;textBoxNextDisplay.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxNextDisplay.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;textBoxNextDisplay.ZOrder" xml:space="preserve">
+    <value>31</value>
+  </data>
+  <data name="labelCenter.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelCenter.Location" type="System.Drawing.Point, System.Drawing">
+    <value>118, 43</value>
+  </data>
+  <data name="labelCenter.Size" type="System.Drawing.Size, System.Drawing">
+    <value>38, 13</value>
+  </data>
+  <data name="labelCenter.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="labelCenter.Text" xml:space="preserve">
+    <value>Center</value>
+  </data>
+  <data name="labelCenter.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopRight</value>
+  </data>
+  <data name="&gt;&gt;labelCenter.Name" xml:space="preserve">
+    <value>labelCenter</value>
+  </data>
+  <data name="&gt;&gt;labelCenter.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelCenter.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;labelCenter.ZOrder" xml:space="preserve">
+    <value>34</value>
+  </data>
+  <data name="textBoxCenter.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8.25pt</value>
+  </data>
+  <data name="textBoxCenter.Location" type="System.Drawing.Point, System.Drawing">
+    <value>162, 41</value>
+  </data>
+  <data name="textBoxCenter.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
+    <value>No</value>
+  </data>
+  <data name="textBoxCenter.Size" type="System.Drawing.Size, System.Drawing">
+    <value>181, 20</value>
+  </data>
+  <data name="textBoxCenter.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="textBoxCenter.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="textBoxCenter.WordWrap" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;textBoxCenter.Name" xml:space="preserve">
+    <value>textBoxCenter</value>
+  </data>
+  <data name="&gt;&gt;textBoxCenter.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxCenter.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;textBoxCenter.ZOrder" xml:space="preserve">
+    <value>36</value>
+  </data>
+  <data name="labelFullscreen.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelFullscreen.Location" type="System.Drawing.Point, System.Drawing">
+    <value>101, 17</value>
+  </data>
+  <data name="labelFullscreen.Size" type="System.Drawing.Size, System.Drawing">
+    <value>55, 13</value>
+  </data>
+  <data name="labelFullscreen.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="labelFullscreen.Text" xml:space="preserve">
+    <value>Fullscreen</value>
+  </data>
+  <data name="labelFullscreen.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopRight</value>
+  </data>
+  <data name="&gt;&gt;labelFullscreen.Name" xml:space="preserve">
+    <value>labelFullscreen</value>
+  </data>
+  <data name="&gt;&gt;labelFullscreen.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelFullscreen.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;labelFullscreen.ZOrder" xml:space="preserve">
+    <value>37</value>
+  </data>
+  <data name="textBoxFullscreen.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8.25pt</value>
+  </data>
+  <data name="textBoxFullscreen.Location" type="System.Drawing.Point, System.Drawing">
+    <value>162, 15</value>
+  </data>
+  <data name="textBoxFullscreen.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
+    <value>No</value>
+  </data>
+  <data name="textBoxFullscreen.Size" type="System.Drawing.Size, System.Drawing">
+    <value>181, 20</value>
+  </data>
+  <data name="textBoxFullscreen.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="textBoxFullscreen.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="textBoxFullscreen.WordWrap" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;textBoxFullscreen.Name" xml:space="preserve">
+    <value>textBoxFullscreen</value>
+  </data>
+  <data name="&gt;&gt;textBoxFullscreen.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxFullscreen.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;textBoxFullscreen.ZOrder" xml:space="preserve">
+    <value>35</value>
+  </data>
+  <data name="textBoxLeftHalf.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8.25pt</value>
+  </data>
+  <data name="textBoxLeftHalf.Location" type="System.Drawing.Point, System.Drawing">
+    <value>162, 145</value>
+  </data>
+  <data name="textBoxLeftHalf.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
+    <value>No</value>
+  </data>
+  <data name="textBoxLeftHalf.Size" type="System.Drawing.Size, System.Drawing">
+    <value>181, 20</value>
+  </data>
+  <data name="textBoxLeftHalf.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="textBoxLeftHalf.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="textBoxLeftHalf.WordWrap" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;textBoxLeftHalf.Name" xml:space="preserve">
+    <value>textBoxLeftHalf</value>
+  </data>
+  <data name="&gt;&gt;textBoxLeftHalf.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxLeftHalf.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;textBoxLeftHalf.ZOrder" xml:space="preserve">
+    <value>33</value>
+  </data>
+  <data name="labelLeftHalf.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelLeftHalf.Location" type="System.Drawing.Point, System.Drawing">
+    <value>73, 147</value>
+  </data>
+  <data name="labelLeftHalf.Size" type="System.Drawing.Size, System.Drawing">
+    <value>83, 13</value>
+  </data>
+  <data name="labelLeftHalf.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="labelLeftHalf.Text" xml:space="preserve">
+    <value>Move to left half</value>
+  </data>
+  <data name="labelLeftHalf.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopRight</value>
+  </data>
+  <data name="&gt;&gt;labelLeftHalf.Name" xml:space="preserve">
+    <value>labelLeftHalf</value>
+  </data>
+  <data name="&gt;&gt;labelLeftHalf.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelLeftHalf.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;labelLeftHalf.ZOrder" xml:space="preserve">
+    <value>32</value>
+  </data>
+  <data name="textBoxRightHalf.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8.25pt</value>
+  </data>
+  <data name="textBoxRightHalf.Location" type="System.Drawing.Point, System.Drawing">
+    <value>162, 171</value>
+  </data>
+  <data name="textBoxRightHalf.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
+    <value>No</value>
+  </data>
+  <data name="textBoxRightHalf.Size" type="System.Drawing.Size, System.Drawing">
+    <value>181, 20</value>
+  </data>
+  <data name="textBoxRightHalf.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="textBoxRightHalf.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="textBoxRightHalf.WordWrap" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;textBoxRightHalf.Name" xml:space="preserve">
+    <value>textBoxRightHalf</value>
+  </data>
+  <data name="&gt;&gt;textBoxRightHalf.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxRightHalf.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;textBoxRightHalf.ZOrder" xml:space="preserve">
+    <value>30</value>
+  </data>
+  <data name="labelRightHalf.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelRightHalf.Location" type="System.Drawing.Point, System.Drawing">
+    <value>67, 173</value>
+  </data>
+  <data name="labelRightHalf.Size" type="System.Drawing.Size, System.Drawing">
+    <value>89, 13</value>
+  </data>
+  <data name="labelRightHalf.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="labelRightHalf.Text" xml:space="preserve">
+    <value>Move to right half</value>
+  </data>
+  <data name="labelRightHalf.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopRight</value>
+  </data>
+  <data name="&gt;&gt;labelRightHalf.Name" xml:space="preserve">
+    <value>labelRightHalf</value>
+  </data>
+  <data name="&gt;&gt;labelRightHalf.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelRightHalf.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;labelRightHalf.ZOrder" xml:space="preserve">
+    <value>29</value>
+  </data>
+  <data name="textBoxTopHalf.Location" type="System.Drawing.Point, System.Drawing">
+    <value>162, 197</value>
+  </data>
+  <data name="textBoxTopHalf.Size" type="System.Drawing.Size, System.Drawing">
+    <value>181, 20</value>
+  </data>
+  <data name="textBoxTopHalf.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="textBoxTopHalf.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="textBoxTopHalf.WordWrap" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;textBoxTopHalf.Name" xml:space="preserve">
+    <value>textBoxTopHalf</value>
+  </data>
+  <data name="&gt;&gt;textBoxTopHalf.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxTopHalf.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;textBoxTopHalf.ZOrder" xml:space="preserve">
+    <value>27</value>
+  </data>
+  <data name="labelTopHalf.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelTopHalf.Location" type="System.Drawing.Point, System.Drawing">
+    <value>72, 199</value>
+  </data>
+  <data name="labelTopHalf.Size" type="System.Drawing.Size, System.Drawing">
+    <value>84, 13</value>
+  </data>
+  <data name="labelTopHalf.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="labelTopHalf.Text" xml:space="preserve">
+    <value>Move to top half</value>
+  </data>
+  <data name="labelTopHalf.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopRight</value>
+  </data>
+  <data name="&gt;&gt;labelTopHalf.Name" xml:space="preserve">
+    <value>labelTopHalf</value>
+  </data>
+  <data name="&gt;&gt;labelTopHalf.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelTopHalf.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;labelTopHalf.ZOrder" xml:space="preserve">
+    <value>23</value>
+  </data>
+  <data name="textBoxBottomHalf.Location" type="System.Drawing.Point, System.Drawing">
+    <value>162, 223</value>
+  </data>
+  <data name="textBoxBottomHalf.Size" type="System.Drawing.Size, System.Drawing">
+    <value>181, 20</value>
+  </data>
+  <data name="textBoxBottomHalf.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="textBoxBottomHalf.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="textBoxBottomHalf.WordWrap" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;textBoxBottomHalf.Name" xml:space="preserve">
+    <value>textBoxBottomHalf</value>
+  </data>
+  <data name="&gt;&gt;textBoxBottomHalf.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxBottomHalf.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;textBoxBottomHalf.ZOrder" xml:space="preserve">
+    <value>19</value>
+  </data>
+  <data name="labelBottomHalf.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelBottomHalf.Location" type="System.Drawing.Point, System.Drawing">
+    <value>55, 225</value>
+  </data>
+  <data name="labelBottomHalf.Size" type="System.Drawing.Size, System.Drawing">
+    <value>101, 13</value>
+  </data>
+  <data name="labelBottomHalf.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="labelBottomHalf.Text" xml:space="preserve">
+    <value>Move to bottom half</value>
+  </data>
+  <data name="labelBottomHalf.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopRight</value>
+  </data>
+  <data name="&gt;&gt;labelBottomHalf.Name" xml:space="preserve">
+    <value>labelBottomHalf</value>
+  </data>
+  <data name="&gt;&gt;labelBottomHalf.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelBottomHalf.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;labelBottomHalf.ZOrder" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <data name="buttonFullscreen.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="buttonFullscreen.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
   <data name="buttonFullscreen.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAN
-        1QAADdUBPdZY8QAAAAd0SU1FB98HCA4PHi8h/AMAAAB3SURBVFhH7Y7RCsAgCEX7/+/wP1uWDh9auDUd
+        1AAADdQB75G6FQAAAAd0SU1FB98HCA4PHi8h/AMAAAB3SURBVFhH7Y7RCsAgCEX7/+/wP1uWDh9auDUd
         jHsglJt4LAAAAO5ARNJd45l5hC5eCTwzW8ji2mrtgUEy/htBFEZ0HjHLQrHCdLmiYn7pcubTA1TO1fb9
         M5qZMO2IJuAyFZkjRvA2ungl8Mxs4VkcJgcAgJ9SygE9b3S5XZ6qXwAAAABJRU5ErkJggg==
 </value>
+  </data>
+  <data name="buttonFullscreen.Location" type="System.Drawing.Point, System.Drawing">
+    <value>349, 15</value>
+  </data>
+  <data name="buttonFullscreen.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="buttonFullscreen.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 1, 1</value>
+  </data>
+  <data name="buttonFullscreen.Size" type="System.Drawing.Size, System.Drawing">
+    <value>20, 20</value>
+  </data>
+  <data name="buttonFullscreen.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="buttonFullscreen.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopRight</value>
+  </data>
+  <data name="&gt;&gt;buttonFullscreen.Name" xml:space="preserve">
+    <value>buttonFullscreen</value>
+  </data>
+  <data name="&gt;&gt;buttonFullscreen.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonFullscreen.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;buttonFullscreen.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="buttonCenter.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="buttonCenter.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
   </data>
   <data name="buttonCenter.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAN
-        1QAADdUBPdZY8QAAAAd0SU1FB98HCA4PHi8h/AMAAAB3SURBVFhH7Y7RCsAgCEX7/+/wP1uWDh9auDUd
+        1AAADdQB75G6FQAAAAd0SU1FB98HCA4PHi8h/AMAAAB3SURBVFhH7Y7RCsAgCEX7/+/wP1uWDh9auDUd
         jHsglJt4LAAAAO5ARNJd45l5hC5eCTwzW8ji2mrtgUEy/htBFEZ0HjHLQrHCdLmiYn7pcubTA1TO1fb9
         M5qZMO2IJuAyFZkjRvA2ungl8Mxs4VkcJgcAgJ9SygE9b3S5XZ6qXwAAAABJRU5ErkJggg==
 </value>
+  </data>
+  <data name="buttonCenter.Location" type="System.Drawing.Point, System.Drawing">
+    <value>349, 41</value>
+  </data>
+  <data name="buttonCenter.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="buttonCenter.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 1, 1</value>
+  </data>
+  <data name="buttonCenter.Size" type="System.Drawing.Size, System.Drawing">
+    <value>20, 20</value>
+  </data>
+  <data name="buttonCenter.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="buttonCenter.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopRight</value>
+  </data>
+  <data name="&gt;&gt;buttonCenter.Name" xml:space="preserve">
+    <value>buttonCenter</value>
+  </data>
+  <data name="&gt;&gt;buttonCenter.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonCenter.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;buttonCenter.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="buttonNextDisplay.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="buttonNextDisplay.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
   </data>
   <data name="buttonNextDisplay.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAN
-        1QAADdUBPdZY8QAAAAd0SU1FB98HCA4PHi8h/AMAAAB3SURBVFhH7Y7RCsAgCEX7/+/wP1uWDh9auDUd
+        1AAADdQB75G6FQAAAAd0SU1FB98HCA4PHi8h/AMAAAB3SURBVFhH7Y7RCsAgCEX7/+/wP1uWDh9auDUd
         jHsglJt4LAAAAO5ARNJd45l5hC5eCTwzW8ji2mrtgUEy/htBFEZ0HjHLQrHCdLmiYn7pcubTA1TO1fb9
         M5qZMO2IJuAyFZkjRvA2ungl8Mxs4VkcJgcAgJ9SygE9b3S5XZ6qXwAAAABJRU5ErkJggg==
 </value>
+  </data>
+  <data name="buttonNextDisplay.Location" type="System.Drawing.Point, System.Drawing">
+    <value>349, 67</value>
+  </data>
+  <data name="buttonNextDisplay.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="buttonNextDisplay.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 1, 1</value>
+  </data>
+  <data name="buttonNextDisplay.Size" type="System.Drawing.Size, System.Drawing">
+    <value>20, 20</value>
+  </data>
+  <data name="buttonNextDisplay.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="buttonNextDisplay.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopRight</value>
+  </data>
+  <data name="&gt;&gt;buttonNextDisplay.Name" xml:space="preserve">
+    <value>buttonNextDisplay</value>
+  </data>
+  <data name="&gt;&gt;buttonNextDisplay.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonNextDisplay.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;buttonNextDisplay.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="buttonPreviousDisplay.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="buttonPreviousDisplay.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
   </data>
   <data name="buttonPreviousDisplay.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAN
-        1QAADdUBPdZY8QAAAAd0SU1FB98HCA4PHi8h/AMAAAB3SURBVFhH7Y7RCsAgCEX7/+/wP1uWDh9auDUd
+        1AAADdQB75G6FQAAAAd0SU1FB98HCA4PHi8h/AMAAAB3SURBVFhH7Y7RCsAgCEX7/+/wP1uWDh9auDUd
         jHsglJt4LAAAAO5ARNJd45l5hC5eCTwzW8ji2mrtgUEy/htBFEZ0HjHLQrHCdLmiYn7pcubTA1TO1fb9
         M5qZMO2IJuAyFZkjRvA2ungl8Mxs4VkcJgcAgJ9SygE9b3S5XZ6qXwAAAABJRU5ErkJggg==
 </value>
+  </data>
+  <data name="buttonPreviousDisplay.Location" type="System.Drawing.Point, System.Drawing">
+    <value>349, 93</value>
+  </data>
+  <data name="buttonPreviousDisplay.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="buttonPreviousDisplay.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 1, 1</value>
+  </data>
+  <data name="buttonPreviousDisplay.Size" type="System.Drawing.Size, System.Drawing">
+    <value>20, 20</value>
+  </data>
+  <data name="buttonPreviousDisplay.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="buttonPreviousDisplay.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopRight</value>
+  </data>
+  <data name="&gt;&gt;buttonPreviousDisplay.Name" xml:space="preserve">
+    <value>buttonPreviousDisplay</value>
+  </data>
+  <data name="&gt;&gt;buttonPreviousDisplay.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonPreviousDisplay.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;buttonPreviousDisplay.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="buttonLeftHalf.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="buttonLeftHalf.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
   </data>
   <data name="buttonLeftHalf.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAN
-        1QAADdUBPdZY8QAAAAd0SU1FB98HCA4PHi8h/AMAAAB3SURBVFhH7Y7RCsAgCEX7/+/wP1uWDh9auDUd
+        1AAADdQB75G6FQAAAAd0SU1FB98HCA4PHi8h/AMAAAB3SURBVFhH7Y7RCsAgCEX7/+/wP1uWDh9auDUd
         jHsglJt4LAAAAO5ARNJd45l5hC5eCTwzW8ji2mrtgUEy/htBFEZ0HjHLQrHCdLmiYn7pcubTA1TO1fb9
         M5qZMO2IJuAyFZkjRvA2ungl8Mxs4VkcJgcAgJ9SygE9b3S5XZ6qXwAAAABJRU5ErkJggg==
 </value>
+  </data>
+  <data name="buttonLeftHalf.Location" type="System.Drawing.Point, System.Drawing">
+    <value>349, 145</value>
+  </data>
+  <data name="buttonLeftHalf.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="buttonLeftHalf.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 1, 1</value>
+  </data>
+  <data name="buttonLeftHalf.Size" type="System.Drawing.Size, System.Drawing">
+    <value>20, 20</value>
+  </data>
+  <data name="buttonLeftHalf.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="buttonLeftHalf.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopRight</value>
+  </data>
+  <data name="&gt;&gt;buttonLeftHalf.Name" xml:space="preserve">
+    <value>buttonLeftHalf</value>
+  </data>
+  <data name="&gt;&gt;buttonLeftHalf.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonLeftHalf.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;buttonLeftHalf.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="buttonRightHalf.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="buttonRightHalf.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
   </data>
   <data name="buttonRightHalf.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAN
-        1QAADdUBPdZY8QAAAAd0SU1FB98HCA4PHi8h/AMAAAB3SURBVFhH7Y7RCsAgCEX7/+/wP1uWDh9auDUd
+        1AAADdQB75G6FQAAAAd0SU1FB98HCA4PHi8h/AMAAAB3SURBVFhH7Y7RCsAgCEX7/+/wP1uWDh9auDUd
         jHsglJt4LAAAAO5ARNJd45l5hC5eCTwzW8ji2mrtgUEy/htBFEZ0HjHLQrHCdLmiYn7pcubTA1TO1fb9
         M5qZMO2IJuAyFZkjRvA2ungl8Mxs4VkcJgcAgJ9SygE9b3S5XZ6qXwAAAABJRU5ErkJggg==
 </value>
+  </data>
+  <data name="buttonRightHalf.Location" type="System.Drawing.Point, System.Drawing">
+    <value>349, 171</value>
+  </data>
+  <data name="buttonRightHalf.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="buttonRightHalf.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 1, 1</value>
+  </data>
+  <data name="buttonRightHalf.Size" type="System.Drawing.Size, System.Drawing">
+    <value>20, 20</value>
+  </data>
+  <data name="buttonRightHalf.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="buttonRightHalf.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopRight</value>
+  </data>
+  <data name="&gt;&gt;buttonRightHalf.Name" xml:space="preserve">
+    <value>buttonRightHalf</value>
+  </data>
+  <data name="&gt;&gt;buttonRightHalf.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonRightHalf.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;buttonRightHalf.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="buttonTopHalf.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="buttonTopHalf.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
   </data>
   <data name="buttonTopHalf.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAN
-        1QAADdUBPdZY8QAAAAd0SU1FB98HCA4PHi8h/AMAAAB3SURBVFhH7Y7RCsAgCEX7/+/wP1uWDh9auDUd
+        1AAADdQB75G6FQAAAAd0SU1FB98HCA4PHi8h/AMAAAB3SURBVFhH7Y7RCsAgCEX7/+/wP1uWDh9auDUd
         jHsglJt4LAAAAO5ARNJd45l5hC5eCTwzW8ji2mrtgUEy/htBFEZ0HjHLQrHCdLmiYn7pcubTA1TO1fb9
         M5qZMO2IJuAyFZkjRvA2ungl8Mxs4VkcJgcAgJ9SygE9b3S5XZ6qXwAAAABJRU5ErkJggg==
 </value>
+  </data>
+  <data name="buttonTopHalf.Location" type="System.Drawing.Point, System.Drawing">
+    <value>349, 197</value>
+  </data>
+  <data name="buttonTopHalf.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="buttonTopHalf.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 1, 1</value>
+  </data>
+  <data name="buttonTopHalf.Size" type="System.Drawing.Size, System.Drawing">
+    <value>20, 20</value>
+  </data>
+  <data name="buttonTopHalf.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="buttonTopHalf.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopRight</value>
+  </data>
+  <data name="&gt;&gt;buttonTopHalf.Name" xml:space="preserve">
+    <value>buttonTopHalf</value>
+  </data>
+  <data name="&gt;&gt;buttonTopHalf.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonTopHalf.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;buttonTopHalf.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="buttonBottomHalf.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="buttonBottomHalf.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
   </data>
   <data name="buttonBottomHalf.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAN
-        1QAADdUBPdZY8QAAAAd0SU1FB98HCA4PHi8h/AMAAAB3SURBVFhH7Y7RCsAgCEX7/+/wP1uWDh9auDUd
+        1AAADdQB75G6FQAAAAd0SU1FB98HCA4PHi8h/AMAAAB3SURBVFhH7Y7RCsAgCEX7/+/wP1uWDh9auDUd
         jHsglJt4LAAAAO5ARNJd45l5hC5eCTwzW8ji2mrtgUEy/htBFEZ0HjHLQrHCdLmiYn7pcubTA1TO1fb9
         M5qZMO2IJuAyFZkjRvA2ungl8Mxs4VkcJgcAgJ9SygE9b3S5XZ6qXwAAAABJRU5ErkJggg==
 </value>
+  </data>
+  <data name="buttonBottomHalf.Location" type="System.Drawing.Point, System.Drawing">
+    <value>349, 223</value>
+  </data>
+  <data name="buttonBottomHalf.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="buttonBottomHalf.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 1, 1</value>
+  </data>
+  <data name="buttonBottomHalf.Size" type="System.Drawing.Size, System.Drawing">
+    <value>20, 20</value>
+  </data>
+  <data name="buttonBottomHalf.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="buttonBottomHalf.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopRight</value>
+  </data>
+  <data name="&gt;&gt;buttonBottomHalf.Name" xml:space="preserve">
+    <value>buttonBottomHalf</value>
+  </data>
+  <data name="&gt;&gt;buttonBottomHalf.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonBottomHalf.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;buttonBottomHalf.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="buttonTopLeft.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="buttonTopLeft.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
   </data>
   <data name="buttonTopLeft.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAN
-        1QAADdUBPdZY8QAAAAd0SU1FB98HCA4PHi8h/AMAAAB3SURBVFhH7Y7RCsAgCEX7/+/wP1uWDh9auDUd
+        1AAADdQB75G6FQAAAAd0SU1FB98HCA4PHi8h/AMAAAB3SURBVFhH7Y7RCsAgCEX7/+/wP1uWDh9auDUd
         jHsglJt4LAAAAO5ARNJd45l5hC5eCTwzW8ji2mrtgUEy/htBFEZ0HjHLQrHCdLmiYn7pcubTA1TO1fb9
         M5qZMO2IJuAyFZkjRvA2ungl8Mxs4VkcJgcAgJ9SygE9b3S5XZ6qXwAAAABJRU5ErkJggg==
 </value>
+  </data>
+  <data name="buttonTopLeft.Location" type="System.Drawing.Point, System.Drawing">
+    <value>349, 275</value>
+  </data>
+  <data name="buttonTopLeft.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="buttonTopLeft.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 1, 1</value>
+  </data>
+  <data name="buttonTopLeft.Size" type="System.Drawing.Size, System.Drawing">
+    <value>20, 20</value>
+  </data>
+  <data name="buttonTopLeft.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="buttonTopLeft.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopRight</value>
+  </data>
+  <data name="&gt;&gt;buttonTopLeft.Name" xml:space="preserve">
+    <value>buttonTopLeft</value>
+  </data>
+  <data name="&gt;&gt;buttonTopLeft.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonTopLeft.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;buttonTopLeft.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="buttonTopRight.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="buttonTopRight.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
   </data>
   <data name="buttonTopRight.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAN
-        1QAADdUBPdZY8QAAAAd0SU1FB98HCA4PHi8h/AMAAAB3SURBVFhH7Y7RCsAgCEX7/+/wP1uWDh9auDUd
+        1AAADdQB75G6FQAAAAd0SU1FB98HCA4PHi8h/AMAAAB3SURBVFhH7Y7RCsAgCEX7/+/wP1uWDh9auDUd
         jHsglJt4LAAAAO5ARNJd45l5hC5eCTwzW8ji2mrtgUEy/htBFEZ0HjHLQrHCdLmiYn7pcubTA1TO1fb9
         M5qZMO2IJuAyFZkjRvA2ungl8Mxs4VkcJgcAgJ9SygE9b3S5XZ6qXwAAAABJRU5ErkJggg==
 </value>
+  </data>
+  <data name="buttonTopRight.Location" type="System.Drawing.Point, System.Drawing">
+    <value>349, 301</value>
+  </data>
+  <data name="buttonTopRight.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="buttonTopRight.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 1, 1</value>
+  </data>
+  <data name="buttonTopRight.Size" type="System.Drawing.Size, System.Drawing">
+    <value>20, 20</value>
+  </data>
+  <data name="buttonTopRight.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="buttonTopRight.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopRight</value>
+  </data>
+  <data name="&gt;&gt;buttonTopRight.Name" xml:space="preserve">
+    <value>buttonTopRight</value>
+  </data>
+  <data name="&gt;&gt;buttonTopRight.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonTopRight.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;buttonTopRight.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="buttonBottomLeft.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="buttonBottomLeft.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
   </data>
   <data name="buttonBottomLeft.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAN
-        1QAADdUBPdZY8QAAAAd0SU1FB98HCA4PHi8h/AMAAAB3SURBVFhH7Y7RCsAgCEX7/+/wP1uWDh9auDUd
+        1AAADdQB75G6FQAAAAd0SU1FB98HCA4PHi8h/AMAAAB3SURBVFhH7Y7RCsAgCEX7/+/wP1uWDh9auDUd
         jHsglJt4LAAAAO5ARNJd45l5hC5eCTwzW8ji2mrtgUEy/htBFEZ0HjHLQrHCdLmiYn7pcubTA1TO1fb9
         M5qZMO2IJuAyFZkjRvA2ungl8Mxs4VkcJgcAgJ9SygE9b3S5XZ6qXwAAAABJRU5ErkJggg==
 </value>
+  </data>
+  <data name="buttonBottomLeft.Location" type="System.Drawing.Point, System.Drawing">
+    <value>349, 327</value>
+  </data>
+  <data name="buttonBottomLeft.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="buttonBottomLeft.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 1, 1</value>
+  </data>
+  <data name="buttonBottomLeft.Size" type="System.Drawing.Size, System.Drawing">
+    <value>20, 20</value>
+  </data>
+  <data name="buttonBottomLeft.TabIndex" type="System.Int32, mscorlib">
+    <value>18</value>
+  </data>
+  <data name="buttonBottomLeft.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopRight</value>
+  </data>
+  <data name="&gt;&gt;buttonBottomLeft.Name" xml:space="preserve">
+    <value>buttonBottomLeft</value>
+  </data>
+  <data name="&gt;&gt;buttonBottomLeft.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonBottomLeft.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;buttonBottomLeft.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="buttonBottomRight.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="buttonBottomRight.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
   </data>
   <data name="buttonBottomRight.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAN
-        1QAADdUBPdZY8QAAAAd0SU1FB98HCA4PHi8h/AMAAAB3SURBVFhH7Y7RCsAgCEX7/+/wP1uWDh9auDUd
+        1AAADdQB75G6FQAAAAd0SU1FB98HCA4PHi8h/AMAAAB3SURBVFhH7Y7RCsAgCEX7/+/wP1uWDh9auDUd
         jHsglJt4LAAAAO5ARNJd45l5hC5eCTwzW8ji2mrtgUEy/htBFEZ0HjHLQrHCdLmiYn7pcubTA1TO1fb9
         M5qZMO2IJuAyFZkjRvA2ungl8Mxs4VkcJgcAgJ9SygE9b3S5XZ6qXwAAAABJRU5ErkJggg==
 </value>
   </data>
+  <data name="buttonBottomRight.Location" type="System.Drawing.Point, System.Drawing">
+    <value>349, 353</value>
+  </data>
+  <data name="buttonBottomRight.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="buttonBottomRight.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 1, 1</value>
+  </data>
+  <data name="buttonBottomRight.Size" type="System.Drawing.Size, System.Drawing">
+    <value>20, 20</value>
+  </data>
+  <data name="buttonBottomRight.TabIndex" type="System.Int32, mscorlib">
+    <value>19</value>
+  </data>
+  <data name="buttonBottomRight.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopRight</value>
+  </data>
+  <data name="&gt;&gt;buttonBottomRight.Name" xml:space="preserve">
+    <value>buttonBottomRight</value>
+  </data>
+  <data name="&gt;&gt;buttonBottomRight.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonBottomRight.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;buttonBottomRight.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="startupCheckbox.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="startupCheckbox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>217, 392</value>
+  </data>
+  <data name="startupCheckbox.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
+    <value>Yes</value>
+  </data>
+  <data name="startupCheckbox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 17</value>
+  </data>
+  <data name="startupCheckbox.TabIndex" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="startupCheckbox.Text" xml:space="preserve">
+    <value>Start when Windows starts</value>
+  </data>
+  <data name="&gt;&gt;startupCheckbox.Name" xml:space="preserve">
+    <value>startupCheckbox</value>
+  </data>
+  <data name="&gt;&gt;startupCheckbox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;startupCheckbox.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;startupCheckbox.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>340</value>
   </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>394, 435</value>
+  </data>
+  <data name="$this.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>400, 460</value>
+  </data>
+  <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>400, 460</value>
+  </data>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterScreen</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Neat Windows</value>
+  </data>
+  <data name="&gt;&gt;settingsIcon.Name" xml:space="preserve">
+    <value>settingsIcon</value>
+  </data>
+  <data name="&gt;&gt;settingsIcon.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NotifyIcon, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;openSettingsToolStripMenuItem.Name" xml:space="preserve">
+    <value>openSettingsToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;openSettingsToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;exitNeatWindowsToolStripMenuItem.Name" xml:space="preserve">
+    <value>exitNeatWindowsToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;exitNeatWindowsToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>SettingsForm</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>

@@ -90,7 +90,6 @@
     <Compile Include="Settings.cs" />
     <Compile Include="WindowResizer.cs" />
     <Compile Include="ScreenSizePosition.cs" />
-    <Compile Include="WindowConstants.cs" />
     <Compile Include="SettingsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -146,6 +145,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <CodeAnalysisDictionary Include="CustomDictionary.xml" />
     <Content Include="trayicon-windowsstyle-16x16.ico" />
     <Content Include="trayicon-windowsstyle.ico" />
   </ItemGroup>

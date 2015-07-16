@@ -3,10 +3,29 @@
     using System;
     using System.Drawing;
 
+    public enum WindowSizePosition
+    {
+        Fullscreen,
+        LeftHalf,
+        RightHalf,
+        TopHalf,
+        BottomHalf,
+        TopLeft,
+        TopRight,
+        BottomLeft,
+        BottomRight,
+        Center,
+        NextScreen,
+        PreviousScreen
+    }
+
     public class WindowResizer
     {
         private Rectangle foregroundWindowBounds;
         private ScreenSizePosition screenSizePosition;
+
+        private static uint ShowWindowFlag = 0x0040;
+        private static readonly IntPtr InsertTop = new IntPtr(0);
 
         public void ResizeTo(WindowSizePosition windowSizePosition)
         {
@@ -15,7 +34,7 @@
 
             switch (windowSizePosition)
             {
-                case WindowSizePosition.FullScreen:
+                case WindowSizePosition.Fullscreen:
                     if (this.foregroundWindowBounds == this.screenSizePosition.FullScreen())
                         ResizeActiveWindow(this.screenSizePosition.TwoThirdsCenter());
                     else if (this.foregroundWindowBounds == this.screenSizePosition.TwoThirdsCenter())
@@ -107,12 +126,12 @@
         {
             return NativeMethods.SetWindowPos(
                 NativeMethods.GetForegroundWindow(),
-                WindowHandles.Top,
+                InsertTop,
                 newWindowSize.X,
                 newWindowSize.Y,
                 newWindowSize.Width,
                 newWindowSize.Height,
-                SetWindowPos.ShowWindow);
+                ShowWindowFlag);
         }
     }
 }
