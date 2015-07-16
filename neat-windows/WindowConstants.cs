@@ -3,35 +3,6 @@
     using System;
     using System.Globalization;
 
-    public static class WindowHandles
-    {
-        public static readonly IntPtr
-        NoTopmost = new IntPtr(-2),
-        Topmost = new IntPtr(-1),
-        Top = new IntPtr(0),
-        Bottom = new IntPtr(1);
-    }
-
-    public static class SetWindowPos
-    {
-        public static readonly uint
-        NoSize = 0x0001,
-        NoMove = 0x0002,
-        NoZOrder = 0x0004,
-        NoRedraw = 0x0008,
-        NoActivate = 0x0010,
-        DrawFrame = 0x0020,
-        FrameChanged = 0x0020,
-        ShowWindow = 0x0040,
-        HideWindow = 0x0080,
-        NoCopyBits = 0x0100,
-        NoOwnerZOrder = 0x0200,
-        NoReposition = 0x0200,
-        NoSendChanging = 0x0400,
-        DeferErase = 0x2000,
-        AsyncWindowPos = 0x4000;
-    }
-
     public enum WindowSizePosition
     {
         FullScreen,
@@ -50,7 +21,16 @@
 
     public struct Rect
     {
+        private int bottom;
         private int left;
+        private int right;
+        private int top;
+
+        public int Bottom
+        {
+            get { return this.bottom; }
+            set { this.bottom = value; }
+        }
 
         public int Left
         {
@@ -58,7 +38,11 @@
             set { this.left = value; }
         }
 
-        private int top;
+        public int Right
+        {
+            get { return this.right; }
+            set { this.right = value; }
+        }
 
         public int Top
         {
@@ -66,20 +50,24 @@
             set { this.top = value; }
         }
 
-        private int right;
-
-        public int Right
+        public static bool operator !=(Rect rectA, Rect rectB)
         {
-            get { return this.right; }
-            set { this.right = value; }
+            return !(rectA == rectB);
         }
 
-        private int bottom;
-
-        public int Bottom
+        public static bool operator ==(Rect rectA, Rect rectB)
         {
-            get { return this.bottom; }
-            set { this.bottom = value; }
+            if (object.ReferenceEquals(rectA, rectB))
+            {
+                return true;
+            }
+
+            if (((object)rectA == null) || ((object)rectB == null))
+            {
+                return false;
+            }
+
+            return (rectA.Left == rectB.Left) && (rectA.Top == rectB.Top) && (rectA.Right == rectB.Right) && (rectA.Bottom == rectB.Bottom);
         }
 
         public override bool Equals(object obj)
@@ -102,26 +90,6 @@
             return (rectObj.Left == this.Left) && (rectObj.Top == this.Top) && (rectObj.Right == this.Right) && (rectObj.Bottom == this.Bottom);
         }
 
-        public static bool operator ==(Rect rectA, Rect rectB)
-        {
-            if (object.ReferenceEquals(rectA, rectB))
-            {
-                return true;
-            }
-
-            if (((object)rectA == null) || ((object)rectB == null))
-            {
-                return false;
-            }
-
-            return (rectA.Left == rectB.Left) && (rectA.Top == rectB.Top) && (rectA.Right == rectB.Right) && (rectA.Bottom == rectB.Bottom);
-        }
-
-        public static bool operator !=(Rect rectA, Rect rectB)
-        {
-            return !(rectA == rectB);
-        }
-
         public override int GetHashCode()
         {
             unchecked
@@ -140,15 +108,43 @@
 
         public override string ToString()
         {
-            string[] values = new string[] { 
+            string[] values = new string[]
+            {
                     this.Left.ToString(CultureInfo.CurrentCulture),
                     this.Top.ToString(CultureInfo.CurrentCulture),
                     this.Right.ToString(CultureInfo.CurrentCulture),
-                    this.Bottom.ToString(CultureInfo.CurrentCulture) };
-            return
-                "Rect: (" +
-                string.Join(", ", values) +
-                ")";
+                    this.Bottom.ToString(CultureInfo.CurrentCulture)
+            };
+            return "Rect: (" + string.Join(", ", values) + ")";
         }
+    }
+
+    public static class SetWindowPos
+    {
+        public static readonly uint
+        NoSize = 0x0001,
+        NoMove = 0x0002,
+        NoZOrder = 0x0004,
+        NoRedraw = 0x0008,
+        NoActivate = 0x0010,
+        DrawFrame = 0x0020,
+        FrameChanged = 0x0020,
+        ShowWindow = 0x0040,
+        HideWindow = 0x0080,
+        NoCopyBits = 0x0100,
+        NoOwnerZOrder = 0x0200,
+        NoReposition = 0x0200,
+        NoSendChanging = 0x0400,
+        DeferErase = 0x2000,
+        AsyncWindowPos = 0x4000;
+    }
+
+    public static class WindowHandles
+    {
+        public static readonly IntPtr
+        NoTopmost = new IntPtr(-2),
+        Topmost = new IntPtr(-1),
+        Top = new IntPtr(0),
+        Bottom = new IntPtr(1);
     }
 }
