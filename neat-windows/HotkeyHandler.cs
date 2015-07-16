@@ -8,7 +8,7 @@ namespace NeatWindows
     class HotkeyHandler
     {
         private Form form;
-        private Dictionary<WindowConstants.WindowSizePosition, Hotkey> hotkeyMap;
+        private Dictionary<WindowSizePosition, Hotkey> hotkeyMap;
         private WindowResizer windowResizer;
         private ConfigurationManager configurationManager;
 
@@ -22,13 +22,13 @@ namespace NeatWindows
             this.RegisterHotkeys();
         }
 
-        public void MapHotkey(WindowConstants.WindowSizePosition windowSizePosition, Hotkey hotkey)
+        public void MapHotkey(WindowSizePosition windowSizePosition, Hotkey hotkey)
         {
             this.hotkeyMap[windowSizePosition] = hotkey;
             this.SaveHotkeys();
         }
 
-        public void UnmapHotkey(WindowConstants.WindowSizePosition windowSizePosition)
+        public void UnmapHotkey(WindowSizePosition windowSizePosition)
         {
             if (this.hotkeyMap.ContainsKey(windowSizePosition))
             {
@@ -44,7 +44,7 @@ namespace NeatWindows
 
         public void UnregisterHotkeys()
         {
-            foreach (KeyValuePair<WindowConstants.WindowSizePosition, Hotkey> hotkeyMapping in this.hotkeyMap)
+            foreach (KeyValuePair<WindowSizePosition, Hotkey> hotkeyMapping in this.hotkeyMap)
             {
                 hotkeyMapping.Value.RemoveHandler();
                 hotkeyMapping.Value.Unregister();
@@ -53,16 +53,16 @@ namespace NeatWindows
 
         public void RegisterHotkeys()
         {
-            foreach (KeyValuePair<WindowConstants.WindowSizePosition, Hotkey> hotkeyMapping in this.hotkeyMap)
+            foreach (KeyValuePair<WindowSizePosition, Hotkey> hotkeyMapping in this.hotkeyMap)
             {
                 hotkeyMapping.Value.SetHandler(this.windowResizer.ResizeTo, hotkeyMapping.Key);
                 hotkeyMapping.Value.Register(this.form);
             }
         }
 
-        public bool HotkeyExists(WindowConstants.WindowSizePosition windowSizePosition, Hotkey hotkey)
+        public bool HotkeyExists(WindowSizePosition windowSizePosition, Hotkey hotkey)
         {
-            foreach (KeyValuePair<WindowConstants.WindowSizePosition, Hotkey> mappedHotkeys in this.hotkeyMap)
+            foreach (KeyValuePair<WindowSizePosition, Hotkey> mappedHotkeys in this.hotkeyMap)
             {
                 Hotkey mappedHotkey = mappedHotkeys.Value;
                 if (mappedHotkeys.Key != windowSizePosition &&
@@ -75,7 +75,7 @@ namespace NeatWindows
             return false;
         }
 
-        public Dictionary<WindowConstants.WindowSizePosition, Hotkey> GetHotkeyMap()
+        public Dictionary<WindowSizePosition, Hotkey> GetHotkeyMap()
         {
             return this.hotkeyMap;
         }

@@ -60,23 +60,31 @@ namespace NeatWindows
 		~Hotkey()
 		{
 			if (this.Registered)
-			{ this.Unregister(); }
+			{ 
+                this.Unregister();
+            }
 		}
 
-		public bool GetCanRegister(Control windowControl)
+		public bool GetCanRegister(Control control)
 		{
 			try
 			{
-				if (!this.Register(windowControl))
-				{ return false; }
+				if (!this.Register(control))
+				{ 
+                    return false; 
+                }
 
 				this.Unregister();
 				return true;
 			}
 			catch (Win32Exception)
-			{ return false; }
+			{ 
+                return false;
+            }
 			catch (NotSupportedException)
-			{ return false; }
+			{
+                return false;
+            }
 		}
 
 		public bool Register(Control windowControl)
@@ -176,7 +184,7 @@ namespace NeatWindows
             return string.Join(" + ", keys.ToArray());
         }
 
-        public void SetHandler(Action<WindowConstants.WindowSizePosition> resizeTo, WindowConstants.WindowSizePosition windowSizePosition)
+        public void SetHandler(Action<WindowSizePosition> resizeTo, WindowSizePosition windowSizePosition)
         {
             this.Pressed = null;
             this.Pressed += delegate { resizeTo(windowSizePosition); };

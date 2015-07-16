@@ -46,6 +46,8 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>6902562EE7BB76B1D065A478F36954E2F5FF6C3C</ManifestCertificateThumbprint>
@@ -82,7 +84,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConfigurationManager.cs" />
-    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Hotkey.cs" />
     <Compile Include="HotkeyHandler.cs" />
     <Compile Include="NativeMethods.cs" />

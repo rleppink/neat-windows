@@ -52,39 +52,39 @@ namespace NeatWindows
         #endregion SettingsConfig
 
         #region HotkeyMapConfig
-        public void SaveHotkeyMap(Dictionary<WindowConstants.WindowSizePosition, Hotkey> hotkeyMap)
+        public void SaveHotkeyMap(Dictionary<WindowSizePosition, Hotkey> hotkeyMap)
         {
             using (StreamWriter configFile = new StreamWriter(this.GetKeyMapPath(), false))
             {
-                foreach (KeyValuePair<WindowConstants.WindowSizePosition, Hotkey> entry in hotkeyMap)
+                foreach (KeyValuePair<WindowSizePosition, Hotkey> entry in hotkeyMap)
                 {
                     configFile.WriteLine(this.GenerateHotkeyLine(entry.Key, entry.Value));
                 }
             }
         }
 
-        public Dictionary<WindowConstants.WindowSizePosition, Hotkey> GetSavedHotkeys()
+        public Dictionary<WindowSizePosition, Hotkey> GetSavedHotkeys()
         {
-            Dictionary<WindowConstants.WindowSizePosition, Hotkey> hotkeyMap = new Dictionary<WindowConstants.WindowSizePosition, Hotkey>();
+            Dictionary<WindowSizePosition, Hotkey> hotkeyMap = new Dictionary<WindowSizePosition, Hotkey>();
             if (!File.Exists(this.GetKeyMapPath())) return hotkeyMap;
 
             string[] lines = File.ReadAllLines(this.GetKeyMapPath());
             foreach (string line in lines) {
-                KeyValuePair<WindowConstants.WindowSizePosition, Hotkey> keyValuePair = this.ParseHotkeyLine(line);
+                KeyValuePair<WindowSizePosition, Hotkey> keyValuePair = this.ParseHotkeyLine(line);
                 hotkeyMap.Add(keyValuePair.Key, keyValuePair.Value);
             }
             return hotkeyMap;
         }
 
-        private KeyValuePair<WindowConstants.WindowSizePosition, Hotkey> ParseHotkeyLine(string line)
+        private KeyValuePair<WindowSizePosition, Hotkey> ParseHotkeyLine(string line)
         {
             KeyValuePair<string, string> parsedLine = this.ParseConfigLine(line);
-            WindowConstants.WindowSizePosition windowSizePosition = (WindowConstants.WindowSizePosition) Enum.Parse(typeof(WindowConstants.WindowSizePosition), parsedLine.Key);
+            WindowSizePosition windowSizePosition = (WindowSizePosition) Enum.Parse(typeof(WindowSizePosition), parsedLine.Key);
             Hotkey hotkey = this.ParseHotkeys(parsedLine.Value);
-            return new KeyValuePair<WindowConstants.WindowSizePosition,Hotkey>(windowSizePosition, hotkey);
+            return new KeyValuePair<WindowSizePosition,Hotkey>(windowSizePosition, hotkey);
         }
 
-        private string GenerateHotkeyLine(WindowConstants.WindowSizePosition windowSizePosition, Hotkey hotkey) 
+        private string GenerateHotkeyLine(WindowSizePosition windowSizePosition, Hotkey hotkey) 
         {
             string line = "";
             line += windowSizePosition.ToString();

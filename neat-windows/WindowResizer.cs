@@ -1,16 +1,15 @@
-﻿using System;
-using System.Drawing;
-
-namespace NeatWindows
+﻿namespace NeatWindows
 {
-    class WindowResizer
+    using System;
+    using System.Drawing;
+
+    public class WindowResizer
     {
         private IntPtr foregroundWindowHandle;
         private Rectangle foregroundWindowBounds;
         private ScreenSizePosition screenSizePosition;
 
-
-        public void ResizeTo(WindowConstants.WindowSizePosition windowSizePosition) 
+        public void ResizeTo(WindowSizePosition windowSizePosition) 
         {
             this.foregroundWindowHandle = NativeMethods.GetForegroundWindow();
             this.foregroundWindowBounds = this.GetForegroundWindowBounds();
@@ -18,7 +17,7 @@ namespace NeatWindows
 
             switch (windowSizePosition)
             {
-                case WindowConstants.WindowSizePosition.FULLSCREEN:
+                case WindowSizePosition.FullScreen:
                     if (this.foregroundWindowBounds == this.screenSizePosition.FullScreen())
                         this.ResizeActiveWindow(this.screenSizePosition.TwoThirdsCenter());
                     else if (this.foregroundWindowBounds == this.screenSizePosition.TwoThirdsCenter())
@@ -29,18 +28,18 @@ namespace NeatWindows
                         this.ResizeActiveWindow(this.screenSizePosition.FullScreen());
                     break;
 
-                case WindowConstants.WindowSizePosition.CENTER:
+                case WindowSizePosition.Center:
                     this.ResizeActiveWindow(this.screenSizePosition.Center(this.foregroundWindowBounds));
                     break;
 
-                case WindowConstants.WindowSizePosition.NEXT_SCREEN:
+                case WindowSizePosition.NextScreen:
                     this.ResizeActiveWindow(this.screenSizePosition.NextScreen(this.foregroundWindowBounds));
                     break;
-                case WindowConstants.WindowSizePosition.PREVIOUS_SCREEN:
+                case WindowSizePosition.PreviousScreen:
                     this.ResizeActiveWindow(this.screenSizePosition.PreviousScreen(this.foregroundWindowBounds));
                     break;
 
-                case WindowConstants.WindowSizePosition.LEFT_HALF:
+                case WindowSizePosition.LeftHalf:
                     if (this.foregroundWindowBounds == this.screenSizePosition.HalfWidthLeft())
                         this.ResizeActiveWindow(this.screenSizePosition.ThirdWidthLeft());
                     else if (this.foregroundWindowBounds == this.screenSizePosition.ThirdWidthLeft())
@@ -49,7 +48,7 @@ namespace NeatWindows
                         this.ResizeActiveWindow(this.screenSizePosition.HalfWidthLeft());
                     break;
 
-                case WindowConstants.WindowSizePosition.RIGHT_HALF:
+                case WindowSizePosition.RightHalf:
                     if (this.foregroundWindowBounds == this.screenSizePosition.HalfWidthRight())
                         this.ResizeActiveWindow(this.screenSizePosition.ThirdWidthRight());
                     else if (this.foregroundWindowBounds == this.screenSizePosition.ThirdWidthRight())
@@ -58,7 +57,7 @@ namespace NeatWindows
                         this.ResizeActiveWindow(this.screenSizePosition.HalfWidthRight());
                     break;
 
-                case WindowConstants.WindowSizePosition.TOP_HALF:
+                case WindowSizePosition.TopHalf:
                     if (this.foregroundWindowBounds == this.screenSizePosition.HalfHeightTop())
                         this.ResizeActiveWindow(this.screenSizePosition.ThirdHeightTop());
                     else if (this.foregroundWindowBounds == this.screenSizePosition.ThirdHeightTop())
@@ -67,7 +66,7 @@ namespace NeatWindows
                         this.ResizeActiveWindow(this.screenSizePosition.HalfHeightTop());
                     break;
 
-                case WindowConstants.WindowSizePosition.BOTTOM_HALF:
+                case WindowSizePosition.BottomHalf:
                     if (this.foregroundWindowBounds == this.screenSizePosition.HalfHeightBottom())
                         this.ResizeActiveWindow(this.screenSizePosition.ThirdHeightBottom());
                     else if (this.foregroundWindowBounds == this.screenSizePosition.ThirdHeightBottom())
@@ -76,16 +75,16 @@ namespace NeatWindows
                         this.ResizeActiveWindow(this.screenSizePosition.HalfHeightBottom());
                     break;
 
-                case WindowConstants.WindowSizePosition.TOP_LEFT:
+                case WindowSizePosition.TopLeft:
                     this.ResizeActiveWindow(this.screenSizePosition.TopLeftQuarter());
                     break;
-                case WindowConstants.WindowSizePosition.TOP_RIGHT:
+                case WindowSizePosition.TopRight:
                     this.ResizeActiveWindow(this.screenSizePosition.TopRightQuarter());
                     break;
-                case WindowConstants.WindowSizePosition.BOTTOM_LEFT:
+                case WindowSizePosition.BottomLeft:
                     this.ResizeActiveWindow(this.screenSizePosition.BottomLeftQuarter());
                     break;
-                case WindowConstants.WindowSizePosition.BOTTOM_RIGHT:
+                case WindowSizePosition.BottomRight:
                     this.ResizeActiveWindow(this.screenSizePosition.BottomRightQuarter());
                     break;
             }
@@ -93,26 +92,25 @@ namespace NeatWindows
 
         private bool ResizeActiveWindow(Rectangle newWindowSize)
         {
-            return NativeMethods.SetWindowPos(this.foregroundWindowHandle, 
-                                WindowConstants.Hwnd.TOP,
+            return NativeMethods.SetWindowPos(
+                                this.foregroundWindowHandle, 
+                                WindowHandles.Top,
                                 newWindowSize.X, 
                                 newWindowSize.Y, 
                                 newWindowSize.Width, 
                                 newWindowSize.Height, 
-                                WindowConstants.Swp.SHOWWINDOW);
+                                SetWindowPos.ShowWindow);
         }
 
         private Rectangle GetForegroundWindowBounds()
         {
-            WindowConstants.RECT outRect;
+            Rect outRect;
             NativeMethods.GetWindowRect(this.foregroundWindowHandle, out outRect);
             return new Rectangle(
                 outRect.Left,
                 outRect.Top,
                 outRect.Right - outRect.Left,
-                outRect.Bottom - outRect.Top
-                );
+                outRect.Bottom - outRect.Top);
         }
-
     }
 }

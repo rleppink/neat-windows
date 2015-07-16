@@ -74,38 +74,38 @@ namespace NeatWindows
         #region Tag mapping
         private void MapTags()
         {
-            this.textBoxFullscreen.Tag = WindowConstants.WindowSizePosition.FULLSCREEN;
-            this.textBoxCenter.Tag = WindowConstants.WindowSizePosition.CENTER;
-            this.textBoxNextDisplay.Tag = WindowConstants.WindowSizePosition.NEXT_SCREEN;
-            this.textBoxPreviousDisplay.Tag = WindowConstants.WindowSizePosition.PREVIOUS_SCREEN;
+            this.textBoxFullscreen.Tag = WindowSizePosition.FullScreen;
+            this.textBoxCenter.Tag = WindowSizePosition.Center;
+            this.textBoxNextDisplay.Tag = WindowSizePosition.NextScreen;
+            this.textBoxPreviousDisplay.Tag = WindowSizePosition.PreviousScreen;
 
-            this.textBoxLeftHalf.Tag = WindowConstants.WindowSizePosition.LEFT_HALF;
-            this.textBoxRightHalf.Tag = WindowConstants.WindowSizePosition.RIGHT_HALF;
-            this.textBoxTopHalf.Tag = WindowConstants.WindowSizePosition.TOP_HALF;
-            this.textBoxBottomHalf.Tag = WindowConstants.WindowSizePosition.BOTTOM_HALF;
+            this.textBoxLeftHalf.Tag = WindowSizePosition.LeftHalf;
+            this.textBoxRightHalf.Tag = WindowSizePosition.RightHalf;
+            this.textBoxTopHalf.Tag = WindowSizePosition.TopHalf;
+            this.textBoxBottomHalf.Tag = WindowSizePosition.BottomHalf;
 
-            this.textBoxTopLeftQuarter.Tag = WindowConstants.WindowSizePosition.TOP_LEFT;
-            this.textBoxTopRightQuarter.Tag = WindowConstants.WindowSizePosition.TOP_RIGHT;
-            this.textBoxBottomLeftQuarter.Tag = WindowConstants.WindowSizePosition.BOTTOM_LEFT;
-            this.textBoxBottomRightQuarter.Tag = WindowConstants.WindowSizePosition.BOTTOM_RIGHT;
+            this.textBoxTopLeftQuarter.Tag = WindowSizePosition.TopLeft;
+            this.textBoxTopRightQuarter.Tag = WindowSizePosition.TopRight;
+            this.textBoxBottomLeftQuarter.Tag = WindowSizePosition.BottomLeft;
+            this.textBoxBottomRightQuarter.Tag = WindowSizePosition.BottomRight;
 
-            this.buttonFullscreen.Tag = WindowConstants.WindowSizePosition.FULLSCREEN;
-            this.buttonCenter.Tag = WindowConstants.WindowSizePosition.CENTER;
-            this.buttonNextDisplay.Tag = WindowConstants.WindowSizePosition.NEXT_SCREEN;
-            this.buttonPreviousDisplay.Tag = WindowConstants.WindowSizePosition.PREVIOUS_SCREEN;
+            this.buttonFullscreen.Tag = WindowSizePosition.FullScreen;
+            this.buttonCenter.Tag = WindowSizePosition.Center;
+            this.buttonNextDisplay.Tag = WindowSizePosition.NextScreen;
+            this.buttonPreviousDisplay.Tag = WindowSizePosition.PreviousScreen;
 
-            this.buttonLeftHalf.Tag = WindowConstants.WindowSizePosition.LEFT_HALF;
-            this.buttonRightHalf.Tag = WindowConstants.WindowSizePosition.RIGHT_HALF;
-            this.buttonTopHalf.Tag = WindowConstants.WindowSizePosition.TOP_HALF;
-            this.buttonBottomHalf.Tag = WindowConstants.WindowSizePosition.BOTTOM_HALF;
+            this.buttonLeftHalf.Tag = WindowSizePosition.LeftHalf;
+            this.buttonRightHalf.Tag = WindowSizePosition.RightHalf;
+            this.buttonTopHalf.Tag = WindowSizePosition.TopHalf;
+            this.buttonBottomHalf.Tag = WindowSizePosition.BottomHalf;
 
-            this.buttonTopLeft.Tag = WindowConstants.WindowSizePosition.TOP_LEFT;
-            this.buttonTopRight.Tag = WindowConstants.WindowSizePosition.TOP_RIGHT;
-            this.buttonBottomLeft.Tag = WindowConstants.WindowSizePosition.BOTTOM_LEFT;
-            this.buttonBottomRight.Tag = WindowConstants.WindowSizePosition.BOTTOM_RIGHT;
+            this.buttonTopLeft.Tag = WindowSizePosition.TopLeft;
+            this.buttonTopRight.Tag = WindowSizePosition.TopRight;
+            this.buttonBottomLeft.Tag = WindowSizePosition.BottomLeft;
+            this.buttonBottomRight.Tag = WindowSizePosition.BottomRight;
         }
 
-        private TextBox GetTextBoxByTag(WindowConstants.WindowSizePosition windowSizePosition)
+        private TextBox GetTextBoxByTag(WindowSizePosition windowSizePosition)
         {
             foreach (Control control in this.Controls)
             {
@@ -142,7 +142,7 @@ namespace NeatWindows
                 (keyEventArgs.KeyCode == Keys.RWin))
                 return;
 
-            WindowConstants.WindowSizePosition windowSizePosition = (WindowConstants.WindowSizePosition) senderTextBox.Tag;
+            WindowSizePosition windowSizePosition = (WindowSizePosition) senderTextBox.Tag;
 
             if (this.hotkeyHandler.HotkeyExists(windowSizePosition, hotkey))
             {
@@ -173,9 +173,9 @@ namespace NeatWindows
         #endregion Context menu
 
         #region Textbox control
-        public void FillTextBoxes(Dictionary<WindowConstants.WindowSizePosition, Hotkey> hotkeyMap)
+        public void FillTextBoxes(Dictionary<WindowSizePosition, Hotkey> hotkeyMap)
         {
-            foreach (KeyValuePair<WindowConstants.WindowSizePosition, Hotkey> hotkeyMapping in hotkeyMap) 
+            foreach (KeyValuePair<WindowSizePosition, Hotkey> hotkeyMapping in hotkeyMap) 
             {
                 TextBox taggedTextBox = this.GetTextBoxByTag(hotkeyMapping.Key);
                 if (taggedTextBox == null)
@@ -190,7 +190,7 @@ namespace NeatWindows
         private void UnmapButton_Click(object sender, EventArgs e)
         {
             Button clickedButton = (Button)sender;
-            WindowConstants.WindowSizePosition windowSizePosition = (WindowConstants.WindowSizePosition)clickedButton.Tag;
+            WindowSizePosition windowSizePosition = (WindowSizePosition)clickedButton.Tag;
             this.hotkeyHandler.UnmapHotkey(windowSizePosition);
             this.GetTextBoxByTag(windowSizePosition).Text = "";
         }
