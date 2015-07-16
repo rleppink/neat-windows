@@ -3,13 +3,18 @@
     using System;
     using System.Drawing;
 
-    public class WindowResizer
+    public class WindowResizer : IDisposable
     {
-        private IntPtr foregroundWindowHandle;
         private Rectangle foregroundWindowBounds;
+        private IntPtr foregroundWindowHandle;
         private ScreenSizePosition screenSizePosition;
 
-        public void ResizeTo(WindowSizePosition windowSizePosition) 
+        public void Dispose()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ResizeTo(WindowSizePosition windowSizePosition)
         {
             this.foregroundWindowHandle = NativeMethods.GetForegroundWindow();
             this.foregroundWindowBounds = this.GetForegroundWindowBounds();
@@ -35,6 +40,7 @@
                 case WindowSizePosition.NextScreen:
                     this.ResizeActiveWindow(this.screenSizePosition.NextScreen(this.foregroundWindowBounds));
                     break;
+
                 case WindowSizePosition.PreviousScreen:
                     this.ResizeActiveWindow(this.screenSizePosition.PreviousScreen(this.foregroundWindowBounds));
                     break;
@@ -78,28 +84,19 @@
                 case WindowSizePosition.TopLeft:
                     this.ResizeActiveWindow(this.screenSizePosition.TopLeftQuarter());
                     break;
+
                 case WindowSizePosition.TopRight:
                     this.ResizeActiveWindow(this.screenSizePosition.TopRightQuarter());
                     break;
+
                 case WindowSizePosition.BottomLeft:
                     this.ResizeActiveWindow(this.screenSizePosition.BottomLeftQuarter());
                     break;
+
                 case WindowSizePosition.BottomRight:
                     this.ResizeActiveWindow(this.screenSizePosition.BottomRightQuarter());
                     break;
             }
-        }
-
-        private bool ResizeActiveWindow(Rectangle newWindowSize)
-        {
-            return NativeMethods.SetWindowPos(
-                                this.foregroundWindowHandle, 
-                                WindowHandles.Top,
-                                newWindowSize.X, 
-                                newWindowSize.Y, 
-                                newWindowSize.Width, 
-                                newWindowSize.Height, 
-                                SetWindowPos.ShowWindow);
         }
 
         private Rectangle GetForegroundWindowBounds()
@@ -111,6 +108,18 @@
                 outRect.Top,
                 outRect.Right - outRect.Left,
                 outRect.Bottom - outRect.Top);
+        }
+
+        private bool ResizeActiveWindow(Rectangle newWindowSize)
+        {
+            return NativeMethods.SetWindowPos(
+                this.foregroundWindowHandle,
+                WindowHandles.Top,
+                newWindowSize.X,
+                newWindowSize.Y,
+                newWindowSize.Width,
+                newWindowSize.Height,
+                SetWindowPos.ShowWindow);
         }
     }
 }
