@@ -34,5 +34,17 @@ namespace NeatWindows.Properties {
                 this["ShowNotifyIconBalloonInfo"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int WindowBorder {
+            get {
+                return ((int)(this["WindowBorder"]));
+            }
+            set {
+                this["WindowBorder"] = value;
+            }
+        }
     }
 }

@@ -71,7 +71,11 @@
             this.buttonBottomLeft = new System.Windows.Forms.Button();
             this.buttonBottomRight = new System.Windows.Forms.Button();
             this.startupCheckbox = new System.Windows.Forms.CheckBox();
+            this.trackBarWindowBorder = new System.Windows.Forms.TrackBar();
+            this.labelWindowBorder = new System.Windows.Forms.Label();
+            this.textBoxWindowBorder = new System.Windows.Forms.TextBox();
             this.settingsIconContextMenu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarWindowBorder)).BeginInit();
             this.SuspendLayout();
             // 
             // settingsIcon
@@ -504,10 +508,33 @@
             this.startupCheckbox.UseVisualStyleBackColor = true;
             this.startupCheckbox.CheckedChanged += new System.EventHandler(this.CheckBoxStartAtLogin_CheckedChanged);
             // 
+            // trackBarWindowBorder
+            // 
+            resources.ApplyResources(this.trackBarWindowBorder, "trackBarWindowBorder");
+            this.trackBarWindowBorder.Maximum = 20;
+            this.trackBarWindowBorder.Name = "trackBarWindowBorder";
+            this.trackBarWindowBorder.Scroll += new System.EventHandler(this.TrackBarWindowBorder_Scroll);
+            // 
+            // labelWindowBorder
+            // 
+            resources.ApplyResources(this.labelWindowBorder, "labelWindowBorder");
+            this.labelWindowBorder.Name = "labelWindowBorder";
+            // 
+            // textBoxWindowBorder
+            // 
+            this.textBoxWindowBorder.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.textBoxWindowBorder.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            resources.ApplyResources(this.textBoxWindowBorder, "textBoxWindowBorder");
+            this.textBoxWindowBorder.Name = "textBoxWindowBorder";
+            this.textBoxWindowBorder.ReadOnly = true;
+            // 
             // SettingsForm
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.textBoxWindowBorder);
+            this.Controls.Add(this.labelWindowBorder);
+            this.Controls.Add(this.trackBarWindowBorder);
             this.Controls.Add(this.startupCheckbox);
             this.Controls.Add(this.buttonBottomRight);
             this.Controls.Add(this.buttonBottomLeft);
@@ -553,6 +580,7 @@
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.SettingsForm_MouseDown);
             this.Resize += new System.EventHandler(this.SettingsForm_Resize);
             this.settingsIconContextMenu.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarWindowBorder)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -601,6 +629,9 @@
         private System.Windows.Forms.ToolStripMenuItem openSettingsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitNeatWindowsToolStripMenuItem;
         private System.Windows.Forms.CheckBox startupCheckbox;
+        private System.Windows.Forms.TrackBar trackBarWindowBorder;
+        private System.Windows.Forms.Label labelWindowBorder;
+        private System.Windows.Forms.TextBox textBoxWindowBorder;
 
     }
 }

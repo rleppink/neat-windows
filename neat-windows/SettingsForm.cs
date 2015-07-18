@@ -5,6 +5,7 @@
     using System.Drawing;
     using System.Windows.Forms;
     using Microsoft.Win32;
+    using System.Globalization;
 
     public partial class SettingsForm : Form
     {
@@ -21,6 +22,9 @@
             this.FillTextBoxes(this.hotkeyHandler.GetHotkeyMap());
             this.InitStartupCheckBox();
             this.SetWindowSize();
+
+            this.trackBarWindowBorder.Value = Properties.Settings.Default.WindowBorder;
+            this.textBoxWindowBorder.Text = ((int)Properties.Settings.Default.WindowBorder).ToString(CultureInfo.CurrentCulture);
 
             labelFullscreen.Focus();
         }
@@ -66,7 +70,7 @@
         {
             foreach (Control control in this.Controls)
             {
-                if (control.GetType() != typeof(TextBox))
+                if ((control.GetType() != typeof(TextBox)) || (control.Tag == null))
                 {
                     continue;
                 }
@@ -234,6 +238,7 @@
             {
                 this.settingsIcon.ShowBalloonTip(3000);
                 Properties.Settings.Default.ShowNotifyIconBalloonInfo = false;
+                Properties.Settings.Default.Save();
             }
         }
 
@@ -259,6 +264,14 @@
             WindowSizePosition windowSizePosition = (WindowSizePosition)clickedButton.Tag;
             this.hotkeyHandler.UnmapHotkey(windowSizePosition);
             this.GetTextBoxByTag(windowSizePosition).Text = string.Empty;
+        }
+
+        private void TrackBarWindowBorder_Scroll(object sender, EventArgs e)
+        {
+            TrackBar senderTrackBar = (TrackBar)sender;
+            this.textBoxWindowBorder.Text = senderTrackBar.Value.ToString(CultureInfo.CurrentCulture);
+            Properties.Settings.Default.WindowBorder = senderTrackBar.Value;
+            Properties.Settings.Default.Save();
         }
     }
 }

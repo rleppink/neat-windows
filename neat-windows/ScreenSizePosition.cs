@@ -6,12 +6,13 @@
 
     internal class ScreenSizePosition
     {
-        private static int border = 0;
+        private int border = 0;
         private Screen activeScreen;
 
         public ScreenSizePosition(IntPtr activeWindow)
         {
             this.activeScreen = Screen.FromHandle(activeWindow);
+            this.border = Properties.Settings.Default.WindowBorder;
         }
 
         private Rectangle ActiveScreenSize

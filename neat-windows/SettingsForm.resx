@@ -130,20 +130,8 @@
     <value>15, 39</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="openSettingsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>172, 22</value>
-  </data>
-  <data name="openSettingsToolStripMenuItem.Text" xml:space="preserve">
-    <value>Open settings</value>
-  </data>
-  <data name="exitNeatWindowsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>172, 22</value>
-  </data>
-  <data name="exitNeatWindowsToolStripMenuItem.Text" xml:space="preserve">
-    <value>Exit Neat Windows</value>
-  </data>
   <data name="settingsIconContextMenu.Size" type="System.Drawing.Size, System.Drawing">
-    <value>173, 70</value>
+    <value>173, 48</value>
   </data>
   <data name="&gt;&gt;settingsIconContextMenu.Name" xml:space="preserve">
     <value>settingsIconContextMenu</value>
@@ -182,6 +170,18 @@
   <data name="settingsIcon.Visible" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="openSettingsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>172, 22</value>
+  </data>
+  <data name="openSettingsToolStripMenuItem.Text" xml:space="preserve">
+    <value>Open settings</value>
+  </data>
+  <data name="exitNeatWindowsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>172, 22</value>
+  </data>
+  <data name="exitNeatWindowsToolStripMenuItem.Text" xml:space="preserve">
+    <value>Exit Neat Windows</value>
+  </data>
   <data name="labelBottomRightQuarter.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -210,7 +210,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;labelBottomRightQuarter.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>17</value>
   </data>
   <data name="textBoxBottomRightQuarter.Location" type="System.Drawing.Point, System.Drawing">
     <value>162, 353</value>
@@ -238,7 +238,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;textBoxBottomRightQuarter.ZOrder" xml:space="preserve">
-    <value>16</value>
+    <value>19</value>
   </data>
   <data name="labelBottomLeftQuarter.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -268,7 +268,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;labelBottomLeftQuarter.ZOrder" xml:space="preserve">
-    <value>18</value>
+    <value>21</value>
   </data>
   <data name="textBoxBottomLeftQuarter.Location" type="System.Drawing.Point, System.Drawing">
     <value>162, 327</value>
@@ -295,7 +295,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;textBoxBottomLeftQuarter.ZOrder" xml:space="preserve">
-    <value>20</value>
+    <value>23</value>
   </data>
   <data name="labelTopRightQuarter.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -325,7 +325,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;labelTopRightQuarter.ZOrder" xml:space="preserve">
-    <value>22</value>
+    <value>25</value>
   </data>
   <data name="textBoxTopRightQuarter.Location" type="System.Drawing.Point, System.Drawing">
     <value>162, 301</value>
@@ -352,7 +352,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;textBoxTopRightQuarter.ZOrder" xml:space="preserve">
-    <value>24</value>
+    <value>27</value>
   </data>
   <data name="labelTopLeftQuarter.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -382,7 +382,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;labelTopLeftQuarter.ZOrder" xml:space="preserve">
-    <value>25</value>
+    <value>28</value>
   </data>
   <data name="textBoxTopLeftQuarter.Location" type="System.Drawing.Point, System.Drawing">
     <value>162, 275</value>
@@ -409,7 +409,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;textBoxTopLeftQuarter.ZOrder" xml:space="preserve">
-    <value>26</value>
+    <value>29</value>
   </data>
   <data name="labelPreviousDisplay.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -439,7 +439,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;labelPreviousDisplay.ZOrder" xml:space="preserve">
-    <value>17</value>
+    <value>20</value>
   </data>
   <data name="textBoxPreviousDisplay.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt</value>
@@ -472,7 +472,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;textBoxPreviousDisplay.ZOrder" xml:space="preserve">
-    <value>21</value>
+    <value>24</value>
   </data>
   <data name="labelNextDisplay.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -502,7 +502,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;labelNextDisplay.ZOrder" xml:space="preserve">
-    <value>28</value>
+    <value>31</value>
   </data>
   <data name="textBoxNextDisplay.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt</value>
@@ -535,7 +535,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;textBoxNextDisplay.ZOrder" xml:space="preserve">
-    <value>31</value>
+    <value>34</value>
   </data>
   <data name="labelCenter.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -565,7 +565,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;labelCenter.ZOrder" xml:space="preserve">
-    <value>34</value>
+    <value>37</value>
   </data>
   <data name="textBoxCenter.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt</value>
@@ -598,7 +598,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;textBoxCenter.ZOrder" xml:space="preserve">
-    <value>36</value>
+    <value>39</value>
   </data>
   <data name="labelFullscreen.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -628,7 +628,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;labelFullscreen.ZOrder" xml:space="preserve">
-    <value>37</value>
+    <value>40</value>
   </data>
   <data name="textBoxFullscreen.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt</value>
@@ -661,7 +661,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;textBoxFullscreen.ZOrder" xml:space="preserve">
-    <value>35</value>
+    <value>38</value>
   </data>
   <data name="textBoxLeftHalf.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt</value>
@@ -694,7 +694,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;textBoxLeftHalf.ZOrder" xml:space="preserve">
-    <value>33</value>
+    <value>36</value>
   </data>
   <data name="labelLeftHalf.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -724,7 +724,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;labelLeftHalf.ZOrder" xml:space="preserve">
-    <value>32</value>
+    <value>35</value>
   </data>
   <data name="textBoxRightHalf.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt</value>
@@ -757,7 +757,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;textBoxRightHalf.ZOrder" xml:space="preserve">
-    <value>30</value>
+    <value>33</value>
   </data>
   <data name="labelRightHalf.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -787,7 +787,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;labelRightHalf.ZOrder" xml:space="preserve">
-    <value>29</value>
+    <value>32</value>
   </data>
   <data name="textBoxTopHalf.Location" type="System.Drawing.Point, System.Drawing">
     <value>162, 197</value>
@@ -814,7 +814,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;textBoxTopHalf.ZOrder" xml:space="preserve">
-    <value>27</value>
+    <value>30</value>
   </data>
   <data name="labelTopHalf.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -844,7 +844,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;labelTopHalf.ZOrder" xml:space="preserve">
-    <value>23</value>
+    <value>26</value>
   </data>
   <data name="textBoxBottomHalf.Location" type="System.Drawing.Point, System.Drawing">
     <value>162, 223</value>
@@ -871,7 +871,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;textBoxBottomHalf.ZOrder" xml:space="preserve">
-    <value>19</value>
+    <value>22</value>
   </data>
   <data name="labelBottomHalf.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -901,7 +901,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;labelBottomHalf.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>18</value>
   </data>
   <data name="buttonFullscreen.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>None</value>
@@ -945,7 +945,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;buttonFullscreen.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>16</value>
   </data>
   <data name="buttonCenter.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>None</value>
@@ -989,7 +989,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;buttonCenter.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>15</value>
   </data>
   <data name="buttonNextDisplay.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>None</value>
@@ -1033,7 +1033,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;buttonNextDisplay.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>14</value>
   </data>
   <data name="buttonPreviousDisplay.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>None</value>
@@ -1077,7 +1077,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;buttonPreviousDisplay.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>13</value>
   </data>
   <data name="buttonLeftHalf.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>None</value>
@@ -1121,7 +1121,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;buttonLeftHalf.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>12</value>
   </data>
   <data name="buttonRightHalf.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>None</value>
@@ -1165,7 +1165,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;buttonRightHalf.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>11</value>
   </data>
   <data name="buttonTopHalf.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>None</value>
@@ -1209,7 +1209,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;buttonTopHalf.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>10</value>
   </data>
   <data name="buttonBottomHalf.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>None</value>
@@ -1253,7 +1253,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;buttonBottomHalf.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>9</value>
   </data>
   <data name="buttonTopLeft.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>None</value>
@@ -1297,7 +1297,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;buttonTopLeft.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>8</value>
   </data>
   <data name="buttonTopRight.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>None</value>
@@ -1341,7 +1341,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;buttonTopRight.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>7</value>
   </data>
   <data name="buttonBottomLeft.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>None</value>
@@ -1385,7 +1385,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;buttonBottomLeft.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>6</value>
   </data>
   <data name="buttonBottomRight.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>None</value>
@@ -1429,13 +1429,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;buttonBottomRight.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>5</value>
   </data>
   <data name="startupCheckbox.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="startupCheckbox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>217, 392</value>
+    <value>217, 452</value>
   </data>
   <data name="startupCheckbox.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
     <value>Yes</value>
@@ -1459,6 +1459,81 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;startupCheckbox.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="trackBarWindowBorder.Location" type="System.Drawing.Point, System.Drawing">
+    <value>162, 401</value>
+  </data>
+  <data name="trackBarWindowBorder.Size" type="System.Drawing.Size, System.Drawing">
+    <value>181, 45</value>
+  </data>
+  <data name="trackBarWindowBorder.TabIndex" type="System.Int32, mscorlib">
+    <value>21</value>
+  </data>
+  <data name="&gt;&gt;trackBarWindowBorder.Name" xml:space="preserve">
+    <value>trackBarWindowBorder</value>
+  </data>
+  <data name="&gt;&gt;trackBarWindowBorder.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;trackBarWindowBorder.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;trackBarWindowBorder.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="labelWindowBorder.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelWindowBorder.Location" type="System.Drawing.Point, System.Drawing">
+    <value>77, 403</value>
+  </data>
+  <data name="labelWindowBorder.Size" type="System.Drawing.Size, System.Drawing">
+    <value>79, 13</value>
+  </data>
+  <data name="labelWindowBorder.TabIndex" type="System.Int32, mscorlib">
+    <value>22</value>
+  </data>
+  <data name="labelWindowBorder.Text" xml:space="preserve">
+    <value>Window border</value>
+  </data>
+  <data name="&gt;&gt;labelWindowBorder.Name" xml:space="preserve">
+    <value>labelWindowBorder</value>
+  </data>
+  <data name="&gt;&gt;labelWindowBorder.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelWindowBorder.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;labelWindowBorder.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="textBoxWindowBorder.Location" type="System.Drawing.Point, System.Drawing">
+    <value>349, 403</value>
+  </data>
+  <data name="textBoxWindowBorder.Size" type="System.Drawing.Size, System.Drawing">
+    <value>20, 20</value>
+  </data>
+  <data name="textBoxWindowBorder.TabIndex" type="System.Int32, mscorlib">
+    <value>23</value>
+  </data>
+  <data name="textBoxWindowBorder.Text" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="textBoxWindowBorder.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="&gt;&gt;textBoxWindowBorder.Name" xml:space="preserve">
+    <value>textBoxWindowBorder</value>
+  </data>
+  <data name="&gt;&gt;textBoxWindowBorder.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxWindowBorder.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;textBoxWindowBorder.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -1471,13 +1546,13 @@
     <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>394, 435</value>
+    <value>384, 481</value>
   </data>
   <data name="$this.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>400, 460</value>
+    <value>400, 520</value>
   </data>
   <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>400, 460</value>
+    <value>400, 520</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterScreen</value>
