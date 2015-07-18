@@ -1,220 +1,315 @@
-﻿using System;
-using System.Drawing;
-using System.Windows.Forms;
-
-namespace NeatWindows
+﻿namespace NeatWindows
 {
-    class ScreenSizePosition
-    {
-        private Screen activeScreen;
-        private static int border = 0;
+    using System;
+    using System.Drawing;
+    using System.Windows.Forms;
 
+    internal class ScreenSizePosition
+    {
+        private static int border = 0;
+        private Screen activeScreen;
 
         public ScreenSizePosition(IntPtr activeWindow)
         {
             this.activeScreen = Screen.FromHandle(activeWindow);
         }
 
-        private Rectangle ActiveScreenSize()
+        private Rectangle ActiveScreenSize
         {
-            return this.activeScreen.WorkingArea;
+            get { return this.activeScreen.WorkingArea; }
         }
+
+        #region Sizes
+
+        private int FullScreenHeight
+        {
+            get { return this.ActiveScreenSize.Height - (border * 2); }
+        }
+
+        private int FullScreenWidth
+        {
+            get { return this.ActiveScreenSize.Width - (border * 2); }
+        }
+
+        private int HalfScreenHeight
+        {
+            get { return (this.ActiveScreenSize.Height / 2) - (border + (border / 2)); }
+        }
+
+        private int HalfScreenWidth
+        {
+            get { return (this.ActiveScreenSize.Width / 2) - (border + (border / 2)); }
+        }
+
+        private int ThirdScreenHeight
+        {
+            get { return this.ActiveScreenSize.Height / 3; }
+        }
+
+        private int ThirdScreenWidth
+        {
+            get { return this.ActiveScreenSize.Width / 3; }
+        }
+
+        private int TwoThirdsScreenHeight
+        {
+            get { return this.ThirdScreenHeight * 2; }
+        }
+
+        private int TwoThirdsScreenWidth
+        {
+            get { return this.ThirdScreenWidth * 2; }
+        }
+
+        #endregion Sizes
+
+        #region Positions
+
+        private int LeftX
+        {
+            get { return this.ActiveScreenSize.X + border; }
+        }
+
+        private int MidX
+        {
+            get { return this.ActiveScreenSize.X + (this.ActiveScreenSize.Width / 2) + (border / 2); }
+        }
+
+        private int MidY
+        {
+            get { return this.ActiveScreenSize.Y + (this.ActiveScreenSize.Height / 2) + (border / 2); }
+        }
+
+        private int ThirdX
+        {
+            get { return this.ActiveScreenSize.X + this.ThirdScreenWidth; }
+        }
+
+        private int ThirdY
+        {
+            get { return this.ActiveScreenSize.Y + this.ThirdScreenHeight; }
+        }
+
+        private int TopY
+        {
+            get { return this.ActiveScreenSize.Y + border; }
+        }
+
+        private int TwoThirdsX
+        {
+            get { return this.ActiveScreenSize.X + (this.ThirdScreenWidth * 2); }
+        }
+
+        private int TwoThirdsY
+        {
+            get { return this.ActiveScreenSize.Y + (this.ThirdScreenHeight * 2); }
+        }
+
+        #endregion Positions
 
         #region Fullscreen, centered
-        public Rectangle FullScreen()
-        {
-            return this.ActiveScreenSize();
-        }
 
-        public Rectangle TwoThirdsCenter()
+        public Rectangle Center(Rectangle window)
         {
             return new Rectangle(
-                this.ActiveScreenSize().X + (this.ActiveScreenSize().Width - this.TwoThirdsScreenWidth()) / 2,
-                this.ActiveScreenSize().Y + (this.ActiveScreenSize().Height - this.TwoThirdsScreenHeight()) / 2,
-                this.TwoThirdsScreenWidth(),
-                this.TwoThirdsScreenHeight());
+                this.ActiveScreenSize.X + ((this.ActiveScreenSize.Width - window.Width) / 2),
+                this.ActiveScreenSize.Y + ((this.ActiveScreenSize.Height - window.Height) / 2),
+                window.Width,
+                window.Height);
+        }
+
+        public Rectangle FullScreen()
+        {
+            return this.ActiveScreenSize;
         }
 
         public Rectangle QuarterCenter()
         {
             return new Rectangle(
-                this.ActiveScreenSize().X + (this.ActiveScreenSize().Width - this.HalfScreenWidth()) / 2,
-                this.ActiveScreenSize().Y + (this.ActiveScreenSize().Height - this.HalfScreenHeight()) / 2,
-                this.HalfScreenWidth(),
-                this.HalfScreenHeight());
+                this.ActiveScreenSize.X + ((this.ActiveScreenSize.Width - this.HalfScreenWidth) / 2),
+                this.ActiveScreenSize.Y + ((this.ActiveScreenSize.Height - this.HalfScreenHeight) / 2),
+                this.HalfScreenWidth,
+                this.HalfScreenHeight);
         }
 
         public Rectangle ThirdCenter()
         {
             return new Rectangle(
-                this.ActiveScreenSize().X + (this.ActiveScreenSize().Width - this.ThirdScreenWidth()) / 2,
-                this.ActiveScreenSize().Y + (this.ActiveScreenSize().Height - this.ThirdScreenHeight()) / 2,
-                this.ThirdScreenWidth(),
-                this.ThirdScreenHeight());
+                this.ActiveScreenSize.X + ((this.ActiveScreenSize.Width - this.ThirdScreenWidth) / 2),
+                this.ActiveScreenSize.Y + ((this.ActiveScreenSize.Height - this.ThirdScreenHeight) / 2),
+                this.ThirdScreenWidth,
+                this.ThirdScreenHeight);
         }
 
-        public Rectangle Center(Rectangle window)
+        public Rectangle TwoThirdsCenter()
         {
             return new Rectangle(
-                this.ActiveScreenSize().X + (this.ActiveScreenSize().Width - window.Width) / 2,
-                this.ActiveScreenSize().Y + (this.ActiveScreenSize().Height - window.Height) / 2,
-                window.Width,
-                window.Height);
+                this.ActiveScreenSize.X + ((this.ActiveScreenSize.Width - this.TwoThirdsScreenWidth) / 2),
+                this.ActiveScreenSize.Y + ((this.ActiveScreenSize.Height - this.TwoThirdsScreenHeight) / 2),
+                this.TwoThirdsScreenWidth,
+                this.TwoThirdsScreenHeight);
         }
 
         #endregion Fullscreen, centered
 
         #region Half sizes
-        public Rectangle HalfWidthLeft()
-        {
-            return new Rectangle (
-                this.LeftX(),
-                this.TopY(),
-                this.HalfScreenWidth(),
-                this.FullScreenHeight());
-        }
 
-        public Rectangle HalfWidthRight()
+        public Rectangle HalfHeightBottom()
         {
-            return new Rectangle (
-                this.MidX(),
-                this.TopY(),
-                this.HalfScreenWidth(),
-                this.FullScreenHeight());
+            return new Rectangle(
+                this.LeftX,
+                this.MidY,
+                this.FullScreenWidth,
+                this.HalfScreenHeight);
         }
 
         public Rectangle HalfHeightTop()
         {
             return new Rectangle(
-                this.LeftX(),
-                this.TopY(),
-                this.FullScreenWidth(),
-                this.HalfScreenHeight());
+                this.LeftX,
+                this.TopY,
+                this.FullScreenWidth,
+                this.HalfScreenHeight);
         }
 
-        public Rectangle HalfHeightBottom()
+        public Rectangle HalfWidthLeft()
         {
             return new Rectangle(
-                this.LeftX(),
-                this.MidY(),
-                this.FullScreenWidth(),
-                this.HalfScreenHeight());
+                this.LeftX,
+                this.TopY,
+                this.HalfScreenWidth,
+                this.FullScreenHeight);
         }
+
+        public Rectangle HalfWidthRight()
+        {
+            return new Rectangle(
+                this.MidX,
+                this.TopY,
+                this.HalfScreenWidth,
+                this.FullScreenHeight);
+        }
+
         #endregion Half sizes
 
         #region Third sizes
-        public Rectangle ThirdWidthLeft()
-        {
-            return new Rectangle(
-                this.LeftX(),
-                this.TopY(),
-                this.ThirdScreenWidth(),
-                this.FullScreenHeight());
-        }
 
-        public Rectangle TwoThirdsWidthLeft()
+        public Rectangle ThirdHeightBottom()
         {
             return new Rectangle(
-                this.LeftX(),
-                this.TopY(),
-                this.TwoThirdsScreenWidth(),
-                this.FullScreenHeight());
-        }
-
-        public Rectangle ThirdWidthRight()
-        {
-            return new Rectangle(
-                this.TwoThirdsX(),
-                this.TopY(),
-                this.ThirdScreenWidth(),
-                this.FullScreenHeight());
-        }
-
-        public Rectangle TwoThirdsWidthRight()
-        {
-            return new Rectangle(
-                this.ThirdX(),
-                this.TopY(),
-                this.TwoThirdsScreenWidth(),
-                this.FullScreenHeight());
+                this.LeftX,
+                this.TwoThirdsY,
+                this.FullScreenWidth,
+                this.ThirdScreenHeight);
         }
 
         public Rectangle ThirdHeightTop()
         {
             return new Rectangle(
-                this.LeftX(),
-                this.TopY(),
-                this.FullScreenWidth(),
-                this.ThirdScreenHeight());
+                this.LeftX,
+                this.TopY,
+                this.FullScreenWidth,
+                this.ThirdScreenHeight);
         }
 
-        public Rectangle TwoThirdsHeightTop()
+        public Rectangle ThirdWidthLeft()
         {
             return new Rectangle(
-                this.LeftX(),
-                this.TopY(),
-                this.FullScreenWidth(),
-                this.TwoThirdsScreenHeight());
+                this.LeftX,
+                this.TopY,
+                this.ThirdScreenWidth,
+                this.FullScreenHeight);
         }
 
-        public Rectangle ThirdHeightBottom()
+        public Rectangle ThirdWidthRight()
         {
             return new Rectangle(
-                this.LeftX(),
-                this.TwoThirdsY(),
-                this.FullScreenWidth(),
-                this.ThirdScreenHeight());
+                this.TwoThirdsX,
+                this.TopY,
+                this.ThirdScreenWidth,
+                this.FullScreenHeight);
         }
 
         public Rectangle TwoThirdsHeightBottom()
         {
             return new Rectangle(
-                this.LeftX(),
-                this.ThirdY(),
-                this.FullScreenWidth(),
-                this.TwoThirdsScreenHeight());
+                this.LeftX,
+                this.ThirdY,
+                this.FullScreenWidth,
+                this.TwoThirdsScreenHeight);
         }
+
+        public Rectangle TwoThirdsHeightTop()
+        {
+            return new Rectangle(
+                this.LeftX,
+                this.TopY,
+                this.FullScreenWidth,
+                this.TwoThirdsScreenHeight);
+        }
+
+        public Rectangle TwoThirdsWidthLeft()
+        {
+            return new Rectangle(
+                this.LeftX,
+                this.TopY,
+                this.TwoThirdsScreenWidth,
+                this.FullScreenHeight);
+        }
+
+        public Rectangle TwoThirdsWidthRight()
+        {
+            return new Rectangle(
+                this.ThirdX,
+                this.TopY,
+                this.TwoThirdsScreenWidth,
+                this.FullScreenHeight);
+        }
+
         #endregion Third sizes
 
         #region Quarter sizes
-        public Rectangle TopLeftQuarter()
-        {
-            return new Rectangle(
-                this.LeftX(),
-                this.TopY(),
-                this.HalfScreenWidth(),
-                this.HalfScreenHeight());
-        }
-
-        public Rectangle TopRightQuarter()
-        {
-            return new Rectangle(
-                this.MidX(),
-                this.TopY(),
-                this.HalfScreenWidth(),
-                this.HalfScreenHeight());
-        }
 
         public Rectangle BottomLeftQuarter()
         {
             return new Rectangle(
-                this.LeftX(),
-                this.MidY(),
-                this.HalfScreenWidth(),
-                this.HalfScreenHeight());
+                this.LeftX,
+                this.MidY,
+                this.HalfScreenWidth,
+                this.HalfScreenHeight);
         }
 
         public Rectangle BottomRightQuarter()
         {
             return new Rectangle(
-                this.MidX(),
-                this.MidY(),
-                this.HalfScreenWidth(),
-                this.HalfScreenHeight());
+                this.MidX,
+                this.MidY,
+                this.HalfScreenWidth,
+                this.HalfScreenHeight);
         }
+
+        public Rectangle TopLeftQuarter()
+        {
+            return new Rectangle(
+                this.LeftX,
+                this.TopY,
+                this.HalfScreenWidth,
+                this.HalfScreenHeight);
+        }
+
+        public Rectangle TopRightQuarter()
+        {
+            return new Rectangle(
+                this.MidX,
+                this.TopY,
+                this.HalfScreenWidth,
+                this.HalfScreenHeight);
+        }
+
         #endregion Quarter sizes
 
         #region Multiple screens
+
         public Rectangle NextScreen(Rectangle window)
         {
             Rectangle nextScreenBounds = this.GetNextScreen().WorkingArea;
@@ -229,13 +324,13 @@ namespace NeatWindows
         {
             Rectangle previousScreenBounds = this.GetPreviousScreen().WorkingArea;
             return new Rectangle(
-                previousScreenBounds.X + (previousScreenBounds.Width - window.Width) / 2,
-                previousScreenBounds.Y + (previousScreenBounds.Height - window.Height) / 2,
+                previousScreenBounds.X + ((previousScreenBounds.Width - window.Width) / 2),
+                previousScreenBounds.Y + ((previousScreenBounds.Height - window.Height) / 2),
                 window.Width,
                 window.Height);
         }
 
-        private Screen GetNextScreen() 
+        private Screen GetNextScreen()
         {
             int nextScreenIndex = 0;
             for (int i = 0; i < Screen.AllScreens.Length; i++)
@@ -244,7 +339,9 @@ namespace NeatWindows
                 {
                     nextScreenIndex = i + 1;
                     if (nextScreenIndex + 1 > Screen.AllScreens.Length)
+                    {
                         nextScreenIndex = 0;
+                    }
                 }
             }
 
@@ -260,39 +357,15 @@ namespace NeatWindows
                 {
                     previousScreenIndex = i - 1;
                     if (previousScreenIndex < 0)
+                    {
                         previousScreenIndex = Screen.AllScreens.Length - 1;
+                    }
                 }
             }
 
             return Screen.AllScreens[previousScreenIndex];
         }
+
         #endregion Multiple screens
-
-        #region Sizes
-        private int FullScreenWidth() { return this.ActiveScreenSize().Width - (border * 2); }
-        private int FullScreenHeight() { return this.ActiveScreenSize().Height - (border * 2); }
-
-        private int HalfScreenWidth() { return (this.ActiveScreenSize().Width / 2) - (border + (border / 2)); }
-        private int HalfScreenHeight() { return this.ActiveScreenSize().Height / 2 - (border + (border / 2)); }
-
-        private int ThirdScreenWidth() { return this.ActiveScreenSize().Width / 3; }
-        private int ThirdScreenHeight() { return this.ActiveScreenSize().Height / 3; }
-
-        private int TwoThirdsScreenWidth() { return this.ThirdScreenWidth() * 2; }
-        private int TwoThirdsScreenHeight() { return this.ThirdScreenHeight() * 2; }
-        #endregion Sizes
-
-        #region Positions
-        private int LeftX() { return this.ActiveScreenSize().X + border; }
-        private int MidX() { return this.ActiveScreenSize().X + (this.ActiveScreenSize().Width / 2) + (border / 2); }
-        private int ThirdX() { return this.ActiveScreenSize().X + this.ThirdScreenWidth(); }
-        private int TwoThirdsX() { return this.ActiveScreenSize().X + (this.ThirdScreenWidth() * 2); }
-
-        private int TopY() { return this.ActiveScreenSize().Y + border; }
-        private int MidY() { return this.ActiveScreenSize().Y + (this.ActiveScreenSize().Height / 2) + (border / 2); }
-        private int ThirdY() { return this.ActiveScreenSize().Y + this.ThirdScreenHeight(); }
-        private int TwoThirdsY() { return this.ActiveScreenSize().Y + (this.ThirdScreenHeight() * 2); }
-        #endregion Positions
-
     }
 }

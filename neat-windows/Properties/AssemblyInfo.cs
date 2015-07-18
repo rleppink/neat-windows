@@ -10,7 +10,7 @@ using System;
 [assembly: AssemblyTitle("Neat Windows")]
 [assembly: AssemblyDescription("A simple program to organize your windows.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Ronald Leppink")]
+[assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("neat-windows")]
 [assembly: AssemblyCopyright("Copyright ©  2015")]
 [assembly: AssemblyTrademark("")]

@@ -79,7 +79,7 @@
             this.settingsIcon.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             resources.ApplyResources(this.settingsIcon, "settingsIcon");
             this.settingsIcon.ContextMenuStrip = this.settingsIconContextMenu;
-            this.settingsIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.settingsIcon_MouseDoubleClick);
+            this.settingsIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.SettingsIcon_MouseDoubleClick);
             // 
             // settingsIconContextMenu
             // 
@@ -93,13 +93,13 @@
             // 
             this.openSettingsToolStripMenuItem.Name = "openSettingsToolStripMenuItem";
             resources.ApplyResources(this.openSettingsToolStripMenuItem, "openSettingsToolStripMenuItem");
-            this.openSettingsToolStripMenuItem.Click += new System.EventHandler(this.openSettingsToolStripMenuItem_Click);
+            this.openSettingsToolStripMenuItem.Click += new System.EventHandler(this.OpenSettingsToolStripMenuItem_Click);
             // 
             // exitNeatWindowsToolStripMenuItem
             // 
             this.exitNeatWindowsToolStripMenuItem.Name = "exitNeatWindowsToolStripMenuItem";
             resources.ApplyResources(this.exitNeatWindowsToolStripMenuItem, "exitNeatWindowsToolStripMenuItem");
-            this.exitNeatWindowsToolStripMenuItem.Click += new System.EventHandler(this.exitNeatWindowsToolStripMenuItem_Click);
+            this.exitNeatWindowsToolStripMenuItem.Click += new System.EventHandler(this.ExitNeatWindowsToolStripMenuItem_Click);
             // 
             // labelBottomRightQuarter
             // 
@@ -502,7 +502,7 @@
             resources.ApplyResources(this.startupCheckbox, "startupCheckbox");
             this.startupCheckbox.Name = "startupCheckbox";
             this.startupCheckbox.UseVisualStyleBackColor = true;
-            this.startupCheckbox.CheckedChanged += new System.EventHandler(this.checkBoxStartAtLogin_CheckedChanged);
+            this.startupCheckbox.CheckedChanged += new System.EventHandler(this.CheckBoxStartAtLogin_CheckedChanged);
             // 
             // SettingsForm
             // 

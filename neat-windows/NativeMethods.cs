@@ -4,43 +4,23 @@
     using System.Globalization;
     using System.Runtime.InteropServices;
 
-    static class NativeMethods
-    {
-        [DllImport("user32.dll", SetLastError = true)]
-        public static extern IntPtr GetForegroundWindow();
-
-        [DllImport("user32.dll", SetLastError = true)]
-        [return: MarshalAs(UnmanagedType.Bool)]
-        public static extern bool SetWindowPos(IntPtr hWnd, IntPtr hWndInsertAfter, int xPosition, int yPosition, int width, int height, uint uFlags);
-
-        [DllImport("user32.dll", SetLastError = true)]
-        [return: MarshalAs(UnmanagedType.Bool)]
-        public static extern bool GetWindowRect(IntPtr hWnd, out Rect lpRect);
-
-        [DllImport("user32.dll", SetLastError = true)]
-        public static extern int RegisterHotKey(IntPtr hWnd, int id, uint fsModifiers, System.Windows.Forms.Keys vk);
-
-        [DllImport("user32.dll", SetLastError = true)]
-        public static extern int UnregisterHotKey(IntPtr hWnd, int id);
-    }
-
     public struct Rect
     {
-        private int bottom;
         private int left;
-        private int right;
         private int top;
-
-        public int Bottom
-        {
-            get { return this.bottom; }
-            set { this.bottom = value; }
-        }
+        private int right;
+        private int bottom;
 
         public int Left
         {
             get { return this.left; }
             set { this.left = value; }
+        }
+
+        public int Top
+        {
+            get { return this.top; }
+            set { this.top = value; }
         }
 
         public int Right
@@ -49,10 +29,10 @@
             set { this.right = value; }
         }
 
-        public int Top
+        public int Bottom
         {
-            get { return this.top; }
-            set { this.top = value; }
+            get { return this.bottom; }
+            set { this.bottom = value; }
         }
 
         public static bool operator !=(Rect rectA, Rect rectB)
@@ -122,5 +102,25 @@
             };
             return "Rect: (" + string.Join(", ", values) + ")";
         }
+    }
+
+    internal static class NativeMethods
+    {
+        [DllImport("user32.dll", SetLastError = true)]
+        public static extern IntPtr GetForegroundWindow();
+
+        [DllImport("user32.dll", SetLastError = true)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        public static extern bool GetWindowRect(IntPtr hWnd, out Rect lpRect);
+
+        [DllImport("user32.dll", SetLastError = true)]
+        public static extern int RegisterHotKey(IntPtr hWnd, int id, uint fsModifiers, System.Windows.Forms.Keys vk);
+
+        [DllImport("user32.dll", SetLastError = true)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        public static extern bool SetWindowPos(IntPtr hWnd, IntPtr hWndInsertAfter, int xPosition, int yPosition, int width, int height, uint uFlags);
+
+        [DllImport("user32.dll", SetLastError = true)]
+        public static extern int UnregisterHotKey(IntPtr hWnd, int id);
     }
 }

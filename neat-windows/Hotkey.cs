@@ -1,12 +1,12 @@
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Runtime.InteropServices;
-using System.Windows.Forms;
-using System.Xml.Serialization;
-
 namespace NeatWindows
 {
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel;
+    using System.Runtime.InteropServices;
+    using System.Windows.Forms;
+    using System.Xml.Serialization;
+
     /*
      *  Hotkey abstraction kindly modified from:
      *  https://bloggablea.wordpress.com/2007/05/01/global-hotkeys-with-net/
@@ -14,38 +14,31 @@ namespace NeatWindows
 
     public class Hotkey : IMessageFilter
     {
-        #region Interop
-
-        private const uint WM_HOTKEY = 0x312;
-
-        private const uint MOD_ALT = 0x1;
-        private const uint MOD_CONTROL = 0x2;
-        private const uint MOD_SHIFT = 0x4;
-        private const uint MOD_WIN = 0x8;
-
-        private const uint ERROR_HOTKEY_ALREADY_REGISTERED = 1409;
-
-        #endregion Interop
-
+        private const uint ErrorHotkeyAlreadyRegistered = 1409;
+        private const int MaximumID = 0xBFFF;
+        private const uint ModAlt = 0x1;
+        private const uint ModControl = 0x2;
+        private const uint ModShift = 0x4;
+        private const uint ModWin = 0x8;
+        private const uint WmHotkey = 0x312;
         private static int currentID;
-        private const int maximumID = 0xBFFF;
-
-        private Keys keyCode;
-        private bool shift;
-        private bool control;
         private bool alt;
-        private bool windows;
+        private bool control;
 
         [XmlIgnore]
         private int id;
 
+        private Keys keyCode;
+
         [XmlIgnore]
         private bool registered;
+
+        private bool shift;
 
         [XmlIgnore]
         private Control windowControl;
 
-        public event HandledEventHandler Pressed;
+        private bool windows;
 
         public Hotkey()
             : this(Keys.None, false, false, false, false)
@@ -71,6 +64,94 @@ namespace NeatWindows
             }
         }
 
+        public event HandledEventHandler Pressed;
+
+        public bool Alt
+        {
+            get
+            {
+                return this.alt;
+            }
+
+            set
+            {
+                this.alt = value;
+                this.Reregister();
+            }
+        }
+
+        public bool Control
+        {
+            get
+            {
+                return this.control;
+            }
+
+            set
+            {
+                this.control = value;
+                this.Reregister();
+            }
+        }
+
+        public bool Empty
+        {
+            get
+            {
+                return this.keyCode == Keys.None;
+            }
+        }
+
+        public Keys KeyCode
+        {
+            get
+            {
+                return this.keyCode;
+            }
+
+            set
+            {
+                this.keyCode = value;
+                this.Reregister();
+            }
+        }
+
+        public bool Registered
+        {
+            get
+            {
+                return this.registered;
+            }
+        }
+
+        public bool Shift
+        {
+            get
+            {
+                return this.shift;
+            }
+
+            set
+            {
+                this.shift = value;
+                this.Reregister();
+            }
+        }
+
+        public bool Windows
+        {
+            get
+            {
+                return this.windows;
+            }
+
+            set
+            {
+                this.windows = value;
+                this.Reregister();
+            }
+        }
+
         public bool GetCanRegister(Control controlToRegister)
         {
             try
@@ -88,6 +169,23 @@ namespace NeatWindows
                 return false;
             }
             catch (NotSupportedException)
+            {
+                return false;
+            }
+        }
+
+        public bool PreFilterMessage(ref Message m)
+        {
+            if (m.Msg != Hotkey.WmHotkey)
+            {
+                return false;
+            }
+
+            if (this.registered && (m.WParam.ToInt32() == this.id))
+            {
+                return this.OnPressed();
+            }
+            else
             {
                 return false;
             }
@@ -111,14 +209,14 @@ namespace NeatWindows
             }
 
             this.id = Hotkey.currentID;
-            Hotkey.currentID = Hotkey.currentID + 1 % Hotkey.maximumID;
+            Hotkey.currentID = (Hotkey.currentID + 1) % Hotkey.MaximumID;
 
-            uint modifiers = (this.Alt ? Hotkey.MOD_ALT : 0) | (this.Control ? Hotkey.MOD_CONTROL : 0) |
-                            (this.Shift ? Hotkey.MOD_SHIFT : 0) | (this.Windows ? Hotkey.MOD_WIN : 0);
+            uint modifiers = (this.Alt ? Hotkey.ModAlt : 0) | (this.Control ? Hotkey.ModControl : 0) |
+                            (this.Shift ? Hotkey.ModShift : 0) | (this.Windows ? Hotkey.ModWin : 0);
 
-            if (NativeMethods.RegisterHotKey(controlToRegister.Handle, this.id, modifiers, keyCode) == 0)
+            if (NativeMethods.RegisterHotKey(controlToRegister.Handle, this.id, modifiers, this.keyCode) == 0)
             {
-                if (Marshal.GetLastWin32Error() == ERROR_HOTKEY_ALREADY_REGISTERED)
+                if (Marshal.GetLastWin32Error() == ErrorHotkeyAlreadyRegistered)
                 {
                     return false;
                 }
@@ -132,6 +230,50 @@ namespace NeatWindows
             this.windowControl = controlToRegister;
 
             return true;
+        }
+
+        public void RemoveHandler()
+        {
+            this.Pressed = null;
+        }
+
+        public void SetHandler(Action<WindowSizePosition> resizeTo, WindowSizePosition windowSizePosition)
+        {
+            this.Pressed = null;
+            this.Pressed += delegate { resizeTo(windowSizePosition); };
+        }
+
+        public override string ToString()
+        {
+            List<string> keys = new List<string>();
+
+            if (this.Control)
+            {
+                keys.Add("Ctrl");
+            }
+
+            if (this.Alt)
+            {
+                keys.Add("Alt");
+            }
+
+            if (this.Shift)
+            {
+                keys.Add("Shift");
+            }
+
+            //// TODO: bool windowsPressed = (Control.ModifierKeys | Keys.LWin) == keyEventArgs.Modifiers;
+
+            if ((this.KeyCode != Keys.ShiftKey) &&
+                (this.KeyCode != Keys.ControlKey) &&
+                (this.KeyCode != Keys.Menu) &&
+                (this.KeyCode != Keys.LWin) &&
+                (this.KeyCode != Keys.RWin))
+            {
+                keys.Add(this.KeyCode.ToString());
+            }
+
+            return string.Join(" + ", keys.ToArray());
         }
 
         public void Unregister()
@@ -153,36 +295,6 @@ namespace NeatWindows
             this.windowControl = null;
         }
 
-        private void Reregister()
-        {
-            if (!this.registered)
-            {
-                return;
-            }
-
-            Control currentWindowControl = this.windowControl;
-
-            this.Unregister();
-            this.Register(currentWindowControl);
-        }
-
-        public bool PreFilterMessage(ref Message m)
-        {
-            if (m.Msg != Hotkey.WM_HOTKEY)
-            {
-                return false;
-            }
-
-            if (this.registered && (m.WParam.ToInt32() == this.id))
-            {
-                return this.OnPressed();
-            }
-            else
-            {
-                return false;
-            }
-        }
-
         private bool OnPressed()
         {
             HandledEventArgs handledEventArgs = new HandledEventArgs(false);
@@ -194,94 +306,17 @@ namespace NeatWindows
             return handledEventArgs.Handled;
         }
 
-        public override string ToString()
+        private void Reregister()
         {
-            List<string> keys = new List<string>();
-
-            if (this.Control) keys.Add("Ctrl");
-            if (this.Alt) keys.Add("Alt");
-            if (this.Shift) keys.Add("Shift");
-            // TODO: bool windowsPressed = (Control.ModifierKeys | Keys.LWin) == keyEventArgs.Modifiers;
-
-            if ((this.KeyCode != Keys.ShiftKey) &&
-                (this.KeyCode != Keys.ControlKey) &&
-                (this.KeyCode != Keys.Menu) &&
-                (this.KeyCode != Keys.LWin) &&
-                (this.KeyCode != Keys.RWin))
-                keys.Add(this.KeyCode.ToString());
-
-            return string.Join(" + ", keys.ToArray());
-        }
-
-        public void SetHandler(Action<WindowSizePosition> resizeTo, WindowSizePosition windowSizePosition)
-        {
-            this.Pressed = null;
-            this.Pressed += delegate { resizeTo(windowSizePosition); };
-        }
-
-        public void RemoveHandler()
-        {
-            this.Pressed = null;
-        }
-
-        public bool Empty
-        {
-            get { return this.keyCode == Keys.None; }
-        }
-
-        public bool Registered
-        {
-            get { return this.registered; }
-        }
-
-        public Keys KeyCode
-        {
-            get { return this.keyCode; }
-            set
+            if (!this.registered)
             {
-                this.keyCode = value;
-                this.Reregister();
+                return;
             }
-        }
 
-        public bool Shift
-        {
-            get { return this.shift; }
-            set
-            {
-                this.shift = value;
-                this.Reregister();
-            }
-        }
+            Control currentWindowControl = this.windowControl;
 
-        public bool Control
-        {
-            get { return this.control; }
-            set
-            {
-                this.control = value;
-                this.Reregister();
-            }
-        }
-
-        public bool Alt
-        {
-            get { return this.alt; }
-            set
-            {
-                this.alt = value;
-                this.Reregister();
-            }
-        }
-
-        public bool Windows
-        {
-            get { return this.windows; }
-            set
-            {
-                this.windows = value;
-                this.Reregister();
-            }
+            this.Unregister();
+            this.Register(currentWindowControl);
         }
     }
 }
