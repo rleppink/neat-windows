@@ -8,25 +8,19 @@ using System.Windows.Forms;
 
 namespace NeatWindows
 {
-    class ConfigurationManager
+    class KeymapManager
     {
-        private string settingsName = "settings.txt";
-        private string keyMapName = "keymap.txt";
+        private static string keyMapName = "keymap.txt";
 
-        public ConfigurationManager()
+        public KeymapManager()
         {
             Directory.CreateDirectory(Application.UserAppDataPath);
         }
 
         #region Paths
-        private string GetSettingsPath()
-        {
-            return this.GetCombinedPath(this.settingsName);
-        }
-
         private string GetKeyMapPath()
         {
-            return this.GetCombinedPath(this.keyMapName);
+            return this.GetCombinedPath(keyMapName);
         }
 
         private string GetCombinedPath(string fileName)
@@ -43,14 +37,6 @@ namespace NeatWindows
         }
         #endregion General
 
-        #region SettingsConfig
-        public void SaveSettings()
-        {
-
-        }
-
-        #endregion SettingsConfig
-
         #region HotkeyMapConfig
         public void SaveHotkeyMap(Dictionary<WindowSizePosition, Hotkey> hotkeyMap)
         {
@@ -66,7 +52,7 @@ namespace NeatWindows
         public Dictionary<WindowSizePosition, Hotkey> GetSavedHotkeys()
         {
             Dictionary<WindowSizePosition, Hotkey> hotkeyMap = new Dictionary<WindowSizePosition, Hotkey>();
-            if (!File.Exists(this.GetKeyMapPath())) return hotkeyMap;
+            if (!File.Exists(this.GetKeyMapPath())) return hotkeyMap; // If keymap doesn't exist yet, it will be created when user saves keys
 
             string[] lines = File.ReadAllLines(this.GetKeyMapPath());
             foreach (string line in lines) {

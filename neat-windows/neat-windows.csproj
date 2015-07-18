@@ -37,6 +37,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -87,7 +88,6 @@
     <Compile Include="Hotkey.cs" />
     <Compile Include="HotkeyHandler.cs" />
     <Compile Include="NativeMethods.cs" />
-    <Compile Include="Settings.cs" />
     <Compile Include="WindowResizer.cs" />
     <Compile Include="ScreenSizePosition.cs" />
     <Compile Include="SettingsForm.cs">
@@ -111,6 +111,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="app.config" />
     <None Include="NeatWindowsKey.snk" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

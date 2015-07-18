@@ -57,7 +57,7 @@
             {
                 this.WindowState = FormWindowState.Minimized;
                 this.Hide();
-                this.settingsIcon.ShowBalloonTip(3000);
+                this.ShowBalloonTooltip();
             }
         }
 
@@ -66,7 +66,16 @@
             if (this.WindowState == FormWindowState.Minimized)
             {
                 this.Hide();
+                this.ShowBalloonTooltip();
+            }
+        }
+
+        private void ShowBalloonTooltip()
+        {
+            if (Properties.Settings.Default.ShowNotifyIconBalloonInfo)
+            {
                 this.settingsIcon.ShowBalloonTip(3000);
+                Properties.Settings.Default.ShowNotifyIconBalloonInfo = false;
             }
         }
         #endregion Minimizing, notifyicon

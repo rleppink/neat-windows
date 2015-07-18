@@ -10,15 +10,15 @@ namespace NeatWindows
         private Form form;
         private Dictionary<WindowSizePosition, Hotkey> hotkeyMap;
         private WindowResizer windowResizer;
-        private ConfigurationManager configurationManager;
+        private KeymapManager keymapManager;
 
         public HotkeyHandler(Form form)
         {
             this.form = form;
             this.windowResizer = new WindowResizer();
-            this.configurationManager = new ConfigurationManager();
+            this.keymapManager = new KeymapManager();
 
-            this.hotkeyMap = configurationManager.GetSavedHotkeys();
+            this.hotkeyMap = keymapManager.GetSavedHotkeys();
             this.RegisterHotkeys();
         }
 
@@ -39,7 +39,7 @@ namespace NeatWindows
 
         private void SaveHotkeys()
         {
-            this.configurationManager.SaveHotkeyMap(this.hotkeyMap);
+            this.keymapManager.SaveHotkeyMap(this.hotkeyMap);
         }
 
         public void UnregisterHotkeys()

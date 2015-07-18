@@ -8,7 +8,7 @@ using System.Xml.Serialization;
 namespace NeatWindows
 {
     /*
-     *  Hotkey abstraction kindly taken (and modified) from:
+     *  Hotkey abstraction kindly modified from:
      *  https://bloggablea.wordpress.com/2007/05/01/global-hotkeys-with-net/
      */
 
