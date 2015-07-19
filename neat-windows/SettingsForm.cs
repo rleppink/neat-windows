@@ -10,7 +10,7 @@
     public partial class SettingsForm : Form
     {
         private static string registryPath = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Run";
-        private static string registryValue = @"NeatWindows";
+        private static string registryName = @"NeatWindows";
         private HotkeyHandler hotkeyHandler;
 
         public SettingsForm()
@@ -25,6 +25,14 @@
 
             this.trackBarWindowBorder.Value = Properties.Settings.Default.WindowBorder;
             this.textBoxWindowBorder.Text = ((int)Properties.Settings.Default.WindowBorder).ToString(CultureInfo.CurrentCulture);
+
+            foreach (string argument in Environment.GetCommandLineArgs())
+            {
+                if (argument.ToLower(CultureInfo.CurrentCulture).Equals("/startup"))
+                {
+                    this.MinimizeWindow();
+                }
+            }
 
             labelFullscreen.Focus();
         }
@@ -53,11 +61,11 @@
             RegistryKey registryKey = Registry.CurrentUser.OpenSubKey(SettingsForm.registryPath, true);
             if (((CheckBox)sender).Checked)
             {
-                registryKey.SetValue(registryValue, Application.ExecutablePath.ToString());
+                registryKey.SetValue(registryName, "\"" + Application.ExecutablePath.ToString() + "\" /startup");
             }
             else
             {
-                registryKey.DeleteValue(registryValue, false);
+                registryKey.DeleteValue(registryName, false);
             }
         }
 
@@ -124,12 +132,13 @@
         private void InitStartupCheckBox()
         {
             RegistryKey registryKey = Registry.CurrentUser.OpenSubKey(SettingsForm.registryPath, true);
-            if (registryKey.GetValue(registryValue) == null)
+            if (registryKey.GetValue(registryName) == null)
             {
                 this.startupCheckbox.Checked = false;
             }
             else
             {
+                registryKey.SetValue(registryName, "\"" + Application.ExecutablePath.ToString() + "\" /startup");
                 this.startupCheckbox.Checked = true;
             }
         }
@@ -187,8 +196,7 @@
         {
             if (this.WindowState == FormWindowState.Minimized)
             {
-                this.Hide();
-                this.ShowBalloonTooltip();
+                this.MinimizeWindow();
             }
         }
 
@@ -202,10 +210,15 @@
             }
             else
             {
-                this.WindowState = FormWindowState.Minimized;
-                this.Hide();
-                this.ShowBalloonTooltip();
+                this.MinimizeWindow();
             }
+        }
+
+        private void MinimizeWindow()
+        {
+            this.WindowState = FormWindowState.Minimized;
+            this.Hide();
+            this.ShowBalloonTooltip();
         }
 
         private void SetWindowSize()
