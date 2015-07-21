@@ -44,22 +44,22 @@
 
         private int ThirdScreenHeight
         {
-            get { return this.ActiveScreenSize.Height / 3; }
+            get { return (this.ActiveScreenSize.Height / 3) - (this.border + (this.border / 3)); }
         }
 
         private int ThirdScreenWidth
         {
-            get { return this.ActiveScreenSize.Width / 3; }
+            get { return (this.ActiveScreenSize.Width / 3) - (this.border + (this.border / 3)); }
         }
 
         private int TwoThirdsScreenHeight
         {
-            get { return this.ThirdScreenHeight * 2; }
+            get { return ((this.ActiveScreenSize.Height / 3) * 2) - (this.border + (this.border / 3)); }
         }
 
         private int TwoThirdsScreenWidth
         {
-            get { return this.ThirdScreenWidth * 2; }
+            get { return ((this.ActiveScreenSize.Width / 3) * 2) - (this.border + (this.border / 3)); }
         }
 
         #endregion Sizes
@@ -83,12 +83,12 @@
 
         private int ThirdX
         {
-            get { return this.ActiveScreenSize.X + this.ThirdScreenWidth; }
+            get { return this.ActiveScreenSize.X + (this.ActiveScreenSize.Width / 3) + (this.border / 3); }
         }
 
         private int ThirdY
         {
-            get { return this.ActiveScreenSize.Y + this.ThirdScreenHeight; }
+            get { return this.ActiveScreenSize.Y + (this.ActiveScreenSize.Height / 3) + (this.border / 3); }
         }
 
         private int TopY
@@ -98,12 +98,12 @@
 
         private int TwoThirdsX
         {
-            get { return this.ActiveScreenSize.X + (this.ThirdScreenWidth * 2); }
+            get { return this.ActiveScreenSize.X + ((this.ActiveScreenSize.Width / 3) * 2) + (this.border / 3); }
         }
 
         private int TwoThirdsY
         {
-            get { return this.ActiveScreenSize.Y + (this.ThirdScreenHeight * 2); }
+            get { return this.ActiveScreenSize.Y + ((this.ActiveScreenSize.Height / 3) * 2) + (this.border / 3); }
         }
 
         #endregion Positions
