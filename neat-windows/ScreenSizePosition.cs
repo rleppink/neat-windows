@@ -121,7 +121,11 @@
 
         public Rectangle FullScreen()
         {
-            return this.ActiveScreenSize;
+            return new Rectangle(
+                this.LeftX,
+                this.TopY,
+                this.FullScreenWidth,
+                this.FullScreenHeight);
         }
 
         public Rectangle QuarterCenter()
