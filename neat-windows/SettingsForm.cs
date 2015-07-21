@@ -3,9 +3,9 @@
     using System;
     using System.Collections.Generic;
     using System.Drawing;
+    using System.Globalization;
     using System.Windows.Forms;
     using Microsoft.Win32;
-    using System.Globalization;
 
     public partial class SettingsForm : Form
     {
@@ -34,7 +34,7 @@
                 }
             }
 
-            labelFullscreen.Focus();
+            this.labelFullscreen.Focus();
         }
 
         public void FillTextBoxes(Dictionary<WindowSizePosition, Hotkey> hotkeyMap)
@@ -126,7 +126,7 @@
             }
 
             this.hotkeyHandler.MapHotkey(windowSizePosition, hotkey);
-            labelFullscreen.Focus();
+            this.labelFullscreen.Focus();
         }
 
         private void InitStartupCheckBox()
