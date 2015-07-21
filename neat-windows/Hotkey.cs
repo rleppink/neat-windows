@@ -40,8 +40,7 @@ namespace NeatWindows
 
         private bool windows;
 
-        public Hotkey()
-            : this(Keys.None, false, false, false, false)
+        public Hotkey() : this(Keys.None, false, false, false, false)
         {
         }
 
