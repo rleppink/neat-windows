@@ -68,11 +68,11 @@
                 case WindowSizePosition.LeftHalf:
                     if (this.foregroundWindowBounds == this.screenSizePosition.HalfWidthLeft())
                     {
-                        ResizeActiveWindow(this.screenSizePosition.ThirdWidthLeft());
-                    }
-                    else if (this.foregroundWindowBounds == this.screenSizePosition.ThirdWidthLeft())
-                    {
                         ResizeActiveWindow(this.screenSizePosition.TwoThirdsWidthLeft());
+                    }
+                    else if (this.foregroundWindowBounds == this.screenSizePosition.TwoThirdsWidthLeft())
+                    {
+                        ResizeActiveWindow(this.screenSizePosition.ThirdWidthLeft());
                     }
                     else
                     {
@@ -82,18 +82,13 @@
                     break;
 
                 case WindowSizePosition.RightHalf:
-                    Console.WriteLine();
-                    Console.WriteLine(this.foregroundWindowBounds);
-                    Console.WriteLine(this.screenSizePosition.HalfWidthRight());
-                    Console.WriteLine(this.screenSizePosition.ThirdWidthRight());
-                    Console.WriteLine(this.screenSizePosition.TwoThirdsWidthRight());
                     if (this.foregroundWindowBounds == this.screenSizePosition.HalfWidthRight())
                     {
-                        ResizeActiveWindow(this.screenSizePosition.ThirdWidthRight());
-                    }
-                    else if (this.foregroundWindowBounds == this.screenSizePosition.ThirdWidthRight())
-                    {
                         ResizeActiveWindow(this.screenSizePosition.TwoThirdsWidthRight());
+                    }
+                    else if (this.foregroundWindowBounds == this.screenSizePosition.TwoThirdsWidthRight())
+                    {
+                        ResizeActiveWindow(this.screenSizePosition.ThirdWidthRight());
                     }
                     else
                     {
@@ -105,11 +100,11 @@
                 case WindowSizePosition.TopHalf:
                     if (this.foregroundWindowBounds == this.screenSizePosition.HalfHeightTop())
                     {
-                        ResizeActiveWindow(this.screenSizePosition.ThirdHeightTop());
-                    }
-                    else if (this.foregroundWindowBounds == this.screenSizePosition.ThirdHeightTop())
-                    {
                         ResizeActiveWindow(this.screenSizePosition.TwoThirdsHeightTop());
+                    }
+                    else if (this.foregroundWindowBounds == this.screenSizePosition.TwoThirdsHeightTop())
+                    {
+                        ResizeActiveWindow(this.screenSizePosition.ThirdHeightTop());
                     }
                     else
                     {
@@ -121,11 +116,11 @@
                 case WindowSizePosition.BottomHalf:
                     if (this.foregroundWindowBounds == this.screenSizePosition.HalfHeightBottom())
                     {
-                        ResizeActiveWindow(this.screenSizePosition.ThirdHeightBottom());
-                    }
-                    else if (this.foregroundWindowBounds == this.screenSizePosition.ThirdHeightBottom())
-                    {
                         ResizeActiveWindow(this.screenSizePosition.TwoThirdsHeightBottom());
+                    }
+                    else if (this.foregroundWindowBounds == this.screenSizePosition.TwoThirdsHeightBottom())
+                    {
+                        ResizeActiveWindow(this.screenSizePosition.ThirdHeightBottom());
                     }
                     else
                     {
