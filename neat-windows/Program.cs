@@ -11,7 +11,7 @@
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            SettingsForm settingsForm = new SettingsForm();
+            var settingsForm = new SettingsForm();
             Application.Run(settingsForm);
         }
     }

@@ -1,4 +1,6 @@
-﻿namespace NeatWindows
+﻿using System.Linq;
+
+namespace NeatWindows
 {
     using System;
     using System.Collections.Generic;
@@ -9,48 +11,39 @@
 
     public partial class SettingsForm : Form
     {
-        private static string registryPath = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Run";
-        private static string registryName = @"NeatWindows";
-        private HotkeyHandler hotkeyHandler;
+        private const string RegistryPath = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Run";
+        private const string RegistryName = @"NeatWindows";
+        private readonly HotkeyHandler _HotkeyHandler;
 
         public SettingsForm()
         {
-            this.InitializeComponent();
+            InitializeComponent();
 
-            this.hotkeyHandler = new HotkeyHandler(this);
-            this.MapTags();
-            this.FillTextBoxes(this.hotkeyHandler.GetHotkeyMap());
-            this.InitStartupCheckBox();
-            this.SetWindowSize();
+            _HotkeyHandler = new HotkeyHandler(this);
+            MapTags();
+            FillTextBoxes(_HotkeyHandler.GetHotkeyMap());
+            InitStartupCheckBox();
+            SetWindowSize();
 
-            this.trackBarWindowBorder.Value = Properties.Settings.Default.WindowBorder;
-            this.textBoxWindowBorder.Text = ((int)Properties.Settings.Default.WindowBorder).ToString(CultureInfo.CurrentCulture);
+            trackBarWindowBorder.Value = Properties.Settings.Default.WindowBorder;
+            textBoxWindowBorder.Text = Properties.Settings.Default.WindowBorder.ToString(CultureInfo.CurrentCulture);
 
-            foreach (string argument in Environment.GetCommandLineArgs())
-            {
-                if (argument.ToLower(CultureInfo.CurrentCulture).Equals("/startup"))
-                {
-                    this.MinimizeWindow();
-                }
-            }
+            if (Environment.GetCommandLineArgs().Count(argument => argument.ToLower().Equals("/startup")) > 0)
+                MinimizeWindow();
 
-            this.labelFullscreen.Focus();
+            labelFullscreen.Focus();
         }
 
         public void FillTextBoxes(Dictionary<WindowSizePosition, Hotkey> hotkeyMap)
         {
             if (hotkeyMap == null)
-            {
                 return;
-            }
 
-            foreach (KeyValuePair<WindowSizePosition, Hotkey> hotkeyMapping in hotkeyMap)
+            foreach (var hotkeyMapping in hotkeyMap)
             {
-                TextBox taggedTextBox = this.GetTextBoxByTag(hotkeyMapping.Key);
+                var taggedTextBox = GetTextBoxByTag(hotkeyMapping.Key);
                 if (taggedTextBox == null)
-                {
                     continue;
-                }
 
                 taggedTextBox.Text = hotkeyMapping.Value.ToString();
             }
@@ -58,14 +51,14 @@
 
         private void CheckBoxStartAtLogin_CheckedChanged(object sender, EventArgs e)
         {
-            RegistryKey registryKey = Registry.CurrentUser.OpenSubKey(SettingsForm.registryPath, true);
+            var registryKey = Registry.CurrentUser.OpenSubKey(RegistryPath, true);
             if (((CheckBox)sender).Checked)
             {
-                registryKey.SetValue(registryName, "\"" + Application.ExecutablePath.ToString() + "\" /startup");
+                registryKey.SetValue(RegistryName, "\"" + Application.ExecutablePath + "\" /startup");
             }
             else
             {
-                registryKey.DeleteValue(registryName, false);
+                registryKey.DeleteValue(RegistryName, false);
             }
         }
 
@@ -76,17 +69,13 @@
 
         private TextBox GetTextBoxByTag(WindowSizePosition windowSizePosition)
         {
-            foreach (Control control in this.Controls)
+            foreach (Control control in Controls)
             {
                 if ((control.GetType() != typeof(TextBox)) || (control.Tag == null))
-                {
                     continue;
-                }
 
                 if (control.Tag.Equals(windowSizePosition))
-                {
                     return (TextBox)control;
-                }
             }
 
             return null;
@@ -95,145 +84,143 @@
         private void HandleKeyDownEvent(object sender, KeyEventArgs keyEventArgs)
         {
             keyEventArgs.Handled = true;
-            TextBox senderTextBox = (TextBox)sender;
-            Hotkey hotkey = new Hotkey(keyEventArgs.KeyCode, keyEventArgs.Shift, keyEventArgs.Control, keyEventArgs.Alt, false);
+            var senderTextBox = (TextBox)sender;
+            var hotkey = new Hotkey(keyEventArgs.KeyCode, keyEventArgs.Shift, keyEventArgs.Control, keyEventArgs.Alt, false);
             senderTextBox.Text = hotkey.ToString();
         }
 
         private void HandleKeyUpEvent(object sender, KeyEventArgs keyEventArgs)
         {
             keyEventArgs.Handled = true;
-            TextBox senderTextBox = (TextBox)sender;
-            Hotkey hotkey = new Hotkey(keyEventArgs.KeyCode, keyEventArgs.Shift, keyEventArgs.Control, keyEventArgs.Alt, false);
+            var senderTextBox = (TextBox)sender;
+            var hotkey = new Hotkey(keyEventArgs.KeyCode, keyEventArgs.Shift, keyEventArgs.Control, keyEventArgs.Alt, false);
             senderTextBox.Text = hotkey.ToString();
 
+            // We don't want anything to happen when a modifier key up event happened
             if ((keyEventArgs.KeyCode == Keys.ShiftKey) ||
                 (keyEventArgs.KeyCode == Keys.ControlKey) ||
                 (keyEventArgs.KeyCode == Keys.Menu) ||
                 (keyEventArgs.KeyCode == Keys.LWin) ||
                 (keyEventArgs.KeyCode == Keys.RWin))
+                return;
+
+            var windowSizePosition = (WindowSizePosition)senderTextBox.Tag;
+
+            if (_HotkeyHandler.HotkeyExists(windowSizePosition, hotkey))
             {
-                // We don't want anything to happen when a modifier key up event happened
+                senderTextBox.Text = Properties.Resources.hotkeyAlreadyExistsWarning;
                 return;
             }
 
-            WindowSizePosition windowSizePosition = (WindowSizePosition)senderTextBox.Tag;
-
-            if (this.hotkeyHandler.HotkeyExists(windowSizePosition, hotkey))
-            {
-                senderTextBox.Text = NeatWindows.Properties.Resources.hotkeyAlreadyExistsWarning;
-                return;
-            }
-
-            this.hotkeyHandler.MapHotkey(windowSizePosition, hotkey);
-            this.labelFullscreen.Focus();
+            _HotkeyHandler.MapHotkey(windowSizePosition, hotkey);
+            labelFullscreen.Focus();
         }
 
         private void InitStartupCheckBox()
         {
-            RegistryKey registryKey = Registry.CurrentUser.OpenSubKey(SettingsForm.registryPath, true);
-            if (registryKey.GetValue(registryName) == null)
+            var registryKey = Registry.CurrentUser.OpenSubKey(RegistryPath, true);
+            if (registryKey.GetValue(RegistryName) == null)
             {
-                this.startupCheckbox.Checked = false;
+                startupCheckbox.Checked = false;
             }
             else
             {
-                registryKey.SetValue(registryName, "\"" + Application.ExecutablePath.ToString() + "\" /startup");
-                this.startupCheckbox.Checked = true;
+                registryKey.SetValue(RegistryName, "\"" + Application.ExecutablePath + "\" /startup");
+                startupCheckbox.Checked = true;
             }
         }
 
         private void MapTags()
         {
-            this.textBoxFullscreen.Tag = WindowSizePosition.Fullscreen;
-            this.textBoxCenter.Tag = WindowSizePosition.Center;
-            this.textBoxNextDisplay.Tag = WindowSizePosition.NextScreen;
-            this.textBoxPreviousDisplay.Tag = WindowSizePosition.PreviousScreen;
+            textBoxFullscreen.Tag = WindowSizePosition.Fullscreen;
+            textBoxCenter.Tag = WindowSizePosition.Center;
+            textBoxNextDisplay.Tag = WindowSizePosition.NextScreen;
+            textBoxPreviousDisplay.Tag = WindowSizePosition.PreviousScreen;
 
-            this.textBoxLeftHalf.Tag = WindowSizePosition.LeftHalf;
-            this.textBoxRightHalf.Tag = WindowSizePosition.RightHalf;
-            this.textBoxTopHalf.Tag = WindowSizePosition.TopHalf;
-            this.textBoxBottomHalf.Tag = WindowSizePosition.BottomHalf;
+            textBoxLeftHalf.Tag = WindowSizePosition.LeftHalf;
+            textBoxRightHalf.Tag = WindowSizePosition.RightHalf;
+            textBoxTopHalf.Tag = WindowSizePosition.TopHalf;
+            textBoxBottomHalf.Tag = WindowSizePosition.BottomHalf;
 
-            this.textBoxTopLeftQuarter.Tag = WindowSizePosition.TopLeft;
-            this.textBoxTopRightQuarter.Tag = WindowSizePosition.TopRight;
-            this.textBoxBottomLeftQuarter.Tag = WindowSizePosition.BottomLeft;
-            this.textBoxBottomRightQuarter.Tag = WindowSizePosition.BottomRight;
+            textBoxTopLeftQuarter.Tag = WindowSizePosition.TopLeft;
+            textBoxTopRightQuarter.Tag = WindowSizePosition.TopRight;
+            textBoxBottomLeftQuarter.Tag = WindowSizePosition.BottomLeft;
+            textBoxBottomRightQuarter.Tag = WindowSizePosition.BottomRight;
 
-            this.buttonFullscreen.Tag = WindowSizePosition.Fullscreen;
-            this.buttonCenter.Tag = WindowSizePosition.Center;
-            this.buttonNextDisplay.Tag = WindowSizePosition.NextScreen;
-            this.buttonPreviousDisplay.Tag = WindowSizePosition.PreviousScreen;
+            buttonFullscreen.Tag = WindowSizePosition.Fullscreen;
+            buttonCenter.Tag = WindowSizePosition.Center;
+            buttonNextDisplay.Tag = WindowSizePosition.NextScreen;
+            buttonPreviousDisplay.Tag = WindowSizePosition.PreviousScreen;
 
-            this.buttonLeftHalf.Tag = WindowSizePosition.LeftHalf;
-            this.buttonRightHalf.Tag = WindowSizePosition.RightHalf;
-            this.buttonTopHalf.Tag = WindowSizePosition.TopHalf;
-            this.buttonBottomHalf.Tag = WindowSizePosition.BottomHalf;
+            buttonLeftHalf.Tag = WindowSizePosition.LeftHalf;
+            buttonRightHalf.Tag = WindowSizePosition.RightHalf;
+            buttonTopHalf.Tag = WindowSizePosition.TopHalf;
+            buttonBottomHalf.Tag = WindowSizePosition.BottomHalf;
 
-            this.buttonTopLeft.Tag = WindowSizePosition.TopLeft;
-            this.buttonTopRight.Tag = WindowSizePosition.TopRight;
-            this.buttonBottomLeft.Tag = WindowSizePosition.BottomLeft;
-            this.buttonBottomRight.Tag = WindowSizePosition.BottomRight;
+            buttonTopLeft.Tag = WindowSizePosition.TopLeft;
+            buttonTopRight.Tag = WindowSizePosition.TopRight;
+            buttonBottomLeft.Tag = WindowSizePosition.BottomLeft;
+            buttonBottomRight.Tag = WindowSizePosition.BottomRight;
         }
 
         private void OpenSettingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (this.WindowState == FormWindowState.Minimized)
-            {
-                this.WindowState = FormWindowState.Minimized;
-                this.Show();
-                this.WindowState = FormWindowState.Normal;
-            }
+            if (WindowState != FormWindowState.Minimized) 
+                return;
+
+            WindowState = FormWindowState.Minimized;
+            Show();
+            WindowState = FormWindowState.Normal;
         }
 
         private void SettingsForm_MouseDown(object sender, MouseEventArgs e)
         {
-            this.labelFullscreen.Focus();
-            this.FillTextBoxes(this.hotkeyHandler.GetHotkeyMap());
+            labelFullscreen.Focus();
+            FillTextBoxes(_HotkeyHandler.GetHotkeyMap());
         }
 
         private void SettingsForm_Resize(object sender, EventArgs e)
         {
-            if (this.WindowState == FormWindowState.Minimized)
-            {
-                this.MinimizeWindow();
-            }
+            if (WindowState != FormWindowState.Minimized) 
+                return;
+
+            MinimizeWindow();
         }
 
         private void SettingsIcon_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            if (this.WindowState == FormWindowState.Minimized)
+            if (WindowState == FormWindowState.Minimized)
             {
-                this.WindowState = FormWindowState.Minimized;
-                this.Show();
-                this.WindowState = FormWindowState.Normal;
+                WindowState = FormWindowState.Minimized;
+                Show();
+                WindowState = FormWindowState.Normal;
             }
             else
             {
-                this.MinimizeWindow();
+                MinimizeWindow();
             }
         }
 
         private void MinimizeWindow()
         {
-            this.WindowState = FormWindowState.Minimized;
-            this.Hide();
-            this.ShowBalloonTooltip();
+            WindowState = FormWindowState.Minimized;
+            Hide();
+            ShowBalloonTooltip();
         }
 
         private void SetWindowSize()
         {
-            int width = 0;
-            int height = 0;
+            var width = 0;
+            var height = 0;
 
-            foreach (Control c in this.Controls)
+            foreach (Control c in Controls)
             {
-                if ((c.Width + c.Location.X) > width)
+                if (c.Width + c.Location.X > width)
                 {
                     width = c.Width + c.Location.X;
                 }
 
-                if ((c.Height + c.Location.Y) > height)
+                if (c.Height + c.Location.Y > height)
                 {
                     height = c.Height + c.Location.Y;
                 }
@@ -241,48 +228,48 @@
 
             width += 25;
             height += 35;
-            this.MinimumSize = new Size(width, height);
-            this.MaximumSize = new Size(width, height);
+            MinimumSize = new Size(width, height);
+            MaximumSize = new Size(width, height);
         }
 
         private void ShowBalloonTooltip()
         {
-            if (Properties.Settings.Default.ShowNotifyIconBalloonInfo)
-            {
-                this.settingsIcon.ShowBalloonTip(3000);
-                Properties.Settings.Default.ShowNotifyIconBalloonInfo = false;
-                Properties.Settings.Default.Save();
-            }
+            if (!Properties.Settings.Default.ShowNotifyIconBalloonInfo) 
+                return;
+
+            settingsIcon.ShowBalloonTip(3000);
+            Properties.Settings.Default.ShowNotifyIconBalloonInfo = false;
+            Properties.Settings.Default.Save();
         }
 
         private void TextBox_FocusEnter(object sender, EventArgs e)
         {
-            TextBox senderTextBox = (TextBox)sender;
+            var senderTextBox = (TextBox)sender;
             senderTextBox.Text = string.Empty;
-            this.hotkeyHandler.UnregisterHotkeys();
+            _HotkeyHandler.UnregisterHotkeys();
         }
 
         private void TextBox_FocusLeave(object sender, EventArgs e)
         {
-            TextBox senderTextBox = (TextBox)sender;
+            var senderTextBox = (TextBox)sender;
             senderTextBox.Text = string.Empty;
             senderTextBox.TabStop = false;
-            this.hotkeyHandler.RegisterHotkeys();
-            this.FillTextBoxes(this.hotkeyHandler.GetHotkeyMap());
+            _HotkeyHandler.RegisterHotkeys();
+            FillTextBoxes(_HotkeyHandler.GetHotkeyMap());
         }
 
         private void UnmapButton_Click(object sender, EventArgs e)
         {
-            Button clickedButton = (Button)sender;
-            WindowSizePosition windowSizePosition = (WindowSizePosition)clickedButton.Tag;
-            this.hotkeyHandler.UnmapHotkey(windowSizePosition);
-            this.GetTextBoxByTag(windowSizePosition).Text = string.Empty;
+            var clickedButton = (Button)sender;
+            var windowSizePosition = (WindowSizePosition)clickedButton.Tag;
+            _HotkeyHandler.UnmapHotkey(windowSizePosition);
+            GetTextBoxByTag(windowSizePosition).Text = string.Empty;
         }
 
         private void TrackBarWindowBorder_Scroll(object sender, EventArgs e)
         {
-            TrackBar senderTrackBar = (TrackBar)sender;
-            this.textBoxWindowBorder.Text = senderTrackBar.Value.ToString(CultureInfo.CurrentCulture);
+            var senderTrackBar = (TrackBar)sender;
+            textBoxWindowBorder.Text = senderTrackBar.Value.ToString(CultureInfo.CurrentCulture);
             Properties.Settings.Default.WindowBorder = senderTrackBar.Value;
             Properties.Settings.Default.Save();
         }

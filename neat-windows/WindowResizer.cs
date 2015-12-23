@@ -22,127 +22,127 @@
     public class WindowResizer
     {
         private static readonly IntPtr InsertTop = new IntPtr(0);
-        private static uint showWindowFlag = 0x0040;
-        private Rectangle foregroundWindowBounds;
-        private ScreenSizePosition screenSizePosition;
+        private const uint ShowWindowFlag = 0x0040;
+        private Rectangle _ForegroundWindowBounds;
+        private ScreenSizePosition _ScreenSizePosition;
 
         public void ResizeTo(WindowSizePosition windowSizePosition)
         {
-            this.foregroundWindowBounds = GetForegroundWindowBounds();
-            this.screenSizePosition = new ScreenSizePosition(NativeMethods.GetForegroundWindow());
+            _ForegroundWindowBounds = GetForegroundWindowBounds();
+            _ScreenSizePosition = new ScreenSizePosition(NativeMethods.GetForegroundWindow());
 
             switch (windowSizePosition)
             {
                 case WindowSizePosition.Fullscreen:
-                    if (this.foregroundWindowBounds == this.screenSizePosition.FullScreen())
+                    if (_ForegroundWindowBounds == _ScreenSizePosition.FullScreen())
                     {
-                        ResizeActiveWindow(this.screenSizePosition.TwoThirdsCenter());
+                        ResizeActiveWindow(_ScreenSizePosition.TwoThirdsCenter());
                     }
-                    else if (this.foregroundWindowBounds == this.screenSizePosition.TwoThirdsCenter())
+                    else if (_ForegroundWindowBounds == _ScreenSizePosition.TwoThirdsCenter())
                     {
-                        ResizeActiveWindow(this.screenSizePosition.QuarterCenter());
+                        ResizeActiveWindow(_ScreenSizePosition.QuarterCenter());
                     }
-                    else if (this.foregroundWindowBounds == this.screenSizePosition.QuarterCenter())
+                    else if (_ForegroundWindowBounds == _ScreenSizePosition.QuarterCenter())
                     {
-                        ResizeActiveWindow(this.screenSizePosition.ThirdCenter());
+                        ResizeActiveWindow(_ScreenSizePosition.ThirdCenter());
                     }
                     else
                     {
-                        ResizeActiveWindow(this.screenSizePosition.FullScreen());
+                        ResizeActiveWindow(_ScreenSizePosition.FullScreen());
                     }
 
                     break;
 
                 case WindowSizePosition.Center:
-                    ResizeActiveWindow(this.screenSizePosition.Center(this.foregroundWindowBounds));
+                    ResizeActiveWindow(_ScreenSizePosition.Center(_ForegroundWindowBounds));
                     break;
 
                 case WindowSizePosition.NextScreen:
-                    ResizeActiveWindow(this.screenSizePosition.NextScreen(this.foregroundWindowBounds));
+                    ResizeActiveWindow(_ScreenSizePosition.NextScreen(_ForegroundWindowBounds));
                     break;
 
                 case WindowSizePosition.PreviousScreen:
-                    ResizeActiveWindow(this.screenSizePosition.PreviousScreen(this.foregroundWindowBounds));
+                    ResizeActiveWindow(_ScreenSizePosition.PreviousScreen(_ForegroundWindowBounds));
                     break;
 
                 case WindowSizePosition.LeftHalf:
-                    if (this.foregroundWindowBounds == this.screenSizePosition.HalfWidthLeft())
+                    if (_ForegroundWindowBounds == _ScreenSizePosition.HalfWidthLeft())
                     {
-                        ResizeActiveWindow(this.screenSizePosition.TwoThirdsWidthLeft());
+                        ResizeActiveWindow(_ScreenSizePosition.TwoThirdsWidthLeft());
                     }
-                    else if (this.foregroundWindowBounds == this.screenSizePosition.TwoThirdsWidthLeft())
+                    else if (_ForegroundWindowBounds == _ScreenSizePosition.TwoThirdsWidthLeft())
                     {
-                        ResizeActiveWindow(this.screenSizePosition.ThirdWidthLeft());
+                        ResizeActiveWindow(_ScreenSizePosition.ThirdWidthLeft());
                     }
                     else
                     {
-                        ResizeActiveWindow(this.screenSizePosition.HalfWidthLeft());
+                        ResizeActiveWindow(_ScreenSizePosition.HalfWidthLeft());
                     }
 
                     break;
 
                 case WindowSizePosition.RightHalf:
-                    if (this.foregroundWindowBounds == this.screenSizePosition.HalfWidthRight())
+                    if (_ForegroundWindowBounds == _ScreenSizePosition.HalfWidthRight())
                     {
-                        ResizeActiveWindow(this.screenSizePosition.TwoThirdsWidthRight());
+                        ResizeActiveWindow(_ScreenSizePosition.TwoThirdsWidthRight());
                     }
-                    else if (this.foregroundWindowBounds == this.screenSizePosition.TwoThirdsWidthRight())
+                    else if (_ForegroundWindowBounds == _ScreenSizePosition.TwoThirdsWidthRight())
                     {
-                        ResizeActiveWindow(this.screenSizePosition.ThirdWidthRight());
+                        ResizeActiveWindow(_ScreenSizePosition.ThirdWidthRight());
                     }
                     else
                     {
-                        ResizeActiveWindow(this.screenSizePosition.HalfWidthRight());
+                        ResizeActiveWindow(_ScreenSizePosition.HalfWidthRight());
                     }
 
                     break;
 
                 case WindowSizePosition.TopHalf:
-                    if (this.foregroundWindowBounds == this.screenSizePosition.HalfHeightTop())
+                    if (_ForegroundWindowBounds == _ScreenSizePosition.HalfHeightTop())
                     {
-                        ResizeActiveWindow(this.screenSizePosition.TwoThirdsHeightTop());
+                        ResizeActiveWindow(_ScreenSizePosition.TwoThirdsHeightTop());
                     }
-                    else if (this.foregroundWindowBounds == this.screenSizePosition.TwoThirdsHeightTop())
+                    else if (_ForegroundWindowBounds == _ScreenSizePosition.TwoThirdsHeightTop())
                     {
-                        ResizeActiveWindow(this.screenSizePosition.ThirdHeightTop());
+                        ResizeActiveWindow(_ScreenSizePosition.ThirdHeightTop());
                     }
                     else
                     {
-                        ResizeActiveWindow(this.screenSizePosition.HalfHeightTop());
+                        ResizeActiveWindow(_ScreenSizePosition.HalfHeightTop());
                     }
 
                     break;
 
                 case WindowSizePosition.BottomHalf:
-                    if (this.foregroundWindowBounds == this.screenSizePosition.HalfHeightBottom())
+                    if (_ForegroundWindowBounds == _ScreenSizePosition.HalfHeightBottom())
                     {
-                        ResizeActiveWindow(this.screenSizePosition.TwoThirdsHeightBottom());
+                        ResizeActiveWindow(_ScreenSizePosition.TwoThirdsHeightBottom());
                     }
-                    else if (this.foregroundWindowBounds == this.screenSizePosition.TwoThirdsHeightBottom())
+                    else if (_ForegroundWindowBounds == _ScreenSizePosition.TwoThirdsHeightBottom())
                     {
-                        ResizeActiveWindow(this.screenSizePosition.ThirdHeightBottom());
+                        ResizeActiveWindow(_ScreenSizePosition.ThirdHeightBottom());
                     }
                     else
                     {
-                        ResizeActiveWindow(this.screenSizePosition.HalfHeightBottom());
+                        ResizeActiveWindow(_ScreenSizePosition.HalfHeightBottom());
                     }
 
                     break;
 
                 case WindowSizePosition.TopLeft:
-                    ResizeActiveWindow(this.screenSizePosition.TopLeftQuarter());
+                    ResizeActiveWindow(_ScreenSizePosition.TopLeftQuarter());
                     break;
 
                 case WindowSizePosition.TopRight:
-                    ResizeActiveWindow(this.screenSizePosition.TopRightQuarter());
+                    ResizeActiveWindow(_ScreenSizePosition.TopRightQuarter());
                     break;
 
                 case WindowSizePosition.BottomLeft:
-                    ResizeActiveWindow(this.screenSizePosition.BottomLeftQuarter());
+                    ResizeActiveWindow(_ScreenSizePosition.BottomLeftQuarter());
                     break;
 
                 case WindowSizePosition.BottomRight:
-                    ResizeActiveWindow(this.screenSizePosition.BottomRightQuarter());
+                    ResizeActiveWindow(_ScreenSizePosition.BottomRightQuarter());
                     break;
             }
         }
@@ -158,16 +158,16 @@
                 outRect.Bottom - outRect.Top);
         }
 
-        private static bool ResizeActiveWindow(Rectangle newWindowSize)
+        private static void ResizeActiveWindow(Rectangle newWindowSize)
         {
-            return NativeMethods.SetWindowPos(
+            NativeMethods.SetWindowPos(
                 NativeMethods.GetForegroundWindow(),
                 InsertTop,
                 newWindowSize.X,
                 newWindowSize.Y,
                 newWindowSize.Width,
                 newWindowSize.Height,
-                showWindowFlag);
+                ShowWindowFlag);
         }
     }
 }

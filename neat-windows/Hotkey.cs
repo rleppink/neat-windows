@@ -15,30 +15,30 @@ namespace NeatWindows
     public class Hotkey : IMessageFilter
     {
         private const uint ErrorHotkeyAlreadyRegistered = 1409;
-        private const int MaximumID = 0xBFFF;
+        private const int MaximumId = 0xBFFF;
         private const uint ModAlt = 0x1;
         private const uint ModControl = 0x2;
         private const uint ModShift = 0x4;
         private const uint ModWin = 0x8;
         private const uint WmHotkey = 0x312;
-        private static int currentID;
-        private bool alt;
-        private bool control;
+        private static int _currentId;
+        private bool _Alt;
+        private bool _Control;
 
         [XmlIgnore]
-        private int id;
+        private int _Id;
 
-        private Keys keyCode;
-
-        [XmlIgnore]
-        private bool registered;
-
-        private bool shift;
+        private Keys _KeyCode;
 
         [XmlIgnore]
-        private Control windowControl;
+        private bool _Registered;
 
-        private bool windows;
+        private bool _Shift;
+
+        [XmlIgnore]
+        private Control _WindowControl;
+
+        private bool _Windows;
 
         public Hotkey() : this(Keys.None, false, false, false, false)
         {
@@ -46,21 +46,19 @@ namespace NeatWindows
 
         public Hotkey(Keys keyCode, bool shift, bool control, bool alt, bool windows)
         {
-            this.KeyCode = keyCode;
-            this.Shift = shift;
-            this.Control = control;
-            this.Alt = alt;
-            this.Windows = windows;
+            KeyCode = keyCode;
+            Shift = shift;
+            Control = control;
+            Alt = alt;
+            Windows = windows;
 
             Application.AddMessageFilter(this);
         }
 
         ~Hotkey()
         {
-            if (this.Registered)
-            {
-                this.Unregister();
-            }
+            if (Registered)
+                Unregister();
         }
 
         public event HandledEventHandler Pressed;
@@ -69,13 +67,13 @@ namespace NeatWindows
         {
             get
             {
-                return this.alt;
+                return _Alt;
             }
 
             set
             {
-                this.alt = value;
-                this.Reregister();
+                _Alt = value;
+                Reregister();
             }
         }
 
@@ -83,13 +81,13 @@ namespace NeatWindows
         {
             get
             {
-                return this.control;
+                return _Control;
             }
 
             set
             {
-                this.control = value;
-                this.Reregister();
+                _Control = value;
+                Reregister();
             }
         }
 
@@ -97,7 +95,7 @@ namespace NeatWindows
         {
             get
             {
-                return this.keyCode == Keys.None;
+                return _KeyCode == Keys.None;
             }
         }
 
@@ -105,13 +103,13 @@ namespace NeatWindows
         {
             get
             {
-                return this.keyCode;
+                return _KeyCode;
             }
 
             set
             {
-                this.keyCode = value;
-                this.Reregister();
+                _KeyCode = value;
+                Reregister();
             }
         }
 
@@ -119,7 +117,7 @@ namespace NeatWindows
         {
             get
             {
-                return this.registered;
+                return _Registered;
             }
         }
 
@@ -127,13 +125,13 @@ namespace NeatWindows
         {
             get
             {
-                return this.shift;
+                return _Shift;
             }
 
             set
             {
-                this.shift = value;
-                this.Reregister();
+                _Shift = value;
+                Reregister();
             }
         }
 
@@ -141,13 +139,13 @@ namespace NeatWindows
         {
             get
             {
-                return this.windows;
+                return _Windows;
             }
 
             set
             {
-                this.windows = value;
-                this.Reregister();
+                _Windows = value;
+                Reregister();
             }
         }
 
@@ -155,12 +153,10 @@ namespace NeatWindows
         {
             try
             {
-                if (!this.Register(controlToRegister))
-                {
+                if (!Register(controlToRegister))
                     return false;
-                }
 
-                this.Unregister();
+                Unregister();
                 return true;
             }
             catch (Win32Exception)
@@ -175,147 +171,113 @@ namespace NeatWindows
 
         public bool PreFilterMessage(ref Message m)
         {
-            if (m.Msg != Hotkey.WmHotkey)
-            {
+            if (m.Msg != WmHotkey)
                 return false;
-            }
 
-            if (this.registered && (m.WParam.ToInt32() == this.id))
-            {
-                return this.OnPressed();
-            }
-            else
-            {
-                return false;
-            }
+            if (_Registered && (m.WParam.ToInt32() == _Id))
+                return OnPressed();
+
+            return false;
         }
 
         public bool Register(Control controlToRegister)
         {
             if (controlToRegister == null)
-            {
                 return false;
-            }
 
-            if (this.registered)
-            {
+            if (_Registered)
                 return true;
-            }
 
-            if (this.Empty)
-            {
+            if (Empty)
                 throw new NotSupportedException("You cannot register an empty hotkey");
-            }
 
-            this.id = Hotkey.currentID;
-            Hotkey.currentID = (Hotkey.currentID + 1) % Hotkey.MaximumID;
+            _Id = _currentId;
+            _currentId = (_currentId + 1) % MaximumId;
 
-            uint modifiers = (this.Alt ? Hotkey.ModAlt : 0) | (this.Control ? Hotkey.ModControl : 0) |
-                            (this.Shift ? Hotkey.ModShift : 0) | (this.Windows ? Hotkey.ModWin : 0);
+            var modifiers = (Alt ? ModAlt : 0) | (Control ? ModControl : 0) |
+                            (Shift ? ModShift : 0) | (Windows ? ModWin : 0);
 
-            if (NativeMethods.RegisterHotKey(controlToRegister.Handle, this.id, modifiers, this.keyCode) == 0)
+            if (NativeMethods.RegisterHotKey(controlToRegister.Handle, _Id, modifiers, _KeyCode) == 0)
             {
                 if (Marshal.GetLastWin32Error() == ErrorHotkeyAlreadyRegistered)
-                {
                     return false;
-                }
-                else
-                {
-                    throw new Win32Exception();
-                }
+
+                throw new Win32Exception();
             }
 
-            this.registered = true;
-            this.windowControl = controlToRegister;
+            _Registered = true;
+            _WindowControl = controlToRegister;
 
             return true;
         }
 
         public void RemoveHandler()
         {
-            this.Pressed = null;
+            Pressed = null;
         }
 
         public void SetHandler(Action<WindowSizePosition> resizeTo, WindowSizePosition windowSizePosition)
         {
-            this.Pressed = null;
-            this.Pressed += delegate { resizeTo(windowSizePosition); };
+            Pressed = null;
+            Pressed += delegate { resizeTo(windowSizePosition); };
         }
 
         public override string ToString()
         {
-            List<string> keys = new List<string>();
+            var keys = new List<string>();
 
-            if (this.Control)
-            {
+            if (Control)
                 keys.Add("Ctrl");
-            }
 
-            if (this.Alt)
-            {
+            if (Alt)
                 keys.Add("Alt");
-            }
 
-            if (this.Shift)
-            {
+            if (Shift)
                 keys.Add("Shift");
-            }
 
             //// TODO: bool windowsPressed = (Control.ModifierKeys | Keys.LWin) == keyEventArgs.Modifiers;
 
-            if ((this.KeyCode != Keys.ShiftKey) &&
-                (this.KeyCode != Keys.ControlKey) &&
-                (this.KeyCode != Keys.Menu) &&
-                (this.KeyCode != Keys.LWin) &&
-                (this.KeyCode != Keys.RWin))
-            {
-                keys.Add(this.KeyCode.ToString());
-            }
+            if ((KeyCode != Keys.ShiftKey) &&
+                (KeyCode != Keys.ControlKey) &&
+                (KeyCode != Keys.Menu) &&
+                (KeyCode != Keys.LWin) &&
+                (KeyCode != Keys.RWin))
+                keys.Add(KeyCode.ToString());
 
             return string.Join(" + ", keys.ToArray());
         }
 
         public void Unregister()
         {
-            if (!this.registered)
-            {
+            if (!_Registered)
                 return;
-            }
 
-            if (!this.windowControl.IsDisposed)
-            {
-                if (NativeMethods.UnregisterHotKey(this.windowControl.Handle, this.id) == 0)
-                {
+            if (!_WindowControl.IsDisposed)
+                if (NativeMethods.UnregisterHotKey(_WindowControl.Handle, _Id) == 0)
                     throw new Win32Exception();
-                }
-            }
 
-            this.registered = false;
-            this.windowControl = null;
+            _Registered = false;
+            _WindowControl = null;
         }
 
         private bool OnPressed()
         {
-            HandledEventArgs handledEventArgs = new HandledEventArgs(false);
-            if (this.Pressed != null)
-            {
-                this.Pressed(this, handledEventArgs);
-            }
+            var handledEventArgs = new HandledEventArgs(false);
+            if (Pressed != null)
+                Pressed(this, handledEventArgs);
 
             return handledEventArgs.Handled;
         }
 
         private void Reregister()
         {
-            if (!this.registered)
-            {
+            if (!_Registered)
                 return;
-            }
 
-            Control currentWindowControl = this.windowControl;
+            var currentWindowControl = _WindowControl;
 
-            this.Unregister();
-            this.Register(currentWindowControl);
+            Unregister();
+            Register(currentWindowControl);
         }
     }
 }

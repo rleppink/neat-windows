@@ -5,36 +5,34 @@
 
     internal class HotkeyHandler
     {
-        private Form form;
-        private Dictionary<WindowSizePosition, Hotkey> hotkeyMap;
-        private WindowResizer windowResizer;
+        private readonly Form _SettingsForm;
+        private readonly Dictionary<WindowSizePosition, Hotkey> _HotkeyMap;
+        private readonly WindowResizer _WindowResizer;
 
-        public HotkeyHandler(Form form)
+        public HotkeyHandler(Form settingsForm)
         {
-            this.form = form;
-            this.windowResizer = new WindowResizer();
-            this.hotkeyMap = KeyMapManager.GetSavedHotkeys();
-            this.RegisterHotkeys();
+            _SettingsForm = settingsForm;
+            _WindowResizer = new WindowResizer();
+            _HotkeyMap = KeyMapManager.GetSavedHotkeys();
+            RegisterHotkeys();
         }
 
         public Dictionary<WindowSizePosition, Hotkey> GetHotkeyMap()
         {
-            return this.hotkeyMap;
+            return _HotkeyMap;
         }
 
         public bool HotkeyExists(WindowSizePosition windowSizePosition, Hotkey hotkey)
         {
-            foreach (KeyValuePair<WindowSizePosition, Hotkey> mappedHotkeys in this.hotkeyMap)
+            foreach (var mappedHotkeys in _HotkeyMap)
             {
-                Hotkey mappedHotkey = mappedHotkeys.Value;
+                var mappedHotkey = mappedHotkeys.Value;
                 if (mappedHotkeys.Key != windowSizePosition &&
                     mappedHotkey.KeyCode == hotkey.KeyCode &&
                     mappedHotkey.Control == hotkey.Control &&
                     mappedHotkey.Alt == hotkey.Alt &&
                     mappedHotkey.Shift == hotkey.Shift)
-                {
                     return true;
-                }
             }
 
             return false;
@@ -42,31 +40,31 @@
 
         public void MapHotkey(WindowSizePosition windowSizePosition, Hotkey hotkey)
         {
-            this.hotkeyMap[windowSizePosition] = hotkey;
-            KeyMapManager.SaveHotkeyMap(this.hotkeyMap);
+            _HotkeyMap[windowSizePosition] = hotkey;
+            KeyMapManager.SaveHotkeyMap(_HotkeyMap);
         }
 
         public void RegisterHotkeys()
         {
-            foreach (KeyValuePair<WindowSizePosition, Hotkey> hotkeyMapping in this.hotkeyMap)
+            foreach (var hotkeyMapping in _HotkeyMap)
             {
-                hotkeyMapping.Value.SetHandler(this.windowResizer.ResizeTo, hotkeyMapping.Key);
-                hotkeyMapping.Value.Register(this.form);
+                hotkeyMapping.Value.SetHandler(_WindowResizer.ResizeTo, hotkeyMapping.Key);
+                hotkeyMapping.Value.Register(_SettingsForm);
             }
         }
 
         public void UnmapHotkey(WindowSizePosition windowSizePosition)
         {
-            if (this.hotkeyMap.ContainsKey(windowSizePosition))
-            {
-                this.hotkeyMap[windowSizePosition].Unregister();
-                this.hotkeyMap.Remove(windowSizePosition);
-            }
+            if (!_HotkeyMap.ContainsKey(windowSizePosition)) 
+                return;
+
+            _HotkeyMap[windowSizePosition].Unregister();
+            _HotkeyMap.Remove(windowSizePosition);
         }
 
         public void UnregisterHotkeys()
         {
-            foreach (KeyValuePair<WindowSizePosition, Hotkey> hotkeyMapping in this.hotkeyMap)
+            foreach (var hotkeyMapping in _HotkeyMap)
             {
                 hotkeyMapping.Value.RemoveHandler();
                 hotkeyMapping.Value.Unregister();
