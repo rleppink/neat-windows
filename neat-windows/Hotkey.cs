@@ -12,6 +12,9 @@ namespace NeatWindows
      *  https://bloggablea.wordpress.com/2007/05/01/global-hotkeys-with-net/
      */
 
+    /// <summary>
+    /// Defines all Hotkey registering and unregistering functionality.
+    /// </summary>
     public class Hotkey : IMessageFilter
     {
         private const uint ErrorHotkeyAlreadyRegistered = 1409;
@@ -149,6 +152,11 @@ namespace NeatWindows
             }
         }
 
+        /// <summary>
+        /// Returns whether this hotkey can be registered to the given control.
+        /// </summary>
+        /// <param name="controlToRegister">The control against which to check whether this hotkey can be registered</param>
+        /// <returns>A boolean value stating whether the hotkey can be registered</returns>
         public bool GetCanRegister(Control controlToRegister)
         {
             try
@@ -169,6 +177,9 @@ namespace NeatWindows
             }
         }
 
+        /// <summary>
+        /// Inherited from IMessageFilter.
+        /// </summary>
         public bool PreFilterMessage(ref Message m)
         {
             if (m.Msg != WmHotkey)
@@ -180,6 +191,11 @@ namespace NeatWindows
             return false;
         }
 
+        /// <summary>
+        /// Registers this hotkey to the given control
+        /// </summary>
+        /// <param name="controlToRegister">The control to register this hotkey to</param>
+        /// <returns>A value indicating whether the registering of the hotkey was successful</returns>
         public bool Register(Control controlToRegister)
         {
             if (controlToRegister == null)
@@ -211,17 +227,29 @@ namespace NeatWindows
             return true;
         }
 
+        /// <summary>
+        /// Removes the hotkey handler for this hotkey
+        /// </summary>
         public void RemoveHandler()
         {
             Pressed = null;
         }
 
+        /// <summary>
+        /// Sets the handler for hotkey pressed to the given action.
+        /// </summary>
+        /// <param name="resizeTo">The method to call when the hotkey is pressed</param>
+        /// <param name="windowSizePosition">Resize parameter</param>
         public void SetHandler(Action<WindowSizePosition> resizeTo, WindowSizePosition windowSizePosition)
         {
             Pressed = null;
             Pressed += delegate { resizeTo(windowSizePosition); };
         }
 
+        /// <summary>
+        /// Returns a nicely formatted string of this hotkey.
+        /// </summary>
+        /// <returns>A nicely formatted string of this hotkey</returns>
         public override string ToString()
         {
             var keys = new List<string>();
@@ -247,6 +275,9 @@ namespace NeatWindows
             return string.Join(" + ", keys.ToArray());
         }
 
+        /// <summary>
+        /// Unregisters this hotkey if it was registered. If not, just passes.
+        /// </summary>
         public void Unregister()
         {
             if (!_Registered)
@@ -260,6 +291,10 @@ namespace NeatWindows
             _WindowControl = null;
         }
 
+        /// <summary>
+        /// Function that is called when the hotkey was pressed.
+        /// </summary>
+        /// <returns>A boolean stating whether the event was handled</returns>
         private bool OnPressed()
         {
             var handledEventArgs = new HandledEventArgs(false);
@@ -269,6 +304,9 @@ namespace NeatWindows
             return handledEventArgs.Handled;
         }
 
+        /// <summary>
+        /// Re-registers the current hotkey.
+        /// </summary>
         private void Reregister()
         {
             if (!_Registered)

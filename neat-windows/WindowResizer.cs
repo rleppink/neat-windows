@@ -3,6 +3,9 @@
     using System;
     using System.Drawing;
 
+    /// <summary>
+    /// An enum containing all possible window sizes and positions.
+    /// </summary>
     public enum WindowSizePosition
     {
         Fullscreen,
@@ -19,6 +22,9 @@
         PreviousScreen
     }
 
+    /// <summary>
+    /// Class responsible for actually resizing a window.
+    /// </summary>
     public class WindowResizer
     {
         private static readonly IntPtr InsertTop = new IntPtr(0);
@@ -26,6 +32,10 @@
         private Rectangle _ForegroundWindowBounds;
         private ScreenSizePosition _ScreenSizePosition;
 
+        /// <summary>
+        /// Resizes the currently active window to the given window size position.
+        /// </summary>
+        /// <param name="windowSizePosition">The windowsizeposition to resize to</param>
         public void ResizeTo(WindowSizePosition windowSizePosition)
         {
             _ForegroundWindowBounds = GetForegroundWindowBounds();
@@ -115,6 +125,10 @@
             }
         }
 
+        /// <summary>
+        /// Returns the current size of the active window.
+        /// </summary>
+        /// <returns>The current size of the active window</returns>
         private static Rectangle GetForegroundWindowBounds()
         {
             Rect outRect;
@@ -126,6 +140,10 @@
                 outRect.Bottom - outRect.Top);
         }
 
+        /// <summary>
+        /// Resizes the currently active window to the given new window size.
+        /// </summary>
+        /// <param name="newWindowSize">The window size to resize to</param>
         private static void ResizeActiveWindow(Rectangle newWindowSize)
         {
             NativeMethods.SetWindowPos(

@@ -28,12 +28,16 @@ namespace NeatWindows
             trackBarWindowBorder.Value = Properties.Settings.Default.WindowBorder;
             textBoxWindowBorder.Text = Properties.Settings.Default.WindowBorder.ToString(CultureInfo.CurrentCulture);
 
-            if (Environment.GetCommandLineArgs().Count(argument => argument.ToLower().Equals("/startup")) > 0)
+            if (Environment.GetCommandLineArgs().Count(argument => argument.ToLower(CultureInfo.CurrentCulture).Equals("/startup")) > 0)
                 MinimizeWindow();
 
             labelFullscreen.Focus();
         }
 
+        /// <summary>
+        /// Fills the hotkey textboxes according to the given hotkeymap
+        /// </summary>
+        /// <param name="hotkeyMap">The hotkeymap to fill the textboxes from</param>
         public void FillTextBoxes(Dictionary<WindowSizePosition, Hotkey> hotkeyMap)
         {
             if (hotkeyMap == null)
@@ -49,6 +53,9 @@ namespace NeatWindows
             }
         }
 
+        /// <summary>
+        /// On checked, register this application for automatic startup when Windows starts
+        /// </summary>
         private void CheckBoxStartAtLogin_CheckedChanged(object sender, EventArgs e)
         {
             var registryKey = Registry.CurrentUser.OpenSubKey(RegistryPath, true);
@@ -67,6 +74,11 @@ namespace NeatWindows
             Application.Exit();
         }
 
+        /// <summary>
+        /// Returns the textbox that has the given windowsizeposition as a tag.
+        /// </summary>
+        /// <param name="windowSizePosition">The windowsizeposition that will be used as a tag</param>
+        /// <returns>The textbox that has the windowsizeposition tag</returns>
         private TextBox GetTextBoxByTag(WindowSizePosition windowSizePosition)
         {
             foreach (Control control in Controls)
@@ -81,6 +93,9 @@ namespace NeatWindows
             return null;
         }
 
+        /// <summary>
+        /// Handle showing the user which hotkey they are currently pressing.
+        /// </summary>
         private void HandleKeyDownEvent(object sender, KeyEventArgs keyEventArgs)
         {
             keyEventArgs.Handled = true;
@@ -89,6 +104,9 @@ namespace NeatWindows
             senderTextBox.Text = hotkey.ToString();
         }
 
+        /// <summary>
+        /// Register the hotkey when the user lets go of a key, only if that key was not a modifier key.
+        /// </summary>
         private void HandleKeyUpEvent(object sender, KeyEventArgs keyEventArgs)
         {
             keyEventArgs.Handled = true;
@@ -116,6 +134,9 @@ namespace NeatWindows
             labelFullscreen.Focus();
         }
 
+        /// <summary>
+        /// Sets the initial value for the start when windows starts checkbox, based on the registry setting.
+        /// </summary>
         private void InitStartupCheckBox()
         {
             var registryKey = Registry.CurrentUser.OpenSubKey(RegistryPath, true);
@@ -130,6 +151,9 @@ namespace NeatWindows
             }
         }
 
+        /// <summary>
+        /// Maps textboxes to windowsizeposition tags, for finding which textbox defines which windowsizeposition.
+        /// </summary>
         private void MapTags()
         {
             textBoxFullscreen.Tag = WindowSizePosition.Fullscreen;
@@ -163,6 +187,9 @@ namespace NeatWindows
             buttonBottomRight.Tag = WindowSizePosition.BottomRight;
         }
 
+        /// <summary>
+        /// Handle open settings toolstrip
+        /// </summary>
         private void OpenSettingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (WindowState != FormWindowState.Minimized) 
