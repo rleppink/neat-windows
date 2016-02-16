@@ -84,7 +84,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConfigurationManager.cs" />
+    <Compile Include="KeyMapManager.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Hotkey.cs" />
     <Compile Include="HotkeyHandler.cs">
